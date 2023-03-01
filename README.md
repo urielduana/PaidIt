@@ -81,7 +81,7 @@ La problemática que pudimos encontrar surge en un contexto escolar nivel secund
 
 Los padres de familia al proporcionar dinero a sus hijos para sus gastos personales dentro de las instalaciones de las preparatorias y secundarias no pueden asegurarse que se estén utilizando en productos adecuados para su consumo, teniendo como riesgo la adquisición de productos nocivos para su salud como lo son productos y consumibles ilegales. El evitar la posibilidad de que los alumnos adquieran cualquiera de estos productos, genera una mayor tranquilidad en los padres de familia, apoyando también en la prevención de delitos y en la generación de zonas de alto peligro.
 
-##Justificación
+## Justificación
 
 Nuestro proyecto va enfocado a escuelas, principalmente preparatorias y secundarias privadas, o aquellas donde sus alumnos tengan algún nivel adquisitivo y cuenten con un teléfono celular con conexión a internet. El proyecto está dirigido a los establecimientos de venta de productos que se encuentren dentro de las instituciones como lo son cafeterías, papelerías, estanquillos, etc. 
 
