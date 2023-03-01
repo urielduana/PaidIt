@@ -68,11 +68,11 @@ Frontend
 
 En la parte front-end que es la parte más visual del programa se van utilizar varias tecnologías que vamos utilizar las básicas que son Flowbite, HTML y javascript.
 
-2.5 Flowbite-Tailwind y es un framework de CSS que se llama Tailwind con el fin de poder usar todas sus propiedades para no complicar la parte de los css y para la parte de diseño vamos usar que Flowbite donde analizamos que seria mejor la mejor opción dentro de nuestras posibilidades porque ya es una tecnología que se tiene el conocimiento.
+5. Flowbite-Tailwind y es un framework de CSS que se llama Tailwind con el fin de poder usar todas sus propiedades para no complicar la parte de los css y para la parte de diseño vamos usar que Flowbite donde analizamos que seria mejor la mejor opción dentro de nuestras posibilidades porque ya es una tecnología que se tiene el conocimiento.
 
-2.6 HTML es una herramienta que vamos utilizar como el esqueleto del proyecto para usar la tecnología de tailwind y utilizar las etiquetas que nos ofrece html para los estilos y poderlos personalizados con las propiedades de tailwind.
+6. HTML es una herramienta que vamos utilizar como el esqueleto del proyecto para usar la tecnología de tailwind y utilizar las etiquetas que nos ofrece html para los estilos y poderlos personalizados con las propiedades de tailwind.
 
-2.7 Javascript.es una herramienta se usó para unas validaciones de unos componentes que vamos a utilizar en los formularios y llegan a ser demasiado útiles dentro del proyecto.
+7. Javascript.es una herramienta se usó para unas validaciones de unos componentes que vamos a utilizar en los formularios y llegan a ser demasiado útiles dentro del proyecto.
 
 ## Grupos de procesos planificación
 
