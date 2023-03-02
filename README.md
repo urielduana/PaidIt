@@ -63,7 +63,7 @@ La problemática que pudimos encontrar surge en un contexto escolar nivel secund
 ### Descripción del Problema
 Proporcionar a hijos de familia dinero para que lo usen no dentro de la institución, sino en productos que no están destinados para el sector adolescente. Esto incluye consumibles como drogas, venta de productos ilegales, etc. Además de correr el riesgo de que el hijo pierda el dinero por descuidos de su parte.
 
-###Descripción de la Situación
+### Descripción de la Situación
 Los padres de adolescentes no pueden saber con exactitud lo que sus hijos compran. Evitar dicha preocupación puede ayudar a los padres a que se sientan más cómodos cuando sus hijos tengan que ir a la escuela.
 
 ### Conceptualización de la solución
