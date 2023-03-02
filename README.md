@@ -30,7 +30,8 @@ Crea una base de datos MySQL en tu entorno local y configura las credenciales en
 ``php artisan migrate``
 
 6. Ejecutar seeders:
-```php artisan db:seed --class=GendersTableSeeder
+```
+php artisan db:seed --class=GendersTableSeeder
 php artisan db:seed --class=UsersTableSeeder
 php artisan db:seed --class=BusinessesTableSeeder
 php artisan db:seed --class=ItemTypesTableSeeder
@@ -40,7 +41,8 @@ php artisan db:seed --class=EmployeesTableSeeder
 php artisan db:seed --class=CartsTableSeeder
 php artisan db:seed --class=OrdersTableSeeder
 php artisan db:seed --class=OrderItemsTableSeeder
-php artisan db:seed --class=CartItemsTableSeeder```
+php artisan db:seed --class=CartItemsTableSeeder 
+```
 
 ## Uso
 
