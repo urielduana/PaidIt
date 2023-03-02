@@ -6,6 +6,7 @@ PaidIt es un sistema informático, el cual permita abonar dinero y generar un ba
 - PHP 8.1 o superior
 - Composer
 - MySQL
+- Node.js v18.13.0 o superior
 
 ## Instalación
 
@@ -16,6 +17,7 @@ PaidIt es un sistema informático, el cual permita abonar dinero y generar un ba
 2. Instalar las dependencias de PHP:
 
  ``composer install``
+ ``npm install``
  
 3. Configurar la base de datos:
 
@@ -49,6 +51,7 @@ php artisan db:seed --class=CartItemsTableSeeder
 Para iniciar el servidor de desarrollo, ejecuta el siguiente comando en la terminal:
 
 ``php artisan serve``
+``npm run dev``
 
 ## Antecedentes del proyecto
 
