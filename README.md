@@ -44,6 +44,7 @@ php artisan db:seed --class=CustomersTableSeeder
 php artisan db:seed --class=EmployeesTableSeeder
 php artisan db:seed --class=CartsTableSeeder
 php artisan db:seed --class=OrdersTableSeeder
+php artisan db:seed --class=ItemsTableSeeder
 php artisan db:seed --class=OrderItemsTableSeeder
 php artisan db:seed --class=CartItemsTableSeeder 
 ```
