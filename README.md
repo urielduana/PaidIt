@@ -29,6 +29,19 @@ Crea una base de datos MySQL en tu entorno local y configura las credenciales en
 
 ``php artisan migrate``
 
+6. Ejecutar seeders:
+```php artisan db:seed --class=GendersTableSeeder
+php artisan db:seed --class=UsersTableSeeder
+php artisan db:seed --class=BusinessesTableSeeder
+php artisan db:seed --class=ItemTypesTableSeeder
+php artisan db:seed --class=EmployeeTypesTableSeeder
+php artisan db:seed --class=CustomersTableSeeder
+php artisan db:seed --class=EmployeesTableSeeder
+php artisan db:seed --class=CartsTableSeeder
+php artisan db:seed --class=OrdersTableSeeder
+php artisan db:seed --class=OrderItemsTableSeeder
+php artisan db:seed --class=CartItemsTableSeeder```
+
 ## Uso
 
 Para iniciar el servidor de desarrollo, ejecuta el siguiente comando en la terminal:
