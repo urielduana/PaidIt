@@ -16,8 +16,10 @@ PaidIt es un sistema informático, el cual permita abonar dinero y generar un ba
  
 2. Instalar las dependencias de PHP:
 
- ``composer install``
- ``npm install``
+ ```
+ composer install
+ npm install
+ ```
  
 3. Configurar la base de datos:
 
