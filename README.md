@@ -21,6 +21,7 @@ PaidIt es un sistema informático, el cual permita abonar dinero y generar un ba
  npm install
  ```
  
+ 
 3. Configurar la base de datos:
 
 Crea una base de datos MySQL en tu entorno local y configura las credenciales en el archivo `.env`.
