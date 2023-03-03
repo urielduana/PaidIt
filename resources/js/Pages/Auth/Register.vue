@@ -1,6 +1,7 @@
 <script setup>
 import { Head, Link, useForm } from "@inertiajs/vue3";
 import AuthenticationCard from "@/Components/AuthenticationCard.vue";
+import AuthenticationCardLogo from '@/Components/AuthenticationCardLogo.vue';
 import Checkbox from "@/Components/Checkbox.vue";
 import InputError from "@/Components/InputError.vue";
 import InputLabel from "@/Components/InputLabel.vue";
@@ -27,8 +28,12 @@ const submit = () => {
 
 <template>
     <Head title="Register" />
-    <div class="my-20">
-        <AuthenticationCard >
+    <div class="my-4">
+        <h1 class="font-semibold text-center text-5xl my-6">Register</h1>
+        <AuthenticationCard>
+            <template #logo>
+            <AuthenticationCardLogo />
+        </template>
             <form @submit.prevent="submit">
                 <div>
                     <InputLabel for="name" value="Name" />
@@ -55,8 +60,6 @@ const submit = () => {
                     />
                     <InputError class="mt-2" :message="form.errors.name" />
                 </div>
-                
-               
 
                 <div class="mt-4">
                     <InputLabel for="age" value="Age" />
