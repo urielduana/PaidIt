@@ -33,3 +33,5 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 });
+
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'),'verified',])->resource('/dashboard/user', UserController::class)->parameters(['user' => 'customer']);
