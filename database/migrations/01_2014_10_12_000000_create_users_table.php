@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('parent_name');
+            $table->boolean('is_customer');
+            $table->boolean('is_employee');
             $table->integer('age');
             $table->bigInteger('phone');
             $table->string('email')->unique();

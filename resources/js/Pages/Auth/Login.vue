@@ -15,7 +15,7 @@ defineComponent({
     name: "App",
     components: { Tabs, Tab },
     data: () => {
-        return { dynamicTabs: [1, 2, 3] };
+        return { dynamicTabs: [1, 2] };
     },
 });
 
@@ -31,7 +31,15 @@ const form = useForm({
     remember: false,
 });
 
-const submit = () => {
+const submit_customer = () => {
+    form.transform((data) => ({
+        ...data,
+        remember: form.remember ? "on" : "",
+    })).post(route("login"), {
+        onFinish: () => form.reset("password"),
+    });
+};
+const submit_empoyee = () => {
     form.transform((data) => ({
         ...data,
         remember: form.remember ? "on" : "",
@@ -42,7 +50,7 @@ const submit = () => {
 </script>
 
 <template>
-    <Head title="Log in" />
+    <Head title="Login" />
 
     <AuthenticationCard>
         <template #logo>
@@ -68,9 +76,9 @@ const submit = () => {
             </template>
 
             <tab title-slot="tab1">
-                <form @submit.prevent="submit">
+                <form @submit.prevent="submit_customer">
                     <div>
-                        <InputLabel for="email" value="Email" />
+                        <InputLabel for="email" value="Institutional Email" />
                         <TextInput
                             id="email"
                             v-model="form.email"
@@ -131,7 +139,67 @@ const submit = () => {
                 </form>
             </tab>
             <tab title-slot="tab2">
-                <h3>This is Tab 2</h3>
+                <form @submit.prevent="submit_empoyee">
+                    <div>
+                        <InputLabel for="email" value="Organizational Email" />
+                        <TextInput
+                            id="email"
+                            v-model="form.email"
+                            type="email"
+                            class="mt-1 block w-full"
+                            required
+                            autofocus
+                            autocomplete="username"
+                        />
+                        <InputError class="mt-2" :message="form.errors.email" />
+                    </div>
+
+                    <div class="mt-4">
+                        <InputLabel for="password" value="Password" />
+                        <TextInput
+                            id="password"
+                            v-model="form.password"
+                            type="password"
+                            class="mt-1 block w-full"
+                            required
+                            autocomplete="current-password"
+                        />
+                        <InputError
+                            class="mt-2"
+                            :message="form.errors.password"
+                        />
+                    </div>
+
+                    <div class="block mt-4">
+                        <label class="flex items-center">
+                            <Checkbox
+                                v-model:checked="form.remember"
+                                name="remember"
+                            />
+                            <span class="ml-2 text-sm text-gray-600"
+                                >Remember me</span
+                            >
+                        </label>
+                    </div>
+
+                    <div class="flex items-center justify-end mt-4">
+                        <Link
+                            v-if="canResetPassword"
+                            :href="route('password.request')"
+                            class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        >
+                            Forgot your password?
+                        </Link>
+
+                        <PrimaryButton
+                            class="ml-4"
+                            :class="{ 'opacity-25': form.processing }"
+                            :disabled="form.processing"
+                        >
+                            Log in
+                        </PrimaryButton>
+                    </div>
+                </form>
             </tab>
         </tabs>
     </AuthenticationCard>
