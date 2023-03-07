@@ -31,15 +31,7 @@ const form = useForm({
     remember: false,
 });
 
-const submit_customer = () => {
-    form.transform((data) => ({
-        ...data,
-        remember: form.remember ? "on" : "",
-    })).post(route("login"), {
-        onFinish: () => form.reset("password"),
-    });
-};
-const submit_empoyee = () => {
+const submit = () => {
     form.transform((data) => ({
         ...data,
         remember: form.remember ? "on" : "",
@@ -76,7 +68,7 @@ const submit_empoyee = () => {
             </template>
 
             <tab title-slot="tab1">
-                <form @submit.prevent="submit_customer">
+                <form @submit.prevent="submit">
                     <div>
                         <InputLabel for="email" value="Institutional Email" />
                         <TextInput
@@ -139,7 +131,7 @@ const submit_empoyee = () => {
                 </form>
             </tab>
             <tab title-slot="tab2">
-                <form @submit.prevent="submit_empoyee">
+                <form @submit.prevent="submit">
                     <div>
                         <InputLabel for="email" value="Organizational Email" />
                         <TextInput

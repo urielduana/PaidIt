@@ -1,4 +1,6 @@
 <script setup>
+// Esta página es la principal que renderiza la Navbar de la aplicación
+// Aquí se pueden agregar componentes como el footer, el header, etc. Componentes que se ocupen en todas las páginas
 import { ref } from 'vue';
 import { Head, Link, router } from '@inertiajs/vue3';
 import ApplicationMark from '@/Components/ApplicationMark.vue';
@@ -50,6 +52,11 @@ const logout = () => {
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
+                                </NavLink>
+                            </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <NavLink :href="route('user.index')" :active="route().current('user.index')">
+                                    Users
                                 </NavLink>
                             </div>
                         </div>
@@ -284,4 +291,8 @@ const logout = () => {
             </main>
         </div>
     </div>
+
+    <footer>
+        
+    </footer>
 </template>

@@ -26,10 +26,13 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'parent_name',
+        'is_customer',
+        'is_employee',
         'age',
         'phone',
         'email',
         'password',
+        'Gender_id'
     ];
 
     /**
@@ -61,4 +64,19 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function gender()
+    {
+        return $this->belongsTo(Gender::class);
+    }
+
+    public function employee()
+    {
+        return $this->hasOne(Employee::class);
+    }
+
+    public function customer()
+    {
+        return $this->hasOne(Customer::class);
+    }
 }

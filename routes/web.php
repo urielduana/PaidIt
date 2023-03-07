@@ -3,6 +3,9 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,15 +27,23 @@ Route::get('/', function () {
     ]);
 });
 
+// Ruta después de login
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
+    'CheckCustomerEmployee',
 ])->group(function () {
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
 });
 
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'), 
+    'verified',
+    'CheckCustomerEmployee',
+])->resource('/user', UserController::class);
 
-// Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->resource('/dashboard/user', UserController::class)->parameters(['user' => 'customer']);
+
