@@ -63,18 +63,4 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function gender()
-    {
-        return $this->belongsTo(Gender::class);
-    }
-
-    public function employee()
-    {
-        return $this->hasOne(Employee::class);
-    }
-
-    public function customer()
-    {
-        return $this->hasOne(Customer::class);
-    }
 }
