@@ -114,10 +114,6 @@ class CreatePermissionTables extends Migration
 
             $table->primary([PermissionRegistrar::$pivotPermission, PermissionRegistrar::$pivotRole], 'role_has_permissions_permission_id_role_id_primary');
         });
-        Schema::table('users', function (Blueprint $table) {
-            $table->unsignedBigInteger('Role_id')->nullable();
-            $table->foreign('Role_id')->references('id')->on('roles')->onDelete('cascade');
-        });
 
         app('cache')
             ->store(config('permission.cache.store') != 'default' ? config('permission.cache.store') : null)
@@ -141,8 +137,5 @@ class CreatePermissionTables extends Migration
         Schema::dropIfExists($tableNames['model_has_roles']);
         Schema::dropIfExists($tableNames['model_has_permissions']);
         Schema::dropIfExists($tableNames['permissions']);
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        Schema::dropIfExists($tableNames['roles']);        
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }
