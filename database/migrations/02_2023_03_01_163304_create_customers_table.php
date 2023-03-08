@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->decimal('balance');
             $table->string('guardian_name');
-            $table->biginteger('guardian_phone');
+            $table->unsignedBigInteger('guardian_phone');
             $table->timestamps();
             $table->unsignedBigInteger('User_id');
             $table->foreign('User_id')->references('id')->on('users')->onDelete('cascade');
