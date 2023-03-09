@@ -1,5 +1,5 @@
 <script setup>
-import AppLayout from '@/Layouts/AppLayout.vue';
+import AppLayout from '@/Layouts/CustomerAppLayout.vue';
 import Welcome from '@/Components/Welcome.vue';
 
 // import { onMounted } from 'vue'
@@ -25,7 +25,7 @@ const props = defineProps({
     <AppLayout title="Dashboard">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Employee
+                Customer
             </h2>
         </template>
         <pre>

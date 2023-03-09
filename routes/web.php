@@ -62,13 +62,13 @@ Route::middleware([
 
 
     Route::get('/customer', function () {
-        return Inertia::render('Customer', [
+        return Inertia::render('Customer/Customer', [
         ]);
     })->name('customer');
 
 
     Route::get('/employee', function () {
-        return Inertia::render('Employee', [
+        return Inertia::render('Employee/Employee', [
             // 'role'=>Auth::user()->role,
         ]);
     })->name('employee');
