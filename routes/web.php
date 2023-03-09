@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use App\Http\Controllers\DashboardController;
 
 
 /*
@@ -42,27 +43,22 @@ Route::get('/', function () {
 //     })->name('dashboard');
 // });
 
-// Route::middleware([
-//     'auth:sanctum',
-//     config('jetstream.auth_session'),
-//     'verified'
-// ])->group(function () {
-//     Route::get('/dashboard', [DashboardController::class, 'index'])
-//         ->name('dashboard');
-// });
-
-
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])
+        ->name('dashboard');
+});
 
 
-    Route::get('/employee', function () {
-        return Inertia::render('Employee', [
-        ]);
-    })->name('employee');
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+    'CheckUserRole',
+])->group(function () {
 
 
     Route::get('/customer', function () {
@@ -71,11 +67,11 @@ Route::middleware([
     })->name('customer');
 
 
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard', [
+    Route::get('/employee', function () {
+        return Inertia::render('Employee', [
             // 'role'=>Auth::user()->role,
         ]);
-    })->name('dashboard');
+    })->name('employee');
 });
 
 // Ruta después de login

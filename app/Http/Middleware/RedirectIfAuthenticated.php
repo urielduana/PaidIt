@@ -7,7 +7,6 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
-use Inertia\Inertia;
 
 class RedirectIfAuthenticated
 {
@@ -22,18 +21,7 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                $user = Auth::user();
-
-                if ($user->can('view_employee')) {
-                    return redirect()->route('employee');
-                } else if ($user->can('view_customer')) {
-                    return redirect()->route('customer');
-                } else {
-                    // Si el usuario no tiene ningún rol asignado, lo redirigimos a la vista de dashboard por defecto
-                    return Inertia::render('Dashboard', [
-                        // 'view_role' => session('view_role'),
-                    ]);
-                }
+                return redirect(RouteServiceProvider::HOME);
             }
         }
 

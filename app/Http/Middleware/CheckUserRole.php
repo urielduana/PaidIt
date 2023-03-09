@@ -29,11 +29,12 @@ class CheckUserRole
                 if ($request->routeIs('employee')) {
                     abort(403);
                 }
-            } else {
-                if (!$request->routeIs('dashboard')) {
-                    abort(403);
-                }
-            }
+            } 
+            // else {
+            //     if (!$request->routeIs('dashboard')) {
+            //         abort(403);
+            //     }
+            // }
         }
 
         return $next($request);

@@ -14,15 +14,17 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
+ $user = Auth::user();
 
         if ($user->can('view_employee')) {
             return redirect()->route('employee');
         } else if ($user->can('view_customer')) {
             return redirect()->route('customer');
         } else {
-            return redirect()->route('dashboard');
-            
+            // Si el usuario no tiene ningún rol asignado, lo redirigimos a la vista de dashboard por defecto
+            return Inertia::render('Dashboard', [
+                // 'view_role' => session('view_role'),
+            ]);
         }
     }
 
