@@ -1,6 +1,24 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
 import Welcome from '@/Components/Welcome.vue';
+
+import { onMounted } from 'vue'
+
+
+const props = defineProps({
+    view_role: {
+        type: String,
+        required: true
+    },
+
+});
+// onMounted(() => {
+//     console.log('view_role: ' , window.$view_role);
+//   })
+
+
+
+  
 </script>
 
 <template>
@@ -10,7 +28,7 @@ import Welcome from '@/Components/Welcome.vue';
                 Dashboard
             </h2>
         </template>
-
+        {{ props  }}
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
