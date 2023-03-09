@@ -28,23 +28,88 @@ Route::get('/', function () {
 });
 
 // Ruta después de login
+//Dashboard
+// Route::middleware([
+//     'auth:sanctum',
+//     config('jetstream.auth_session'),
+//     'verified',
+//     // 'CheckUserRole',
+// ])->group(function () {
+//     Route::get('/dashboard', function () {
+//         return Inertia::render('Dashboard', [
+//             // 'view_role' => session('view_role'),
+//         ]);
+//     })->name('dashboard');
+// });
+
+// Route::middleware([
+//     'auth:sanctum',
+//     config('jetstream.auth_session'),
+//     'verified'
+// ])->group(function () {
+//     Route::get('/dashboard', [DashboardController::class, 'index'])
+//         ->name('dashboard');
+// });
+
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
-    'verified',
-    'CheckUserRole',
+    'verified'
 ])->group(function () {
+
+
+    Route::get('/employee', function () {
+        return Inertia::render('Employee', [
+        ]);
+    })->name('employee');
+
+
+    Route::get('/customer', function () {
+        return Inertia::render('Customer', [
+        ]);
+    })->name('customer');
+
+
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard', [
-            'view_role' => session('view_role'),
+            // 'role'=>Auth::user()->role,
         ]);
     })->name('dashboard');
 });
 
+// Ruta después de login
+//Customer
+// Route::middleware([
+//     'auth:sanctum',
+//     config('jetstream.auth_session'),
+//     'verified',
+//     // 'CheckUserRole',
+// ])->group(function () {
+//     Route::get('/customer', function () {
+//         return Inertia::render('Customer', [
+//             // 'view_role' => session('view_role'),
+//         ]);
+//     })->name('cutomer');
+// });
+
+// Route::middleware([
+//     'auth:sanctum',
+//     config('jetstream.auth_session'),
+//     'verified',
+//     'CheckUserRole',
+// ])->group(function () {
+//     Route::get('/customer', [CustomerController::class, 'index'])->name('customer');
+// });
+
+
+
+
+
+
+
 Route::middleware([
     'auth:sanctum',
-    config('jetstream.auth_session'), 
+    config('jetstream.auth_session'),
     'verified',
 ])->resource('/user', UserController::class);
-
-

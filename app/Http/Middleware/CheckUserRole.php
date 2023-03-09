@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,14 +21,18 @@ class CheckUserRole
         $user = Auth::user();
 
         if ($user) {
-            if ($user->can('view_customer')) {
-                session(['view_role' => 'customer_view']);
-            } else if ($user->can('view_employee')) {
-                session(['view_role' => 'employee_view']);
-            } else if ($user->can('view_customer' && 'view_employee')) {
-                session(['view_role' => 'both_views']);
+            if ($user->can('view_employee')) {
+                if ($request->routeIs('customer')) {
+                    abort(403);
+                }
+            } elseif ($user->can('view_customer')) {
+                if ($request->routeIs('employee')) {
+                    abort(403);
+                }
             } else {
-                session(['view_role' => 'no_view']);
+                if (!$request->routeIs('dashboard')) {
+                    abort(403);
+                }
             }
         }
 
