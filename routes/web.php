@@ -42,7 +42,6 @@ Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'), 
     'verified',
-    'CheckCustomerEmployee',
 ])->resource('/user', UserController::class);
 
 
