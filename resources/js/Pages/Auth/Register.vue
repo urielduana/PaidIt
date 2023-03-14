@@ -42,22 +42,6 @@ const submit = () => {
                     />
                     <InputError class="mt-2" :message="form.errors.name" />
                 </div>
-
-                <div class="mt-4">
-                    <InputLabel for="parent_name" value="Parent name" />
-                    <TextInput
-                        id="parent_name"
-                        v-model="form.parent_name"
-                        type="text"
-                        class="mt-1 block w-full"
-                        required
-                        autocomplete="parent_name"
-                    />
-                    <InputError class="mt-2" :message="form.errors.name" />
-                </div>
-                
-               
-
                 <div class="mt-4">
                     <InputLabel for="age" value="Age" />
                     <TextInput

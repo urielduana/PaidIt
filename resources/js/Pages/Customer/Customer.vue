@@ -1,23 +1,15 @@
 <script setup>
-import AppLayout from '@/Layouts/AppLayout.vue';
+import AppLayout from '@/Layouts/CustomerAppLayout.vue';
 import Welcome from '@/Components/Welcome.vue';
-
-// import { onMounted } from 'vue'
-
+import Checkbox from '@/Components/Checkbox.vue';
 
 const props = defineProps({
-    role: {
+    view_role: {
         type: String,
         required: true
     },
 
 });
-// onMounted(() => {
-//     console.log('view_role: ' , window.$view_role);
-//   })
-
-
-
   
 </script>
 
@@ -25,11 +17,11 @@ const props = defineProps({
     <AppLayout title="Dashboard">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Dashboard
+                Customer
             </h2>
         </template>
         <pre>
-            {{ props.role  }}
+            {{ view_role }}
         </pre>
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

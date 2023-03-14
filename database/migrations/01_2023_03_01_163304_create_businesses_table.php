@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->decimal('balance');
             $table->string('email');
-            $table->biginteger('phone');
+            $table->unsignedBigInteger('phone');
             $table->string('address');
             $table->timestamps();
         });

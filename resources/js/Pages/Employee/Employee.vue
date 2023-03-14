@@ -1,21 +1,15 @@
 <script setup>
-import AppLayout from '@/Layouts/AppLayout.vue';
+import AppLayout from '@/Layouts/EmployeeAppLayout.vue';
 import Welcome from '@/Components/Welcome.vue';
-
-// import { onMounted } from 'vue'
 
 
 const props = defineProps({
-    role: {
+    view_role: {
         type: String,
         required: true
     },
 
 });
-// onMounted(() => {
-//     console.log('view_role: ' , window.$view_role);
-//   })
-
 
 
   
@@ -25,11 +19,11 @@ const props = defineProps({
     <AppLayout title="Dashboard">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Dashboard
+                Employee
             </h2>
         </template>
         <pre>
-            {{ props.role  }}
+            {{ view_role }}
         </pre>
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

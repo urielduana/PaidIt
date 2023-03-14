@@ -1,39 +1,33 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
-import Welcome from '@/Components/Welcome.vue';
-
-// import { onMounted } from 'vue'
-
 
 const props = defineProps({
-    role: {
-        type: String,
+    user: {
+        type: Object,
         required: true
     },
 
 });
-// onMounted(() => {
-//     console.log('view_role: ' , window.$view_role);
-//   })
 
 
 
-  
 </script>
 
 <template>
-    <AppLayout title="Dashboard">
+    <AppLayout title="User">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Dashboard
+                User
             </h2>
         </template>
-        <pre>
-            {{ props.role  }}
-        </pre>
+
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                    <pre>
+                        {{ props }}
+
+                    </pre>
                 </div>
             </div>
         </div>

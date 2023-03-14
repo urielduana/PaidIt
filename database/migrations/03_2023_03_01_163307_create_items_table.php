@@ -17,7 +17,7 @@ return new class extends Migration
             $table->decimal('price');
             $table->string('description');
             $table->string('image')->nullable();
-            $table->integer('stock');
+            $table->integer('stock')->default(0);
             $table->timestamps();
             $table->unsignedBigInteger('Business_id');
             $table->foreign('Business_id')->references('id')->on('businesses')->onDelete('cascade');
