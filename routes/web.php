@@ -62,14 +62,20 @@ Route::middleware([
 
 
     Route::get('/customer', function () {
+        // $userPermissions = auth()->user()->getAllPermissions()->pluck('name');
         return Inertia::render('Customer/Customer', [
+            // 'view_role'=>Auth::user()->roles,
+            // 'view_role' => $userPermissions,
         ]);
     })->name('customer');
 
 
     Route::get('/employee', function () {
+        $userPermissions = auth()->user()->getAllPermissions()->pluck('name');
         return Inertia::render('Employee/Employee', [
-            // 'role'=>Auth::user()->role,
+            // 'view_role'=>(Auth::user()->roles),
+            'view_role' => $userPermissions,
+
         ]);
     })->name('employee');
 });

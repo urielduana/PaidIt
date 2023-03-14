@@ -20,23 +20,18 @@ class CheckUserRole
     {
         $user = Auth::user();
 
-        if ($user) {
-            if ($user->can('view_employee')) {
-                if ($request->routeIs('customer')) {
-                    abort(403);
-                }
-            } elseif ($user->can('view_customer')) {
-                if ($request->routeIs('employee')) {
-                    abort(403);
-                }
-            } 
-            // else {
-            //     if (!$request->routeIs('dashboard')) {
-            //         abort(403);
-            //     }
-            // }
+        $permissions = [
+            'dashboard' => 'view_dashboard',
+            'employee' => 'view_employee',
+            'customer' => 'view_customer',
+        ];
+    
+        foreach ($permissions as $route => $permission) {
+            if ($request->routeIs($route) && !$user->can($permission)) {
+                abort(403);
+            }
         }
-
+    
         return $next($request);
     }
 }

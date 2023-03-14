@@ -14,9 +14,10 @@ class DashboardController extends Controller
      */
     public function index()
     {
- $user = Auth::user();
-
-        if ($user->can('view_employee')) {
+        $user = Auth::user();
+        if ($user->can('view_dashboard')) {
+            return Inertia::render('Dashboard');
+        } else if ($user->can('view_employee')) {
             return redirect()->route('employee');
         } else if ($user->can('view_customer')) {
             return redirect()->route('customer');

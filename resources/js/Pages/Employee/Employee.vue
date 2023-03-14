@@ -2,8 +2,6 @@
 import AppLayout from '@/Layouts/EmployeeAppLayout.vue';
 import Welcome from '@/Components/Welcome.vue';
 
-// import { onMounted } from 'vue'
-
 
 const props = defineProps({
     view_role: {
@@ -12,10 +10,6 @@ const props = defineProps({
     },
 
 });
-// onMounted(() => {
-//     console.log('view_role: ' , window.$view_role);
-//   })
-
 
 
   

@@ -17,4 +17,9 @@ class Item extends Model
         'Business_id',
         'Item_type_id'
     ];
+
+    public function item_Item_Type()
+    {
+        return $this->belongsTo(ItemType::class, 'Item_type_id');
+    }
 }

@@ -1,9 +1,7 @@
 <script setup>
 import AppLayout from '@/Layouts/CustomerAppLayout.vue';
 import Welcome from '@/Components/Welcome.vue';
-
-// import { onMounted } from 'vue'
-
+import Checkbox from '@/Components/Checkbox.vue';
 
 const props = defineProps({
     view_role: {
@@ -12,12 +10,6 @@ const props = defineProps({
     },
 
 });
-// onMounted(() => {
-//     console.log('view_role: ' , window.$view_role);
-//   })
-
-
-
   
 </script>
 
