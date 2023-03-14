@@ -2,19 +2,14 @@
 import AppLayout from '@/Layouts/AppLayout.vue';
 import Welcome from '@/Components/Welcome.vue';
 
-// import { onMounted } from 'vue'
+// const props = defineProps({
+//     role: {
+//         type: String,
+//         required: true
+//     },
 
+// });
 
-const props = defineProps({
-    role: {
-        type: String,
-        required: true
-    },
-
-});
-// onMounted(() => {
-//     console.log('view_role: ' , window.$view_role);
-//   })
 
 
 
@@ -29,7 +24,7 @@ const props = defineProps({
             </h2>
         </template>
         <pre>
-            {{ props.role  }}
+            <!-- {{ props.role  }} -->
         </pre>
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

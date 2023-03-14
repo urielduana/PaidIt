@@ -2,44 +2,37 @@ const menuItems = {
     Customer : [
         {
             label : 'Main Menu',
-            route : '/customer',
-            active : true,
+            route : 'customer',
             permissions : ['view_customer'],
         },
         {
             label : 'Businesses',
-            route : '/customer/business',
-            active : true,
+            route : 'customer/business',
             permissions : ['view_customer', 'customer/business'],
         },
         {
             label : 'Products',
-            route : '/customer/items',
-            active : true,
+            route : 'customer/items',
             permissions : ['view_customer', 'customer/items'],
         },
         {
             label : 'Cart',
-            route : '/customer/carts',
-            active : true,
+            route : 'customer/carts',
             permissions : ['view_customer', 'customer/carts'],
         },
         {
             label : 'Orders',
-            route : '/customer/orders',
-            active : true,
+            route : 'customer/orders',
             permissions : ['view_customer', 'customer/orders'],
         },
         {
             label : 'Credit',
-            route : '/customer/balance',
-            active : true,
+            route : 'customer/balance',
             permissions : ['view_customer', 'customer/balance'],
         },
         {
             label : 'Profile',
-            route : '/user/profile',
-            active : true,
+            route : 'user/profile',
             permissions : [],
         }
 
@@ -47,96 +40,83 @@ const menuItems = {
     Employee : [
         {
             label : 'Main Menu',
-            route : '/employee',
-            active : true,
+            route : 'employee',
             permissions : ['view_employee'],
         },
         {
             label : 'Orders',
-            route : '/employee/orders',
-            active : true,
+            route : 'employee/orders',
             permissions : ['view_employee', 'employee/orders'],
         },
         {
             label : 'Products',
-            route : '/employee/items',
-            active : true,
+            route : 'employee/items',
             permissions : ['view_employee', 'employee/items'],
         },
         {
             label : 'Employees',
-            route : '/employee/members',
-            active : true,
+            route : 'employee/members',
             permissions : ['view_employee', 'employee/members'],
         },
         {
             label : 'Finance',
-            route : '/employee/finance',
-            active : true,
+            route : 'employee/finance',
             permissions : ['view_employee', 'employee/finance'],
         },
         {
             label : 'Settings',
-            route : '/employee/settings',
-            active : true,
+            route : 'employee/settings',
             permissions : ['view_employee', 'employee/business'],
         },
         {
             label : 'Profile',
-            route : '/user/profile',
-            active : true,
+            route : 'user/profile',
             permissions : [],
         }
 
     ],
-    DashBoard : [
+    Dashboard : [
         {
             label : 'Main Menu',
-            route : '/dashboard',
-            active : true,
+            route : 'dashboard',
             permissions : ['view_dashboard'],
         },
         {
             label : 'Users',
-            route : '/dashboard/users',
-            active : true,
+            route : 'dashboard/users',
             permissions : ['view_dashboard', 'dashboard/users'],
         },
         {
             label : 'Businesses',
-            route : '/dashboard/businesses',
-            active : true,
+            route : 'dashboard/businesses',
             permissions : ['view_dashboard', 'dashboard/businesses'],
         },
         {
             label : 'Products',
-            route : '/dashboard/items',
-            active : true,
+            route : 'dashboard/items',
             permissions : ['view_dashboard', 'dashboard/items'],
         },
         {
             label : 'Employees',
-            route : '/dashboard/employees',
-            active : true,
+            route : 'dashboard/employees',
             permissions : ['view_dashboard', 'dashboard/employees'],
         },
         {
             label : 'Customers',
-            route : '/dashboard/customers',
-            active : true,
+            route : 'dashboard/customers',
             permissions : ['view_dashboard', 'dashboard/customers'],
         },
         {
             label : 'Orders',
-            route : '/dashboard/orders',
-            active : true,
+            route : 'dashboard/orders',
             permissions : ['view_dashboard', 'dashboard/orders'],
         },
         {
             label : 'Profile',
-            route : '/user/profile',
-            active : true,
+            route : 'user/profile',
             permissions : [],
         }
     ]
-    }
+    };
+
+    export default menuItems;

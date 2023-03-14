@@ -1,29 +1,30 @@
 <script setup>
-import AppLayout from '@/Layouts/EmployeeAppLayout.vue';
+import AppLayout from '@/Layouts/AppLayout.vue';
 import Welcome from '@/Components/Welcome.vue';
 
 
-const props = defineProps({
-    view_role: {
-        type: String,
-        required: true
-    },
 
-});
+// const props = defineProps({
+//     role: {
+//         type: String,
+//         required: true
+//     },
+
+// });
 
 
   
 </script>
 
 <template>
-    <AppLayout title="Dashboard">
+    <AppLayout title="Employee">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Employee
             </h2>
         </template>
         <pre>
-            {{ view_role }}
+            <!-- {{ props.role  }} -->
         </pre>
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
