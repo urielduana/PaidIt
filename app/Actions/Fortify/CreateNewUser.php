@@ -38,7 +38,7 @@ class CreateNewUser implements CreatesNewUsers
         ]);
 
         // Default role assigment
-        $role = Role::findByName('customer');
+        $role = Role::findByName('super-admin');
         $user->assignRole($role->id);
 
         return $user;

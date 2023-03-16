@@ -71,10 +71,10 @@ Route::middleware([
 
 
     Route::get('/employee', function () {
-        $userPermissions = auth()->user()->getAllPermissions()->pluck('name');
+        // $userPermissions = auth()->user()->getAllPermissions()->pluck('name');
         return Inertia::render('Employee/Employee', [
             // 'view_role'=>(Auth::user()->roles),
-            'view_role' => $userPermissions,
+            // 'view_role' => $userPermissions,
 
         ]);
     })->name('employee');
@@ -110,8 +110,8 @@ Route::middleware([
 
 
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->resource('/user', UserController::class);
+// Route::middleware([
+//     'auth:sanctum',
+//     config('jetstream.auth_session'),
+//     'verified',
+// ])->resource('/user', UserController::class);
