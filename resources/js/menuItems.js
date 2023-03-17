@@ -2,36 +2,36 @@ const menuItems = {
     Customer : [
         {
             label : 'Main Menu',
-            route : 'customer',
+            route : 'customer.index',
             permissions : ['view_customer'],
         },
         {
             label : 'Businesses',
-            route : 'customer.business',
+            route : 'customer.business.index',
             permissions : ['view_customer', 'customer.business'],
         },
         {
             label : 'Products',
-            route : 'customer.items',
+            route : 'customer.items.index',
             permissions : ['view_customer', 'customer.items'],
         },
         {
             label : 'Cart',
-            route : 'customer.carts',
+            route : 'customer.carts.index',
             permissions : ['view_customer', 'customer.carts'],
         },
         {
             label : 'Orders',
-            route : 'customer.orders',
+            route : 'customer.orders.index',
             permissions : ['view_customer', 'customer.orders'],
         },
         {
             label : 'Credit',
-            route : 'customer.balance',
+            route : 'customer.balance.index',
             permissions : ['view_customer', 'customer.balance'],
         },
         {
-            label : 'Profile',
+            label : 'Profile.index',
             route : 'user.profile',
             permissions : [],
         }
@@ -40,32 +40,32 @@ const menuItems = {
     Employee : [
         {
             label : 'Main Menu',
-            route : 'employee',
+            route : 'employee.index',
             permissions : ['view_employee'],
         },
         {
             label : 'Orders',
-            route : 'employee.orders',
+            route : 'employee.orders.index',
             permissions : ['view_employee', 'employee.orders'],
         },
         {
             label : 'Products',
-            route : 'employee.items',
+            route : 'employee.items.index',
             permissions : ['view_employee', 'employee.items'],
         },
         {
             label : 'Employees',
-            route : 'employee.members',
+            route : 'employee.members.index',
             permissions : ['view_employee', 'employee.members'],
         },
         {
             label : 'Finance',
-            route : 'employee.finance',
+            route : 'employee.finance.index',
             permissions : ['view_employee', 'employee.finance'],
         },
         {
             label : 'Settings',
-            route : 'employee.settings',
+            route : 'employee.settings.index',
             permissions : ['view_employee', 'employee.business'],
         },
         {
@@ -78,37 +78,37 @@ const menuItems = {
     Dashboard : [
         {
             label : 'Main Menu',
-            route : 'dashboard',
+            route : 'dashboard.index',
             permissions : ['view_dashboard'],
         },
         {
             label : 'Users',
-            route : 'dashboard.users',
+            route : 'dashboard.users.index',
             permissions : ['view_dashboard', 'dashboard.users'],
         },
         {
             label : 'Businesses',
-            route : 'dashboard.businesses',
+            route : 'dashboard.businesses.index',
             permissions : ['view_dashboard', 'dashboard.businesses'],
         },
         {
             label : 'Products',
-            route : 'dashboard.items',
+            route : 'dashboard.items.index',
             permissions : ['view_dashboard', 'dashboard.items'],
         },
         {
             label : 'Employees',
-            route : 'dashboard.employees',
+            route : 'dashboard.employees.index',
             permissions : ['view_dashboard', 'dashboard.employees'],
         },
         {
             label : 'Customers',
-            route : 'dashboard.customers',
+            route : 'dashboard.customers.index',
             permissions : ['view_dashboard', 'dashboard.customers'],
         },
         {
             label : 'Orders',
-            route : 'dashboard.orders',
+            route : 'dashboard.orders.index',
             permissions : ['view_dashboard', 'dashboard.orders'],
         },
         {

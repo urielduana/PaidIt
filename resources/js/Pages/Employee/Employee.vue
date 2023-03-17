@@ -3,15 +3,14 @@ import AppLayout from '@/Layouts/AppLayout.vue';
 import Welcome from '@/Components/Welcome.vue';
 
 
-
 // const props = defineProps({
-//     role: {
-//         type: String,
-//         required: true
-//     },
-
+//     // role: {
+//     //     type: String,
+//     //     required: true
+//     // },
+//     // example: Object
 // });
-
+// console.log(props);
 
   
 </script>

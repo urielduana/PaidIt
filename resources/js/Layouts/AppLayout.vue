@@ -83,6 +83,7 @@ const logout = () => {
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" v-for="(menuItem, index) in filteredMenuItems" :key="index">
                                     <NavLink :href="menuItem.route" :active="route().current(menuItem.route)">
+                                        {{ route().current() }}
                                         {{ menuItem.label }}
                                     </NavLink>
                             </div>
