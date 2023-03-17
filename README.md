@@ -12,7 +12,9 @@ PaidIt es un sistema informático, el cual permita abonar dinero y generar un ba
 
 1. Clonar el repositorio:
 
- ``git clone <url_del_repositorio>``
+ ```
+ git clone https://github.com/urielduana/PaidIt
+ ```
  
 2. Instalar las dependencias de PHP:
 
@@ -28,11 +30,15 @@ Crea una base de datos MySQL en tu entorno local y configura las credenciales en
 
 4. Generar la clave de la aplicación:
 
-``php artisan key:generate``
+```
+php artisan key:generate
+```
 
 5. Migrar la base de datos:
 
-``php artisan migrate``
+```
+php artisan migrate
+```
 
 6. Ejecutar seeders:
 ```
@@ -54,8 +60,12 @@ php artisan db:seed --class=CartItemsTableSeeder
 
 Para iniciar el servidor de desarrollo, ejecuta el siguiente comando en la terminal:
 
-``php artisan serve``
-``npm run dev``
+```
+php artisan serve
+```
+```
+npm run dev
+```
 
 ## Antecedentes del proyecto
 
