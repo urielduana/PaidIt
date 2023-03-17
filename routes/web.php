@@ -29,21 +29,28 @@ Route::middleware([
     'CheckUserRole',
 ])->group(function () {
     //Main Routes Dashboard | Employee | Customer
-    // Route::resource('/dashboard', DashboardController::class);
-    // Route::resource('/employee', EmployeeController::class);
+ // Routes for /customer/
+ Route::prefix('/customer')->group(function () {
+    Route::resource('/', CustomerController::class)
+        ->names('customer')
+        ->parameters(['' => 'customer']);
 
-    // Routes for /dashboard/
-    Route::prefix('/customer')->group(function () {
-        Route::resource('/', CustomerController::class);
-        Route::resource('/cart', CustomerCartController::class);
-    });
-    // Routes for /dashboard/
-    Route::prefix('/dashboard')->group(function () {
-        Route::resource('/', DashboardController::class);
-    });
+    Route::resource('/cart', CustomerCartController::class)
+        ->names('customer.cart')
+        ->parameters(['cart' => 'cart']);
+});
 
-    // Routes for /employee/
-    Route::prefix('/employee')->group(function () {
-        Route::resource('/', EmployeeController::class);
-    });
+// Routes for /dashboard/
+Route::prefix('/dashboard')->group(function () {
+    Route::resource('/', DashboardController::class)
+        ->names('dashboard')
+        ->parameters(['' => 'dashboard']);
+});
+
+// Routes for /employee/
+Route::prefix('/employee')->group(function () {
+    Route::resource('/', EmployeeController::class)
+        ->names('employee')
+        ->parameters(['' => 'employee']);
+});
 });
