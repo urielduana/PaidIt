@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
+use Spatie\Permission\Models\Role;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -21,7 +22,6 @@ class CreateNewUser implements CreatesNewUsers
     {
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
-            'parent_name' => ['required', 'string', 'max:255'],
             'age' => ['required','numeric','digits_between:1,2'],
             'phone' => ['required','numeric','digits_between:10,10'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -29,13 +29,18 @@ class CreateNewUser implements CreatesNewUsers
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();
 
-        return User::create([
+        $user =  User::create([
             'name' => $input['name'],
-            'parent_name' => $input['parent_name'],
             'age' => $input['age'],
             'phone' => $input['phone'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
         ]);
+
+        // Default role assigment
+        $role = Role::findByName('super-admin');
+        $user->assignRole($role->id);
+
+        return $user;
     }
 }

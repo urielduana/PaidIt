@@ -1,4 +1,6 @@
 <script setup>
+// Esta página es la principal que renderiza la Navbar de la aplicación
+// Aquí se pueden agregar componentes como el footer, el header, etc. Componentes que se ocupen en todas las páginas
 import { ref } from 'vue';
 import { Head, Link, router } from '@inertiajs/vue3';
 import ApplicationMark from '@/Components/ApplicationMark.vue';
@@ -7,10 +9,40 @@ import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
+import menuItems from '@/menuItems.js';
+import { computed } from 'vue';
 
-defineProps({
+const props = defineProps({
     title: String,
 });
+
+const currentRoute = computed(() => {
+  const path = window.location.pathname
+  const segments = path.split('/')
+
+  return {
+    name: segments[1],
+    params: segments.slice(2),
+    url: path,
+  }
+})
+let filteredMenuItems = menuItems.Dashboard;
+let navBarColor = 'bg-blue-600';
+
+if (currentRoute.value.name === 'dashboard') {
+  filteredMenuItems = menuItems.Dashboard;
+  navBarColor = '#223A59';
+} else if (currentRoute.value.name === 'customer') {
+  filteredMenuItems = menuItems.Customer;
+  navBarColor = '#6396EA';
+} else if (currentRoute.value.name === 'employee') {
+  filteredMenuItems = menuItems.Employee;
+  navBarColor = '#9EB8DD';
+}else{
+    filteredMenuItems = menuItems.Dashboard;
+    navBarColor = '#000';
+}
+
 
 const showingNavigationDropdown = ref(false);
 
@@ -25,6 +57,10 @@ const switchToTeam = (team) => {
 const logout = () => {
     router.post(route('logout'));
 };
+
+
+
+
 </script>
 
 <template>
@@ -32,26 +68,31 @@ const logout = () => {
         <Head :title="title" />
 
         <Banner />
-
-        <div class="min-h-screen bg-gray-100">
-            <nav class="bg-white border-b border-gray-100">
+        <div class="min-h-screen bg-white-100">
+            <nav :style="{ backgroundColor: navBarColor }">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
                         <div class="flex">
                             <!-- Logo -->
                             <div class="shrink-0 flex items-center">
-                                <Link :href="route('dashboard')">
+                                <Link :href="filteredMenuItems[0].route">
                                     <ApplicationMark class="block h-9 w-auto" />
                                 </Link>
                             </div>
-
                             <!-- Navigation Links -->
-                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                                    Dashboard
-                                </NavLink>
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" v-for="(menuItem, index) in filteredMenuItems" :key="index">
+                                    <NavLink :href="menuItem.route" :active="route().current(menuItem.route)">
+                                        {{ route().current() }}
+                                        {{ menuItem.label }}
+                                    </NavLink>
                             </div>
+<!-- 
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <NavLink :href="route('user.index')" :active="route().current('user.index')">
+                                    Users
+                                </NavLink>
+                            </div> -->
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -122,7 +163,7 @@ const logout = () => {
                                         </button>
 
                                         <span v-else class="inline-flex rounded-md">
-                                            <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
+                                            <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-gray-200 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
                                                 {{ $page.props.auth.user.name }}
 
                                                 <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -161,10 +202,10 @@ const logout = () => {
 
                         <!-- Hamburger -->
                         <div class="-mr-2 flex items-center sm:hidden">
-                            <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out" @click="showingNavigationDropdown = ! showingNavigationDropdown">
+                            <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-400 focus:text-gray-500 transition duration-150 ease-in-out" @click="showingNavigationDropdown = ! showingNavigationDropdown">
                                 <svg
                                     class="h-6 w-6"
-                                    stroke="currentColor"
+                                    stroke="white"
                                     fill="none"
                                     viewBox="0 0 24 24"
                                 >
@@ -190,11 +231,12 @@ const logout = () => {
 
                 <!-- Responsive Navigation Menu -->
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
-                    <div class="pt-2 pb-3 space-y-1">
-                        <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                            Dashboard
+                    <div class="pt-2 pb-3 space-y-1" v-for="(menuItem, index) in filteredMenuItems" :key="index">
+                        <ResponsiveNavLink :href="menuItem.route" :active="route().current(menuItem.route)">
+                            {{ menuItem.label }}
                         </ResponsiveNavLink>
                     </div>
+
 
                     <!-- Responsive Settings Options -->
                     <div class="pt-4 pb-1 border-t border-gray-200">
@@ -204,10 +246,10 @@ const logout = () => {
                             </div>
 
                             <div>
-                                <div class="font-medium text-base text-gray-800">
+                                <div class="font-medium text-base text-gray-100">
                                     {{ $page.props.auth.user.name }}
                                 </div>
-                                <div class="font-medium text-sm text-gray-500">
+                                <div class="font-medium text-sm text-white">
                                     {{ $page.props.auth.user.email }}
                                 </div>
                             </div>
@@ -284,4 +326,10 @@ const logout = () => {
             </main>
         </div>
     </div>
+
+    <footer>
+        <div :style="{ backgroundColor: navBarColor }" class="text-center p-5 text-gray-100">
+            © 2023 Copyright: PaidIt
+        </div>
+    </footer>
 </template>
