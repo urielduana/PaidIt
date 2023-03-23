@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Models\Business;
 
 class CustomerBusinessController extends Controller
 {
@@ -13,8 +14,10 @@ class CustomerBusinessController extends Controller
     public function index()
     {
         // dd('Controlador CustomerBusinessController ejecutándose correctamente');
-
-        return Inertia::render('Customer/Business/Index');
+        $business = Business::all();
+        return Inertia::render('Customer/Business/Index', [
+            'business' => $business
+        ]);
     }
 
     /**

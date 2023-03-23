@@ -10,9 +10,13 @@ class Business extends Model
     use HasFactory;
     protected $fillable = [
         'name',
-        'balance',
         'email',
         'phone',
         'address',
+    ];
+    protected $hidden = [
+        'balance',
+        'created_at',
+        'updated_at',
     ];
 }

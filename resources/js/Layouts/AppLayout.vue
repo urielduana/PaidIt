@@ -82,17 +82,12 @@ const logout = () => {
                             </div>
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" v-for="(menuItem, index) in filteredMenuItems" :key="index">
-                                    <NavLink :href="menuItem.route" :active="route().current(menuItem.route)">
-                                        {{ route().current() }}
+                                    <!-- Si se atreven traten de resolver esto, es para que se marque el link de la página actual, la funcion route().current() es de Inertia -->
+                                    <!-- <NavLink :href="menuItem.route" :active="route().current(menuItem.route)"> -->
+                                    <NavLink :href="menuItem.route">
                                         {{ menuItem.label }}
                                     </NavLink>
                             </div>
-<!-- 
-                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <NavLink :href="route('user.index')" :active="route().current('user.index')">
-                                    Users
-                                </NavLink>
-                            </div> -->
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -232,7 +227,8 @@ const logout = () => {
                 <!-- Responsive Navigation Menu -->
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1" v-for="(menuItem, index) in filteredMenuItems" :key="index">
-                        <ResponsiveNavLink :href="menuItem.route" :active="route().current(menuItem.route)">
+                        <!-- <ResponsiveNavLink :href="menuItem.route" :active="route().current(menuItem.route)"> -->
+                        <ResponsiveNavLink :href="menuItem.route">
                             {{ menuItem.label }}
                         </ResponsiveNavLink>
                     </div>
@@ -256,12 +252,14 @@ const logout = () => {
                         </div>
 
                         <div class="mt-3 space-y-1">
-                            <ResponsiveNavLink :href="route('profile.show')" :active="route().current('profile.show')">
-                                Profile
+                            <!-- <ResponsiveNavLink :href="route('profile.show')" :active="route().current('profile.show')"> -->
+                            <ResponsiveNavLink :href="route('profile.show')">
+                            Profile
                             </ResponsiveNavLink>
 
-                            <ResponsiveNavLink v-if="$page.props.jetstream.hasApiFeatures" :href="route('api-tokens.index')" :active="route().current('api-tokens.index')">
-                                API Tokens
+                            <!-- <ResponsiveNavLink v-if="$page.props.jetstream.hasApiFeatures" :href="route('api-tokens.index')" :active="route().current('api-tokens.index')"> -->
+                            <ResponsiveNavLink v-if="$page.props.jetstream.hasApiFeatures" :href="route('api-tokens.index')">
+                            API Tokens
                             </ResponsiveNavLink>
 
                             <!-- Authentication -->
@@ -280,11 +278,13 @@ const logout = () => {
                                 </div>
 
                                 <!-- Team Settings -->
-                                <ResponsiveNavLink :href="route('teams.show', $page.props.auth.user.current_team)" :active="route().current('teams.show')">
+                                <!-- <ResponsiveNavLink :href="route('teams.show', $page.props.auth.user.current_team)" :active="route().current('teams.show')"> -->
+                                <ResponsiveNavLink :href="route('teams.show', $page.props.auth.user.current_team)">
                                     Team Settings
                                 </ResponsiveNavLink>
 
-                                <ResponsiveNavLink v-if="$page.props.jetstream.canCreateTeams" :href="route('teams.create')" :active="route().current('teams.create')">
+                                <!-- <ResponsiveNavLink v-if="$page.props.jetstream.canCreateTeams" :href="route('teams.create')" :active="route().current('teams.create')"> -->
+                                <ResponsiveNavLink v-if="$page.props.jetstream.canCreateTeams" :href="route('teams.create')">
                                     Create New Team
                                 </ResponsiveNavLink>
 
