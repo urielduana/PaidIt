@@ -6,25 +6,6 @@
     height="512"
     viewBox="0 0 512 512"
     id="svg10">
-   <sodipodi:namedview
-      id="namedview12"
-      pagecolor="#505050"
-      bordercolor="#ffffff"
-      borderopacity="1"
-      inkscape:showpageshadow="0"
-      inkscape:pageopacity="0"
-      inkscape:pagecheckerboard="1"
-      inkscape:deskcolor="#505050"
-      showgrid="false"
-      inkscape:zoom="0.55175781"
-      inkscape:cx="146.80354"
-      inkscape:cy="389.66372"
-      inkscape:window-width="1360"
-      inkscape:window-height="745"
-      inkscape:window-x="-8"
-      inkscape:window-y="-8"
-      inkscape:window-maximized="1"
-      inkscape:current-layer="svg10" />
    <defs
       id="defs19" />
    <g
