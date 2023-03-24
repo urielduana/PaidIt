@@ -27,20 +27,16 @@ const currentRoute = computed(() => {
   }
 })
 let filteredMenuItems = menuItems.Dashboard;
-let navBarColor = 'bg-blue-600';
+let navBarColor = '#223A59';
 
 if (currentRoute.value.name === 'dashboard') {
   filteredMenuItems = menuItems.Dashboard;
-  navBarColor = '#223A59';
 } else if (currentRoute.value.name === 'customer') {
   filteredMenuItems = menuItems.Customer;
-  navBarColor = '#6396EA';
 } else if (currentRoute.value.name === 'employee') {
   filteredMenuItems = menuItems.Employee;
-  navBarColor = '#9EB8DD';
 }else{
     filteredMenuItems = menuItems.Dashboard;
-    navBarColor = '#000';
 }
 
 
@@ -68,7 +64,7 @@ const logout = () => {
         <Head :title="title" />
 
         <Banner />
-        <div class="min-h-screen bg-white-100">
+        <div class="min-h-screen bg-gray-800">
             <nav :style="{ backgroundColor: navBarColor }">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -314,7 +310,7 @@ const logout = () => {
             </nav>
 
             <!-- Page Heading -->
-            <header v-if="$slots.header" class="bg-white shadow">
+            <header v-if="$slots.header" class="shadow">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     <slot name="header" />
                 </div>

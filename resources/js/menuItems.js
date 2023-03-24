@@ -30,11 +30,6 @@ const menuItems = {
             route : '/customer/balance',
             permissions : ['view_customer', 'customer/balance'],
         },
-        {
-            label : 'Profile',
-            route : '/user/profile',
-            permissions : [],
-        }
 
     ],
     Employee : [
@@ -68,11 +63,6 @@ const menuItems = {
             route : '/employee/settings',
             permissions : ['view_employee', 'employee/business'],
         },
-        {
-            label : 'Profile',
-            route : '/user/profile',
-            permissions : [],
-        }
 
     ],
     Dashboard : [
@@ -111,11 +101,6 @@ const menuItems = {
             route : '/dashboard/orders',
             permissions : ['view_dashboard', 'dashboard/orders'],
         },
-        {
-            label : 'Profile',
-            route : '/user/profile',
-            permissions : [],
-        }
     ]
     };
 

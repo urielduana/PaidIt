@@ -16,7 +16,5 @@ class Business extends Model
     ];
     protected $hidden = [
         'balance',
-        'created_at',
-        'updated_at',
     ];
 }
