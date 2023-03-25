@@ -14,9 +14,11 @@ class CustomerItemController extends Controller
      */
     public function index()
     {
-        
+        // $items = Item::with('item_Item_Type', 'item_Business')->select()->get();
+        $items = Item::with(['item_Item_Type:id,name', 'item_Business:id,name'])->select('id', 'name', 'price', 'description', 'image', 'stock', 'Business_id', 'Item_type_id')->get();
+
         return Inertia::render('Customer/Item/Index', [
-            // 'business' => $business
+            'items' => $items,
         ]);
     }
 

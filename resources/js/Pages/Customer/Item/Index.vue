@@ -1,6 +1,11 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
-const props = defineProps({});
+const props = defineProps({
+    items: {
+        type: Object,
+        required: true,
+    },
+});
 const columns = [
     {
         label: "Name",
@@ -41,6 +46,9 @@ const rows = [
                 Available Products
             </h2>
         </template>
+        <pre>
+            {{ Object.keys(props.items[0]) }}
+        </pre>
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
