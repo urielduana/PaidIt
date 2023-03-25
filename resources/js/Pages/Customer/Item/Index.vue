@@ -1,5 +1,25 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
+import { useDark, useToggle } from "@vueuse/core";
+import { reactive, watchEffect } from "vue";
+const isDark = useDark();
+
+const state = reactive({
+  darkMode: useDark().value,
+  tableMode: "",
+})
+watchEffect(() => {
+  state.darkMode = useDark().value
+  if (state.darkMode) {
+    state.tableMode = "nocturnal";
+  } else {
+    state.tableMode = "polar-bear";
+  }
+})
+
+
+
+
 const props = defineProps({
     items: {
         type: Object,
@@ -84,7 +104,7 @@ console.log(rows);
                             :rows="rows"
                             max-height="500px"
                             max-width="100%"
-                            theme="nocturnal"
+                            :theme="state.tableMode"
                             :pagination-options="paginationOptions"
                             :search-options="searchOptions"
                         >
