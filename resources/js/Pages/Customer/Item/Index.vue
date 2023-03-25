@@ -6,59 +6,93 @@ const props = defineProps({
         required: true,
     },
 });
+
 const columns = [
     {
-        label: "Name",
+        label: "",
+        field: "image",
+        width: "10%",
+    },
+    {
+        label: "Product",
         field: "name",
     },
     {
-        label: "Age",
-        field: "age",
+        label: "Category",
+        field: "category",
+    },
+    {
+        label: "Stock",
+        field: "stock",
         type: "number",
     },
     {
-        label: "Created On",
-        field: "createdAt",
-        type: "date",
-        dateInputFormat: "yyyy-MM-dd",
-        dateOutputFormat: "MMM do yy",
+        label: "Price",
+        field: "price",
+        type: "number",
     },
     {
-        label: "Percent",
-        field: "score",
-        type: "percentage",
+        label: "Action",
+        field: "action",
+    },
+    {
+        label: "Description",
+        field: "description",
+        width: "30%",
     },
 ];
-const rows = [
-    { id: 1, name: "John", age: 20, createdAt: null, score: 0.03343 },
-    { id: 2, name: "Jane", age: 24, createdAt: "2011-10-31", score: 0.03343 },
-    { id: 3, name: "Susan", age: 16, createdAt: "2011-10-30", score: 0.03343 },
-    { id: 4, name: "Chris", age: 55, createdAt: "2011-10-11", score: 0.03343 },
-    { id: 5, name: "Dan", age: 40, createdAt: "2011-10-21", score: 0.03343 },
-    { id: 6, name: "John", age: 20, createdAt: "2011-10-31", score: 0.03343 },
-];
+
+const rows = props.items.map((item) => {
+    return {
+        id: item.id,
+        image: item.image,
+        name: item.name,
+        description: item.description,
+        price: item.price,
+        stock: item.stock,
+        category: item.item__item__type.name,
+    };
+});
+
+const paginationOptions = {
+    enabled: true,
+    perPage: 20,
+    perPageDropdownEnabled: true,
+};
+const searchOptions = {
+    enabled: true,
+    skipDiacritics: true,
+    placeholder: 'Search...',
+};
+
+console.log(rows);
 </script>
 
 <template>
     <AppLayout title="Customer">
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <h2>
                 Available Products
             </h2>
         </template>
-        <pre>
-            {{ Object.keys(props.items[0]) }}
-        </pre>
-
-        <div class="py-12">
+        <div class="py-5">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="overflow-hidden shadow-xl sm:rounded-lg">
                     <div>
                         <vue-good-table
                             :columns="columns"
                             :rows="rows"
+                            max-height="500px"
+                            max-width="100%"
                             theme="nocturnal"
+                            :pagination-options="paginationOptions"
+                            :search-options="searchOptions"
                         >
+                            <template #table-row="props">
+                                <span v-if="props.column.field == 'price'">
+                                    <span>${{ props.row.price }}</span>
+                                </span>
+                            </template>
                         </vue-good-table>
                     </div>
                 </div>
