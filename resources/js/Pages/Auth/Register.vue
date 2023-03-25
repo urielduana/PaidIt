@@ -7,6 +7,7 @@ import InputLabel from "@/Components/InputLabel.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import TextInput from "@/Components/TextInput.vue";
 import AuthenticationCardLogo from "@/Components/AuthenticationCardLogo.vue";
+import DarkSwitch from "@/Components/DarkSwitch.vue";
 
 const form = useForm({
     name: "",
@@ -28,8 +29,11 @@ const submit = () => {
 
 <template>
     <Head title="Register" />
-    <div class="my-20">
-        <AuthenticationCard >
+    <div class="grid justify-items-end px-14 mt-2">
+        <DarkSwitch />
+    </div>
+    <div class="">
+        <AuthenticationCard>
             <template #logo>
                 <AuthenticationCardLogo />
             </template>
@@ -117,11 +121,10 @@ const submit = () => {
                     />
                 </div>
 
-                
                 <div class="flex items-center justify-end mt-4">
                     <Link
                         :href="route('login')"
-                        class="underline text-sm text-gray-200 hover:text-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-200"
+                        class="text-sm text-blue-600 underline dark:text-blue-500 hover:no-underline"
                     >
                         Already registered?
                     </Link>

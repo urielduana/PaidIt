@@ -10,6 +10,7 @@ import TextInput from "@/Components/TextInput.vue";
 import { defineComponent } from "vue";
 import Tabs from "@/Components/Tabs.vue";
 import Tab from "@/Components/Tab.vue";
+import DarkSwitch from "@/Components/DarkSwitch.vue";
 
 defineComponent({
     name: "App",
@@ -43,7 +44,9 @@ const submit = () => {
 
 <template>
     <Head title="Login" />
-
+    <div class="grid justify-items-end px-14 mt-2">
+        <DarkSwitch />
+    </div>
     <AuthenticationCard>
         <template #logo>
             <AuthenticationCardLogo />
@@ -77,19 +80,14 @@ const submit = () => {
                     required
                     autocomplete="current-password"
                 />
-                <InputError
-                    class="mt-2"
-                    :message="form.errors.password"
-                />
+                <InputError class="mt-2" :message="form.errors.password" />
             </div>
 
             <div class="block mt-4">
                 <label class="flex items-center">
-                    <Checkbox
-                        v-model:checked="form.remember"
-                        name="remember"
-                    />
-                    <span class="ml-2 text-sm text-gray-200"
+                    <Checkbox v-model:checked="form.remember" name="remember" />
+                    <span
+                        class="text-base font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline ml-3"
                         >Remember me</span
                     >
                 </label>
@@ -97,12 +95,12 @@ const submit = () => {
 
             <div class="flex items-center justify-end mt-4">
                 <Link
-                v-if="canResetPassword"
-                :href="route('password.request')"
-                class="underline text-sm rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-200 text-gray-200 hover:text-gray-400"
-            >
-                Forgot your password?
-            </Link>
+                    v-if="canResetPassword"
+                    :href="route('password.request')"
+                    class="text-sm text-blue-600 underline dark:text-blue-500 hover:no-underline"
+                >
+                    Forgot your password?
+                </Link>
 
                 <PrimaryButton
                     class="ml-4"
@@ -113,6 +111,5 @@ const submit = () => {
                 </PrimaryButton>
             </div>
         </form>
-
     </AuthenticationCard>
 </template>

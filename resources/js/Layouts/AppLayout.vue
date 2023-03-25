@@ -11,6 +11,8 @@ import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import menuItems from '@/menuItems.js';
 import { computed } from 'vue';
+import DarkSwitch from "@/Components/DarkSwitch.vue";
+
 
 const props = defineProps({
     title: String,
@@ -64,7 +66,7 @@ const logout = () => {
         <Head :title="title" />
 
         <Banner />
-        <div class="min-h-screen bg-gray-800">
+        <div class="min-h-screen">
             <nav :style="{ backgroundColor: navBarColor }">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -87,6 +89,8 @@ const logout = () => {
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
+            <DarkSwitch />
+
                             <div class="ml-3 relative">
                                 <!-- Teams Dropdown -->
                                 <Dropdown v-if="$page.props.jetstream.hasTeamFeatures" align="right" width="60">
@@ -190,6 +194,7 @@ const logout = () => {
                                 </Dropdown>
                             </div>
                         </div>
+                        
 
                         <!-- Hamburger -->
                         <div class="-mr-2 flex items-center sm:hidden">
@@ -311,7 +316,7 @@ const logout = () => {
 
             <!-- Page Heading -->
             <header v-if="$slots.header" class="shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 font-semibold text-xl leading-tight">
                     <slot name="header" />
                 </div>
             </header>
