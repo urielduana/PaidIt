@@ -20,6 +20,7 @@
     "dependencies": {
         "@vueuse/components": "^9.13.0",
         "@vueuse/core": "^9.13.0",
+        "lodash": "^4.17.21",
         "sass": "^1.58.3",
         "vite": "^4.1.4",
         "vue-good-table-next": "^0.2.1",
