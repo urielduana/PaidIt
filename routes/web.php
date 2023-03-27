@@ -8,6 +8,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CustomerItemController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\EmployeeMemberController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -38,6 +39,8 @@ Route::middleware([
     Route::prefix('employee')->group(function () {
         Route::resource('/', EmployeeController::class)
             ->names('employee');
+        Route::resource('/members', EmployeeMemberController::class)
+            ->names('members');
     });
 
     Route::prefix('dashboard')->group(function () {

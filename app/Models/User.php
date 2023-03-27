@@ -68,4 +68,19 @@ class User extends Authenticatable
     {
         $this->roles()->sync($role, false);
     }
+
+    public function user_Customer()
+    {
+        return $this->hasOne(Customer::class);
+    }
+
+    public function user_Employee()
+    {
+        return $this->hasOne(Employee::class);
+    }
+
+    public function user_Gender()
+    {
+        return $this->belongsTo(Gender::class, 'Gender_id');
+    }
 }

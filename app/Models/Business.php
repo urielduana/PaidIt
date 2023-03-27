@@ -17,4 +17,9 @@ class Business extends Model
     protected $hidden = [
         'balance',
     ];
+
+    public function business_Employee()
+    {
+        return $this->hasMany(Employee::class, 'Business_id');
+    }
 }
