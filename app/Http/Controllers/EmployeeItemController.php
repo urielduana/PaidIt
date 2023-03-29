@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use App\Models\Item;
 
 class EmployeeItemController extends Controller
 {
@@ -11,7 +13,13 @@ class EmployeeItemController extends Controller
      */
     public function index()
     {
-        //
+        $authenticated = auth()->user();
+        $businessAuth = $authenticated->user_Employee()->first()->Business_id;
+        $businessId = Business::where('id', ($authenticated->user_Employee()->first()->Business_id))->first()->id;
+        $items = Item::where('Business_id', $businessId)->get();
+        return Inertia::render('Employee/Item/Index', [
+            'items' => $items,
+        ]);
     }
 
     /**
