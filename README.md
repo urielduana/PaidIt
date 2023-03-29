@@ -26,6 +26,11 @@ PaidIt es un sistema informático, el cual permita abonar dinero y generar un ba
  ```
  npm install
  ```
+- Spatie
+```
+composer require spatie/laravel-permission
+
+```
  
  
 3. Configurar la base de datos:
