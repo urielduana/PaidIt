@@ -11,5 +11,7 @@ class Cart extends Model
     protected $fillable = [
         'customer_id',
         'employee_id',
+        'total',
+        'status'
     ];
 }
