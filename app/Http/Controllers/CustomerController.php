@@ -12,8 +12,14 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Customer/Customer');
+        $authenticated = auth()->user();
+        $customer = $authenticated->user_Customer;
+        return Inertia::render('Customer/Customer', [
+            'user' => $authenticated,
+            'customer' => $customer,
+        ]);
     }
+
 
     /**
      * Show the form for creating a new resource.
