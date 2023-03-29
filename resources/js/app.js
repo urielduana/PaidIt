@@ -6,6 +6,8 @@ import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import {Tabs, Tab} from 'vue3-tabs-component';
+import VueGoodTablePlugin from 'vue-good-table-next';
+import 'vue-good-table-next/dist/vue-good-table-next.css'
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
@@ -17,11 +19,12 @@ createInertiaApp({
         return createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(ZiggyVue, Ziggy)
+            .use(VueGoodTablePlugin)
             .component('tabs', Tabs)
             .component('tab', Tab)
             .mount(el);
     },
     progress: {
-        color: '#4B5563',
+        color: '#6396EA',
     },
 });

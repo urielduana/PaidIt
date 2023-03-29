@@ -10,6 +10,7 @@ import TextInput from "@/Components/TextInput.vue";
 import { defineComponent } from "vue";
 import Tabs from "@/Components/Tabs.vue";
 import Tab from "@/Components/Tab.vue";
+import DarkSwitch from "@/Components/DarkSwitch.vue";
 
 defineComponent({
     name: "App",
@@ -43,156 +44,72 @@ const submit = () => {
 
 <template>
     <Head title="Login" />
-
+    <div class="grid justify-items-end px-14 mt-2">
+        <DarkSwitch />
+    </div>
     <AuthenticationCard>
         <template #logo>
             <AuthenticationCardLogo />
         </template>
 
-        <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
+        <div v-if="status" class="mb-4 font-medium text-sm">
             {{ status }}
         </div>
+        <form @submit.prevent="submit">
+            <div>
+                <InputLabel for="email" value="Your Email" />
+                <TextInput
+                    id="email"
+                    v-model="form.email"
+                    type="email"
+                    class="mt-1 block w-full"
+                    required
+                    autofocus
+                    autocomplete="username"
+                />
+                <InputError class="mt-2" :message="form.errors.email" />
+            </div>
 
-        <tabs position="start">
-            <template name="tab1">
-                <div class="tab-title">
-                    <i class="ri-settings-3-fill" aria-hidden="true"></i>
-                    Students
-                </div>
-            </template>
-            <template name="tab2">
-                <div class="tab-title">
-                    <i class="ri-settings-3-fill" aria-hidden="true"></i>
-                    Employees
-                </div>
-            </template>
+            <div class="mt-4">
+                <InputLabel for="password" value="Your Password" />
+                <TextInput
+                    id="password"
+                    v-model="form.password"
+                    type="password"
+                    class="mt-1 block w-full"
+                    required
+                    autocomplete="current-password"
+                />
+                <InputError class="mt-2" :message="form.errors.password" />
+            </div>
 
-            <tab title-slot="tab1">
-                <form @submit.prevent="submit">
-                    <div>
-                        <InputLabel for="email" value="Institutional Email" />
-                        <TextInput
-                            id="email"
-                            v-model="form.email"
-                            type="email"
-                            class="mt-1 block w-full"
-                            required
-                            autofocus
-                            autocomplete="username"
-                        />
-                        <InputError class="mt-2" :message="form.errors.email" />
-                    </div>
+            <div class="block mt-4">
+                <label class="flex items-center">
+                    <Checkbox v-model:checked="form.remember" name="remember" />
+                    <span
+                        class="text-base font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline ml-3"
+                        >Remember me</span
+                    >
+                </label>
+            </div>
 
-                    <div class="mt-4">
-                        <InputLabel for="password" value="Password" />
-                        <TextInput
-                            id="password"
-                            v-model="form.password"
-                            type="password"
-                            class="mt-1 block w-full"
-                            required
-                            autocomplete="current-password"
-                        />
-                        <InputError
-                            class="mt-2"
-                            :message="form.errors.password"
-                        />
-                    </div>
+            <div class="flex items-center justify-end mt-4">
+                <Link
+                    v-if="canResetPassword"
+                    :href="route('password.request')"
+                    class="text-sm text-blue-600 underline dark:text-blue-500 hover:no-underline"
+                >
+                    Forgot your password?
+                </Link>
 
-                    <div class="block mt-4">
-                        <label class="flex items-center">
-                            <Checkbox
-                                v-model:checked="form.remember"
-                                name="remember"
-                            />
-                            <span class="ml-2 text-sm text-gray-600"
-                                >Remember me</span
-                            >
-                        </label>
-                    </div>
-
-                    <div class="flex items-center justify-end mt-4">
-                        <Link
-                            v-if="canResetPassword"
-                            :href="route('password.request')"
-                            class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                        >
-                            Forgot your password?
-                        </Link>
-
-                        <PrimaryButton
-                            class="ml-4"
-                            :class="{ 'opacity-25': form.processing }"
-                            :disabled="form.processing"
-                        >
-                            Log in
-                        </PrimaryButton>
-                    </div>
-                </form>
-            </tab>
-            <tab title-slot="tab2">
-                <form @submit.prevent="submit">
-                    <div>
-                        <InputLabel for="email" value="Organizational Email" />
-                        <TextInput
-                            id="email"
-                            v-model="form.email"
-                            type="email"
-                            class="mt-1 block w-full"
-                            required
-                            autofocus
-                            autocomplete="username"
-                        />
-                        <InputError class="mt-2" :message="form.errors.email" />
-                    </div>
-
-                    <div class="mt-4">
-                        <InputLabel for="password" value="Password" />
-                        <TextInput
-                            id="password"
-                            v-model="form.password"
-                            type="password"
-                            class="mt-1 block w-full"
-                            required
-                            autocomplete="current-password"
-                        />
-                        <InputError
-                            class="mt-2"
-                            :message="form.errors.password"
-                        />
-                    </div>
-
-                    <div class="block mt-4">
-                        <label class="flex items-center">
-                            <Checkbox
-                                v-model:checked="form.remember"
-                                name="remember"
-                            />
-                            <span class="ml-2 text-sm text-gray-600"
-                                >Remember me</span
-                            >
-                        </label>
-                    </div>
-
-                    <div class="flex items-center justify-end mt-4">
-                        <Link
-                            v-if="canResetPassword"
-                            :href="route('password.request')"
-                            class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                        >
-                            Forgot your password?
-                        </Link>
-
-                        <PrimaryButton
-                            class="ml-4"
-                            :class="{ 'opacity-25': form.processing }"
-                            :disabled="form.processing"
-                        >
-                            Log in
-                        </PrimaryButton>
-                    </div>
-                </form>
-            </tab>
-        </tabs>
+                <PrimaryButton
+                    class="ml-4"
+                    :class="{ 'opacity-25': form.processing }"
+                    :disabled="form.processing"
+                >
+                    Log in
+                </PrimaryButton>
+            </div>
+        </form>
     </AuthenticationCard>
 </template>

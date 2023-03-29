@@ -22,4 +22,8 @@ class Item extends Model
     {
         return $this->belongsTo(ItemType::class, 'Item_type_id');
     }
+    public function item_Business()
+    {
+        return $this->belongsTo(Business::class, 'Business_id');
+    }
 }

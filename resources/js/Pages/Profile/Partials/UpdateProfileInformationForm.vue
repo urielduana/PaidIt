@@ -175,7 +175,7 @@ const clearPhotoFileInput = () => {
         </template>
 
         <template #actions>
-            <ActionMessage :on="form.recentlySuccessful" class="mr-3">
+            <ActionMessage  class="mr-3">
                 Saved.
             </ActionMessage>
 
