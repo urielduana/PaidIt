@@ -16,10 +16,14 @@ PaidIt es un sistema informático, el cual permita abonar dinero y generar un ba
  git clone https://github.com/urielduana/PaidIt
  ```
  
-2. Instalar las dependencias de PHP:
-
+2. Instalar las dependencias 
+- PHP :
  ```
  composer install
+ ```
+
+- Node:
+ ```
  npm install
  ```
  
@@ -59,11 +63,16 @@ php artisan db:seed --class=CartItemsTableSeeder
 
 ## Uso
 
-Para iniciar el servidor de desarrollo, ejecuta el siguiente comando en la terminal:
+Ejecuta los siguientes comandos en la terminal:
+
+Inicaliza el servidor de desarrollo de Laravel:
 
 ```
 php artisan serve
 ```
+
+Iniciar el servidor de desarrollo de Node.js:
+
 ```
 npm run dev
 ```
