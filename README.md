@@ -51,6 +51,7 @@ php artisan migrate
 
 6. Ejecutar seeders:
 ```
+php artisan db:seed --class=PermissionSeeder
 php artisan db:seed --class=GendersTableSeeder
 php artisan db:seed --class=UsersTableSeeder
 php artisan db:seed --class=BusinessesTableSeeder

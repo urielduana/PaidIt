@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Employee;
+use Inertia\Inertia;
 
 class EmployeeMemberController extends Controller
 {
@@ -11,7 +13,27 @@ class EmployeeMemberController extends Controller
      */
     public function index()
     {
-        //
+        $businessId = 1; 
+
+        $employees = Employee::with([
+            'employee_User:id,name,Gender_id',
+            'employee_User.user_Gender:id,name',
+            'employee_Business:id,name',
+            'employee_User.roles:id,name',
+            'employee_User.permissions:id,name',
+        ])->where('business_id', $businessId)->get();
+
+        foreach ($employees as $employee) {
+            $user = $employee->employee_User;
+            $business = $employee->employee_Business;
+            $userGender = $user->user_Gender;
+            $userRoles = $user->roles()->pluck('name', 'id');
+            $userPermissions = $user->permissions()->pluck('name', 'id');
+        }
+
+        return Inertia::render('Employee/Member/Index', [
+            'employees' => $employees,
+        ]);
     }
 
     /**

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->decimal('price');
             $table->string('description');
-            $table->string('image')->nullable();
+            $table->string('image')->nullable()->default("/img/image.png");
             $table->integer('stock')->default(0);
             $table->timestamps();
             $table->unsignedBigInteger('Business_id');

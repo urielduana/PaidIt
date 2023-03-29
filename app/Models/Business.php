@@ -10,9 +10,16 @@ class Business extends Model
     use HasFactory;
     protected $fillable = [
         'name',
-        'balance',
         'email',
         'phone',
         'address',
     ];
+    protected $hidden = [
+        'balance',
+    ];
+
+    public function business_Employee()
+    {
+        return $this->hasMany(Employee::class, 'Business_id');
+    }
 }
