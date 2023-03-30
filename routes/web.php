@@ -10,6 +10,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EmployeeItemController;
 use App\Http\Controllers\EmployeeMemberController;
+use App\Http\Controllers\EmployeeFinanceController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -44,6 +45,8 @@ Route::middleware([
             ->names('members');
         Route::resource('/items', EmployeeItemController::class)
             ->names('items');
+        Route::resource('/finance', EmployeeFinanceController::class)
+            ->names('finance');
     });
 
     Route::prefix('dashboard')->group(function () {

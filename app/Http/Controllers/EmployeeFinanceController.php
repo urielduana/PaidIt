@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use App\Models\Employee;
 
 class EmployeeFinanceController extends Controller
 {
@@ -11,7 +13,22 @@ class EmployeeFinanceController extends Controller
      */
     public function index()
     {
-        //
+        $authenticated = auth()->user();
+        $employee = $authenticated->user_Employee;
+        $business = $employee->employee_Business;
+
+        // Count the number of employees in the business
+        $totalEmployees = $business->business_Employee()->count();
+        // Sum the salaries of all employees in the business
+        $totalSalaries = Employee::find($business->id)->employee_Business()->sum('balance');
+        
+        return Inertia::render('Employee/Finance/EmployeeFinance',[
+            "user" => $authenticated,
+            "employee" => $employee,
+            "business" => $business,
+            "count" => $totalEmployees,
+            "salario" => $totalSalaries,
+        ]);
     }
 
     /**
