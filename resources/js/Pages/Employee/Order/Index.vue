@@ -87,7 +87,7 @@ const columns = [
         field: "actions1",
     },
     {
-        label: "",
+        label: "Order Status",
         field: "actions2",
     },
     {
@@ -134,6 +134,49 @@ const searchOptions = {
                         :search-options="searchOptions"
                         :enable-row-expand="true"
                     >
+                    <template #table-row="props">
+                        <span
+                            v-if="props.column.field == 'actions1'"
+                            class="flex justify-between"
+                        >
+                            <button>
+                                <PencilSquareIcon
+                                    class="h-6 w-6 dark:text-yellow-100 text-yellow-600 hover:text-yellow-700 dark:hover:text-yellow-200"
+                                    aria-hidden="true"
+                                />
+                            </button>
+                            <button>
+                                <EyeIcon
+                                    class="h-6 w-6 dark:text-sky-100 text-sky-600 hover:text-sky-700 dark:hover:text-sky-200"
+                                    aria-hidden="true"
+                                />
+                            </button>
+                            <button>
+                                <MinusCircleIcon
+                                    class="h-6 w-6 dark:text-red-100 text-red-600 hover:text-red-700 dark:hover:text-red-200"
+                                    aria-hidden="true"
+                                />
+                            </button>
+                        </span>
+                        <span
+                            v-if="props.column.field == 'actions2'"
+                            class="flex justify-between">
+                            Change Status
+                        </span>
+                    </template>
+                        <template #row-details="props">
+                            <div class="mx-5">
+                                <h6 class="font-bold text-lg">Ordered Products:</h6>
+                                <div v-for="item in props.row.items" :key="item.id">
+                                    <div class="flex flex-row justify-b mx-2">
+                                        Product: {{ item.name }} 
+                                        Price: {{ item.price }} 
+                                        Quantity: {{ item.quantity }} 
+                                        Total: {{ item.total }}
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
                     </vue-good-table>
                 </div>
             </div>
