@@ -12,6 +12,7 @@ class OrederItem extends Model
         'quantity',
         'price',
         'total',
+        'status',
         'Order_id',
         'Item_id'
     ];
