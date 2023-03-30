@@ -22,4 +22,9 @@ class Business extends Model
     {
         return $this->hasMany(Employee::class, 'Business_id');
     }
+
+    public function business_Item()
+    {
+        return $this->hasMany(Item::class, 'Business_id');
+    }
 }
