@@ -17,17 +17,15 @@ class EmployeeController extends Controller
         $business = $employee->employee_Business;
 
         $getRoles = $authenticated->roles;
-        $roles = $getRoles[0];
 
         $getPermisos = $authenticated->permissions;
-        $permissions = $getPermisos[0];
         
         return Inertia::render('Employee/Employee', [
             'user' => $authenticated,
             'employee' => $employee,
             'business' => $business,
-            'roles' => $roles,
-            'permissions' => $permissions
+            'roles' => $getRoles,
+            'permissions' => $getPermisos
         ]);
         // return Inertia::render('Employee/Employee');
     }

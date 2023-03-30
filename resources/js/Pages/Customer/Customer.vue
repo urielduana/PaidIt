@@ -1,5 +1,6 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
+import DialogModal from "@/Components/DialogModal.vue";
 
 const props = defineProps({
     user: {
@@ -41,7 +42,9 @@ const props = defineProps({
                                 >Cliente</span
                             >
 
-                            <h2 class="text-sm text-center my-4 font-bold flex gap-2">
+                            <h2
+                                class="text-sm text-center my-4 font-bold flex gap-2"
+                            >
                                 Titular:
                                 <h2 class="font-normal">
                                     {{ customer.guardian_name }}
@@ -77,23 +80,14 @@ const props = defineProps({
                                 >
                                     Depositar
                                 </button>
-
-                                <Modal
+                                <DialogModal
                                     :show="showModal"
                                     @close="showModal = false"
                                     :max-width="modalMaxWidth"
                                     :closeable="modalCloseable"
                                 >
-                                    <form
-                                        class="space-y-6"
-                                        action="/customer"
-                                        @submit.prevent="submitForm"
-                                    >
-                                        <h5
-                                            class="text-xl font-medium text-gray-900 dark:text-white text-center"
-                                        >
-                                            Depositar
-                                        </h5>
+                                    <template #title> Depositar </template>
+                                    <template #content>
                                         <div>
                                             <label
                                                 for="cantidad"
@@ -110,14 +104,17 @@ const props = defineProps({
                                                 v-model="formData.cantidad"
                                             />
                                         </div>
+                                    </template>
+                                    <template #footer>
                                         <button
+                                            @click="submitForm()"
                                             type="submit"
                                             class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                         >
                                             Enviar
                                         </button>
-                                    </form>
-                                </Modal>
+                                    </template>
+                                </DialogModal>
                             </div>
                         </div>
                     </div>
@@ -134,6 +131,7 @@ import Modal from "../../Components/Modal.vue";
 export default {
     components: {
         Modal,
+        DialogModal,
     },
 
     data() {
