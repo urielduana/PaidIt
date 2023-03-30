@@ -4,6 +4,7 @@ import { useDark, useToggle } from "@vueuse/core";
 import { reactive, watchEffect } from "vue";
 import { groupBy } from "lodash";
 import { onMounted } from "vue";
+import AddButton from "@/Components/AddButton.vue";
 
 // Dark Mode
 const isDark = useDark();
@@ -19,7 +20,6 @@ watchEffect(() => {
         state.tableMode = "polar-bear";
     }
 });
-
 
 // Props
 const props = defineProps({
@@ -61,7 +61,7 @@ const columns = [
     {
         label: "Description",
         field: "description",
-        width: "30%",
+        hidden: true,
     },
 ];
 const rows = Object.values(
@@ -102,60 +102,70 @@ const groupOptions = {
         </template>
         <div class="py-5">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="overflow-hidden shadow-xl sm:rounded-lg">
-                        <vue-good-table
-                            ref="myCustomTable"
-                            :columns="columns"
-                            :rows="rows"
-                            max-height="500px"
-                            max-width="100%"
-                            :fixed-header="true"
-                            :theme="state.tableMode"
-                            :pagination-options="paginationOptions"
-                            :search-options="searchOptions"
-                            :group-options="groupOptions"
-                        >
-                            <template #emptystate>
-                                Nothing to see here!
-                            </template>
-                            <template #table-actions>
-                                <div>
-                                    <button
-                                        @click="$refs.myCustomTable.expandAll()"
-                                        class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-                                    >
-                                        Expand All
-                                    </button>
-                                    <button
-                                        @click="
-                                            $refs.myCustomTable.collapseAll()
-                                        "
-                                        class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-                                    >
-                                        Collapse All
-                                    </button>
-                                </div>
-                            </template>
-                            <template #table-row="props">
-                                <span
-                                    v-if="props.column.field == 'image'"
-                                    class="flex justify-center"
+                <div
+                    class="overflow-hidden shadow-xl sm:rounded-lg dark:text-gray-800"
+                >
+                    <vue-good-table
+                        ref="myCustomTable"
+                        :columns="columns"
+                        :rows="rows"
+                        max-height="500px"
+                        max-width="100%"
+                        :fixed-header="true"
+                        :theme="state.tableMode"
+                        :pagination-options="paginationOptions"
+                        :search-options="searchOptions"
+                        :group-options="groupOptions"
+                        :enable-row-expand="true"
+                    >
+                        <template #emptystate> Nothing to see here! </template>
+                        <template #table-actions>
+                            <div>
+                                <button
+                                    @click="$refs.myCustomTable.expandAll()"
+                                    class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
                                 >
-                                    <img
-                                        :src="props.row.image"
-                                        class="h-10 w-10"
-                                    />
-                                </span>
-                                <span v-if="props.column.field == 'price'">
-                                    <span>${{ props.row.price }}</span>
-                                </span>
-                            </template>
-                            <template #table-header-row="props">
-                                <span class="my-fancy-class">
-                                    {{ props.row.label }}
-                                </span>
-                            </template>
-                        </vue-good-table>
+                                    Expand All
+                                </button>
+                                <button
+                                    @click="$refs.myCustomTable.collapseAll()"
+                                    class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+                                >
+                                    Collapse All
+                                </button>
+                            </div>
+                        </template>
+                        <template #table-row="props">
+                            <span
+                                v-if="props.column.field == 'image'"
+                                class="flex justify-center"
+                            >
+                                <img :src="props.row.image" class="h-10 w-10" />
+                            </span>
+                            <span v-if="props.column.field == 'price'">
+                                <span>${{ props.row.price }}</span>
+                            </span>
+
+                            <span v-if="props.column.field == 'action'">
+                                <AddButton></AddButton>
+                            </span>
+                        </template>
+                        <template #table-header-row="props">
+                            <span class="my-fancy-class">
+                                {{ props.row.label }}
+                            </span>
+                        </template>
+                        <template #row-details="props">
+                            <div class="flex flex-col">
+                                <div class="flex flex-row">
+                                    <div class="flex flex-col">
+                                        <span class="font-bold">Description:</span>
+                                        <span>{{ props.row.description }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </vue-good-table>
                 </div>
             </div>
         </div>
