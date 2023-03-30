@@ -56,7 +56,6 @@ php artisan db:seed --class=GendersTableSeeder
 php artisan db:seed --class=UsersTableSeeder
 php artisan db:seed --class=BusinessesTableSeeder
 php artisan db:seed --class=ItemTypesTableSeeder
-php artisan db:seed --class=EmployeeTypesTableSeeder
 php artisan db:seed --class=CustomersTableSeeder
 php artisan db:seed --class=EmployeesTableSeeder
 php artisan db:seed --class=CartsTableSeeder
