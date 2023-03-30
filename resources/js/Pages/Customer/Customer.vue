@@ -1,14 +1,6 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
-import Welcome from "@/Components/Welcome.vue";
 
-// const props = defineProps({
-//     role: {
-//         type: String,
-//         required: true
-//     },
-
-// });
 const props = defineProps({
     user: {
         type: Object,
@@ -62,7 +54,7 @@ const props = defineProps({
 
                     <!-- Inicia saldo -->
                     <div
-                        class="flex items-center w-56 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+                        class="flex items-center w-96 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
                     >
                         <div class="w-full text-center">
                             <h6
@@ -73,13 +65,21 @@ const props = defineProps({
                             <p
                                 class="font-normal my-4 text-gray-700 dark:text-gray-400"
                             >
-                                Saldo disponible: $ {{ customer.balance }}
+                                Saldo disponible:
+                                
                             </p>
+                            <p class="my-4 text-center">
+                                 <span class="font-bold text-white text-center"
+                                    >$ {{ customer.balance }}</span
+                                >
+                            </p>
+                           <div class="flex justify-center">
                             <a
                                 href="#"
                                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-xs px-5 py-2 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                                 >Depositar</a
                             >
+                           </div>
                         </div>
                     </div>
                     <!-- Finaliza saldo -->
