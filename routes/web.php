@@ -8,6 +8,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CustomerItemController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\EmployeeItemController;
 use App\Http\Controllers\EmployeeMemberController;
 
 Route::get('/', function () {
@@ -41,6 +42,8 @@ Route::middleware([
             ->names('employee');
         Route::resource('/members', EmployeeMemberController::class)
             ->names('members');
+        Route::resource('/items', EmployeeItemController::class)
+            ->names('items');
     });
 
     Route::prefix('dashboard')->group(function () {
