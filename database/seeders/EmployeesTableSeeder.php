@@ -13,7 +13,7 @@ class EmployeesTableSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('employees')->insert(['salary' => '14265.4', 'User_id' => '101.0', 'Business_id' => '1.0']);
+        DB::table('employees')->insert(['salary' => '14265.4', 'User_id' => '1', 'Business_id' => '1.0']);
         DB::table('employees')->insert(['salary' => '6342.54', 'User_id' => '102.0', 'Business_id' => '8.0']);
         DB::table('employees')->insert(['salary' => '1216.51', 'User_id' => '103.0', 'Business_id' => '14.0']);
         DB::table('employees')->insert(['salary' => '10703.44', 'User_id' => '104.0', 'Business_id' => '14.0']);

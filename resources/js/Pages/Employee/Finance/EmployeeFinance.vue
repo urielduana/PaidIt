@@ -46,9 +46,9 @@ const logo = "https://es.seaicons.com/wp-content/uploads/2015/11/Business-Shop-i
                                 :src="logo"
                             />
                             <h5
-                                class="mb-1 text-xl text-center font-medium text-gray-900 dark:text-white"
+                                class="mb-1 text-xl text-center font-medium text-gray-900"
                             >
-                                {{ business.name }}
+                                <div class="text-gray-800 dark:text-white">{{ business.name }} </div>
                             </h5>
                             <span
                                 class="text-sm text-center text-gray-500 dark:text-gray-400"
@@ -57,32 +57,32 @@ const logo = "https://es.seaicons.com/wp-content/uploads/2015/11/Business-Shop-i
 
                             <span
                                 class="text-sm text-center my-4 text-gray-500 dark:text-gray-400"
-                                ><span class="font-bold text-white"
+                                ><span class="font-bold"
                                     >Número de empleados:</span
                                 >
-                                {{ count }}
+                                <div class="text-gray-800 dark:text-white">{{ count }} </div>
                             </span>
 
                             <span
                                 class="text-sm text-center my-2 text-gray-500 dark:text-gray-400"
-                                ><span class="font-bold text-white"
+                                ><span class="font-bold"
                                     >Total de salario:</span
                                 >
-                                {{ salario }}
+                                <div class="text-gray-800 dark:text-white">{{ salario }} </div>
                             </span>
                             <span
                                 class="text-sm text-center my-2 text-gray-500 dark:text-gray-400"
-                                ><span class="font-bold text-white"
+                                ><span class="font-bold"
                                     >Total de pedido:</span
                                 >
-                                <!-- {{ salario }} -->
+                                <!-- <div class="text-gray-800 dark:text-white">{{ salario }} </div> -->
                             </span>
                             <span
                                 class="text-sm text-center my-2 text-gray-500 dark:text-gray-400"
-                                ><span class="font-bold text-white"
+                                ><span class="font-bold"
                                     >Ganancias:</span
                                 >
-                                <!-- {{ salario }} -->
+                                <!-- <div class="text-gray-800 dark:text-white">{{ salario }} </div> -->
                             </span>
                         </div>
                     </div>
