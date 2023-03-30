@@ -14,12 +14,10 @@ return new class extends Migration
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
             $table->decimal('total')->default(0);
-            $table->integer('status')->default("Active"); // Active or Completed
+            $table->string('status')->default('pending');
             $table->unsignedBigInteger('Customer_id');
-            $table->foreign('Customer_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('Customer_id')->references('id')->on('customers')->onDelete('cascade');
             $table->timestamps();
-            $table->unsignedBigInteger('Employee_id');
-            $table->foreign('Employee_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

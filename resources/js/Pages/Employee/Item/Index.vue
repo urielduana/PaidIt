@@ -1,13 +1,25 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
 import { useDark, useToggle } from "@vueuse/core";
-import { reactive, watchEffect } from "vue";
+import { defineProps, reactive, watchEffect } from "vue";
 import {
     PencilSquareIcon,
     MinusCircleIcon,
     EyeIcon,
+    PlusCircleIcon,
 } from "@heroicons/vue/24/solid";
-import PrimaryButton from "@/Components/PrimaryButton.vue";
+
+// Props
+const props = defineProps({
+    items: {
+        type: Object,
+        required: true,
+    },
+    item_types: {
+        type: Object,
+        required: true,
+    },
+});
 
 // Dark Mode
 const isDark = useDark();
@@ -24,57 +36,45 @@ watchEffect(() => {
     }
 });
 
-//Props
-const props = defineProps({
-    employees: {
-        type: Object,
-        required: true,
-    },
-});
-
-//Table
+// Table
 const columns = [
     {
-        label: "Profile Photo",
+        label: "",
         field: "image",
-        width: "15%",
+        width: "10%",
     },
     {
-        label: "Name",
+        label: "Product",
         field: "name",
     },
     {
-        label: "Salary",
-        field: "salary",
+        label: "Category",
+        field: "category",
     },
     {
-        label: "Email",
-        field: "email",
+        label: "Stock",
+        field: "stock",
+    },
+    {
+        label: "Price",
+        field: "price",
     },
     {
         label: "",
         field: "actions",
     },
-    {
-        label: "Roles",
-        field: "roles",
-        hidden: true,
-    },
 ];
 
-const rows = props.employees.map((employee) => {
+const rows = props.items.map((item) => {
     return {
-        id: employee.id,
-        image: employee.profile_photo_url,
-        name: employee.employee__user.name,
-        salary: employee.salary,
-        email: employee.employee__user.email,
-        roles: employee.employee__user.roles.map((role) => {
-            return role.name;
-        }),
+        image: item.image,
+        name: item.name,
+        category: item.item__item__type.name,
+        stock: item.stock,
+        price: item.price,
+        actions: null,
     };
 });
-
 const paginationOptions = {
     enabled: true,
     perPage: 20,
@@ -86,17 +86,15 @@ const searchOptions = {
     placeholder: "Search...",
 };
 </script>
-
 <template>
-    <AppLayout title="Employee">
+    <AppLayout title="Customer">
         <template #header>
-            <h2>Employee</h2>
+            <h2>Available Products</h2>
         </template>
-        <div class="py-12">
+        <div class="py-5">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="overflow-hidden shadow-xl sm:rounded-lg">
                     <vue-good-table
-                        ref="myCustomTable"
                         :columns="columns"
                         :rows="rows"
                         max-height="500px"
@@ -105,9 +103,22 @@ const searchOptions = {
                         :theme="state.tableMode"
                         :pagination-options="paginationOptions"
                         :search-options="searchOptions"
-                        :enable-row-expand="true"
                     >
                         <template #emptystate> Nothing to see here! </template>
+                        <template #table-actions>
+                            <div class="mx-2">
+                                <button
+                                    @click=""
+                                    class="d-flex justify-content-center align-items-center text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+                                >
+                                    <PlusCircleIcon
+                                        class="h-5 w-5 dark:text-gray-100 text-gray-600 mr-2"
+                                        aria-hidden="true"
+                                    />
+                                    Add New Product
+                                </button>
+                            </div>
+                        </template>
                         <template #table-row="props">
                             <span
                                 v-if="props.column.field == 'image'"
@@ -143,30 +154,10 @@ const searchOptions = {
                                 </button>
                             </span>
                         </template>
-                        <template #row-details="props">
-                            <div class="flex items-center">
-                                <div
-                                    class="ml-5 flex items-center grow"
-                                    v-if="props.row.roles[0]"
-                                >
-                                    <p class="text-lg font-semibold">Roles:</p>
-                                    <p>{{ props.row.roles }}</p>
-                                </div>
-                                <div class="ml-5 flex items-center grow" v-else>
-                                    <p class="text-lg font-semibold">Roles:</p>
-                                    <p>No Roles</p>
-                                </div>
-                                <div class="mr-5">
-                                    <button
-                                        class="flex items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-1 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                                    >
-                                        <EyeIcon class="h-5 w-5 mr-1" />
-                                        Roles
-                                    </button>
-                                </div>
-                            </div>
-                        </template>
                     </vue-good-table>
+                    <pre>
+                        {{ rows }}
+                    </pre>
                 </div>
             </div>
         </div>
