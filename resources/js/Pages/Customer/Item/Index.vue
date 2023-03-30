@@ -19,6 +19,8 @@ watchEffect(() => {
         state.tableMode = "polar-bear";
     }
 });
+
+
 // Props
 const props = defineProps({
     items: {
@@ -101,7 +103,6 @@ const groupOptions = {
         <div class="py-5">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="overflow-hidden shadow-xl sm:rounded-lg">
-                    <div class="dark:text-gray-900">
                         <vue-good-table
                             ref="myCustomTable"
                             :columns="columns"
@@ -155,7 +156,6 @@ const groupOptions = {
                                 </span>
                             </template>
                         </vue-good-table>
-                    </div>
                 </div>
             </div>
         </div>
