@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Item;
+use App\Models\Business;
+use App\Models\ItemType;
 
 class EmployeeItemController extends Controller
 {
@@ -17,8 +19,15 @@ class EmployeeItemController extends Controller
         $businessAuth = $authenticated->user_Employee()->first()->Business_id;
         $businessId = Business::where('id', ($authenticated->user_Employee()->first()->Business_id))->first()->id;
         $items = Item::where('Business_id', $businessId)->get();
+
+        foreach ($items as $item) {
+            $type = $item->item_Item_Type->first()->name;
+        }
+        
+        $item_types = ItemType::all();
         return Inertia::render('Employee/Item/Index', [
             'items' => $items,
+            'item_types' => $item_types,
         ]);
     }
 

@@ -1,6 +1,5 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
-import Welcome from "@/Components/Welcome.vue";
 import { useDark, useToggle } from "@vueuse/core";
 import { reactive, watchEffect } from "vue";
 import {
@@ -86,7 +85,6 @@ const searchOptions = {
     skipDiacritics: true,
     placeholder: "Search...",
 };
-console.log(props.employees);
 </script>
 
 <template>
