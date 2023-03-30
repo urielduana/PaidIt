@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
             $table->decimal('total')->default(0);
-            $table->integer('status')->default("Active"); // Active or Completed
+            $table->string('status')->default("Active"); // Active or Completed
             $table->unsignedBigInteger('Customer_id');
             $table->foreign('Customer_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
