@@ -12,7 +12,22 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Employee/Employee');
+        $authenticated = auth()->user();
+        $employee = $authenticated->user_Employee;
+        $business = $employee->employee_Business;
+
+        $getRoles = $authenticated->roles;
+
+        $getPermisos = $authenticated->permissions;
+        
+        return Inertia::render('Employee/Employee', [
+            'user' => $authenticated,
+            'employee' => $employee,
+            'business' => $business,
+            'roles' => $getRoles,
+            'permissions' => $getPermisos
+        ]);
+        // return Inertia::render('Employee/Employee');
     }
 
     /**
