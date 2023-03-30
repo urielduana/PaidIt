@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Customer;
+
+
 
 class CustomerController extends Controller
 {
@@ -34,8 +38,21 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Obtén el usuario autenticado
+        $authenticated = Auth::user();
+
+        // Obtén el cliente asociado al usuario
+        $customer = $authenticated->user_Customer;
+        // Obtiene la cantidad ingresada en el formulario
+        $cantidad = $request->input('cantidad');
+        // Suma la cantidad ingresada a la cantidad actual del cliente
+        $customer->balance += $cantidad;
+        // Guarda los cambios en la base de datos
+        $customer->update();
+        // Redirecciona al usuario a la página anterior
+        return Inertia::location(url()->previous());
     }
+
 
     /**
      * Display the specified resource.

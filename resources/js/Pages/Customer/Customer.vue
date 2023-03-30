@@ -66,20 +66,62 @@ const props = defineProps({
                                 class="font-normal my-4 text-gray-700 dark:text-gray-400"
                             >
                                 Saldo disponible:
-                                
                             </p>
                             <p class="my-4 text-center">
-                                 <span class="font-bold text-white text-center"
+                                <span class="font-bold text-white text-center"
                                     >$ {{ customer.balance }}</span
                                 >
                             </p>
-                           <div class="flex justify-center">
-                            <a
-                                href="#"
-                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-xs px-5 py-2 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                                >Depositar</a
-                            >
-                           </div>
+                            <div class="flex justify-center">
+                                <button
+                                    @click="showModal = true"
+                                    type="button"
+                                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                                >
+                                    Depositar
+                                </button>
+
+                                <Modal
+                                    :show="showModal"
+                                    @close="showModal = false"
+                                    :max-width="modalMaxWidth"
+                                    :closeable="modalCloseable"
+                                >
+                                    <form
+                                        class="space-y-6"
+                                        action="/customer"
+                                        @submit.prevent="submitForm"
+                                    >
+                                        <h5
+                                            class="text-xl font-medium text-gray-900 dark:text-white text-center"
+                                        >
+                                            Depositar
+                                        </h5>
+                                        <div>
+                                            <label
+                                                for="cantidad"
+                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                                >Cantidad</label
+                                            >
+                                            <input
+                                                type="number"
+                                                name="cantidad"
+                                                id="cantidad"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                                placeholder="00.00"
+                                                required
+                                                v-model="formData.cantidad"
+                                            />
+                                        </div>
+                                        <button
+                                            type="submit"
+                                            class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                        >
+                                            Enviar
+                                        </button>
+                                    </form>
+                                </Modal>
+                            </div>
                         </div>
                     </div>
                     <!-- Finaliza saldo -->
@@ -88,3 +130,47 @@ const props = defineProps({
         </div>
     </AppLayout>
 </template>
+
+<script>
+import Modal from "../../Components/Modal.vue";
+
+export default {
+    components: {
+        Modal,
+    },
+
+    data() {
+        return {
+            showModal: false,
+            modalMaxWidth: "2xl",
+            modalCloseable: true,
+            formData: {
+                cantidad: null,
+            },
+        };
+    },
+
+    methods: {
+        submitForm() {
+            // Envía los datos al backend utilizando Inertia
+            this.$inertia
+                .post("/customer", this.formData)
+                .then(() => {
+                    // Actualiza los datos en el frontend
+                    this.formData.cantidad = null;
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        },
+    },
+};
+</script>
+
+<style>
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+</style>
