@@ -12,6 +12,5 @@ class Cart extends Model
         'total',
         'status',
         'Customer_id',
-
     ];
 }
