@@ -26,4 +26,8 @@ class Item extends Model
     {
         return $this->belongsTo(Business::class, 'Business_id');
     }
+    public function item_Order_Item()
+    {
+        return $this->hasMany(OrderItem::class, 'Item_id');
+    }
 }
