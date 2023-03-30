@@ -41,13 +41,12 @@ const props = defineProps({
                                 >Cliente</span
                             >
 
-                            <span
-                                class="text-sm text-center my-4 text-gray-500 dark:text-gray-400"
-                                ><span class="font-bold text-white"
-                                    >Titular:</span
-                                >
-                                {{ customer.guardian_name }}</span
-                            >
+                            <h2 class="text-sm text-center my-4 font-bold flex gap-2">
+                                Titular:
+                                <h2 class="font-normal">
+                                    {{ customer.guardian_name }}
+                                </h2>
+                            </h2>
                         </div>
                     </div>
                     <!-- Finaliza tarjeta Info-Usuario-->
@@ -67,11 +66,9 @@ const props = defineProps({
                             >
                                 Saldo disponible:
                             </p>
-                            <p class="my-4 text-center">
-                                <span class="font-bold text-white text-center"
-                                    >$ {{ customer.balance }}</span
-                                >
-                            </p>
+                            <h2 class="my-4 text-center font-bold">
+                                $ {{ customer.balance }}
+                            </h2>
                             <div class="flex justify-center">
                                 <button
                                     @click="showModal = true"
