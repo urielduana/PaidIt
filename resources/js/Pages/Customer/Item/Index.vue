@@ -31,11 +31,11 @@ const props = defineProps({
 
 // Table
 const columns = [
-    {
-        label: "",
-        field: "image",
-        width: "10%",
-    },
+    // {
+    //     label: "",
+    //     field: "image",
+    //     width: "10%",
+    // },
     {
         label: "Product",
         field: "name",
@@ -71,7 +71,7 @@ const rows = Object.values(
     label: group[0].item__business.name,
     children: group.map((item) => ({
         id: item.id,
-        image: item.image,
+        // image: item.image,
         name: item.name,
         description: item.description,
         price: item.price,
@@ -136,12 +136,12 @@ const groupOptions = {
                             </div>
                         </template>
                         <template #table-row="props">
-                            <span
+                            <!-- <span
                                 v-if="props.column.field == 'image'"
                                 class="flex justify-center"
                             >
                                 <img :src="props.row.image" class="h-10 w-10" />
-                            </span>
+                            </span> -->
                             <span v-if="props.column.field == 'price'">
                                 <span>${{ props.row.price }}</span>
                             </span>
@@ -159,7 +159,9 @@ const groupOptions = {
                             <div class="flex flex-col">
                                 <div class="flex flex-row">
                                     <div class="flex flex-col">
-                                        <span class="font-bold">Description:</span>
+                                        <span class="font-bold"
+                                            >Description:</span
+                                        >
                                         <span>{{ props.row.description }}</span>
                                     </div>
                                 </div>

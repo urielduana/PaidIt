@@ -13,8 +13,6 @@ return new class extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
-            $table->decimal('total')->default(0);
-            $table->string('status')->default('pending');
             $table->unsignedBigInteger('Customer_id');
             $table->foreign('Customer_id')->references('id')->on('customers')->onDelete('cascade');
             $table->timestamps();

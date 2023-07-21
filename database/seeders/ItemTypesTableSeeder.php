@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Faker\Factory as Faker;
 
 class ItemTypesTableSeeder extends Seeder
 {
@@ -13,35 +14,25 @@ class ItemTypesTableSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('item_types')->insert(['name' => 'Smoothies']);
-        DB::table('item_types')->insert(['name' => 'Cuadernos']);
-        DB::table('item_types')->insert(['name' => 'Notas adhesivas']);
-        DB::table('item_types')->insert(['name' => 'Frappés']);
-        DB::table('item_types')->insert(['name' => 'Café']);
-        DB::table('item_types')->insert(['name' => 'Reglas']);
-        DB::table('item_types')->insert(['name' => 'Tijeras']);
-        DB::table('item_types')->insert(['name' => 'Frappés']);
-        DB::table('item_types')->insert(['name' => 'Pasteles']);
-        DB::table('item_types')->insert(['name' => 'Smoothies']);
-        DB::table('item_types')->insert(['name' => 'Bagels']);
-        DB::table('item_types')->insert(['name' => 'Té']);
-        DB::table('item_types')->insert(['name' => 'Té']);
-        DB::table('item_types')->insert(['name' => 'Frappés']);
-        DB::table('item_types')->insert(['name' => 'Wraps']);
-        DB::table('item_types')->insert(['name' => 'Smoothies']);
-        DB::table('item_types')->insert(['name' => 'Té']);
-        DB::table('item_types')->insert(['name' => 'Té']);
-        DB::table('item_types')->insert(['name' => 'Clips']);
-        DB::table('item_types')->insert(['name' => 'Jugos']);
-        DB::table('item_types')->insert(['name' => 'Jugos']);
-        DB::table('item_types')->insert(['name' => 'Bolígrafos']);
-        DB::table('item_types')->insert(['name' => 'Bolígrafos']);
-        DB::table('item_types')->insert(['name' => 'Sandwiches']);
-        DB::table('item_types')->insert(['name' => 'Chocolate caliente']);
-        DB::table('item_types')->insert(['name' => 'Smoothies']);
-        DB::table('item_types')->insert(['name' => 'Té']);
-        DB::table('item_types')->insert(['name' => 'Papel de envolver']);
-        DB::table('item_types')->insert(['name' => 'Papel de envolver']);
-        DB::table('item_types')->insert(['name' => 'Ensaladas']);
+        DB::table('item_types')->insert(['name' => 'Print']);
+        $faker = Faker::create();
+        // Item types for a stationery store
+        $stationeryTypeItems = ['Pencil', 'Notebook', 'Eraser', 'Pen', 'Ruler', 'Highlighter', 'Stapler', 'Staples', 'Tape', 'Glue', 'Scissors', 'Paper', 'Folder', 'Binder', 'Calculator', 'Backpack', 'Lunchbox', 'Water bottle', 'Crayons', 'Markers', 'Sharpener', 'Paper clips', 'Push pins', 'Index cards', 'Construction paper', 'Poster board', 'Stickers', 'White out', 'Rubber bands', 'Envelopes'];
+        // Item types for a cafeteria
+        $cafeteriaTypeItems = ['Sandwich', 'Salad', 'Soup', 'Pizza', 'Pasta', 'Burger', 'Fries', 'uggets', 'Chicken tenders', 'Chicken wings', 'Hot dog', 'Burrito', 'Taco', 'Chips', 'Fruit', 'Vegetables', 'Yogurt', 'Milk', 'Juice', 'Soda', 'Water', 'Coffee', 'Tea', 'Cookies', 'Brownies', 'Cake', 'Ice cream', 'Candy', 'Chocolate', 'Popcorn'];
+        // Define the number of items to generate
+        $numItemsToGenerate = 15;
+
+        // Loop to generate and insert the random items
+        for ($i = 0; $i < $numItemsToGenerate; $i++) {
+            DB::table('item_types')->insert([
+                'name' => $faker->randomElement($stationeryTypeItems),
+            ]);
+        }
+        for ($i = 0; $i < $numItemsToGenerate; $i++) {
+            DB::table('item_types')->insert([
+                'name' => $faker->randomElement($cafeteriaTypeItems),
+            ]);
+        }
     }
 }

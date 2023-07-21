@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Faker\Factory as Faker;
 
 class ItemsTableSeeder extends Seeder
 {
@@ -13,56 +14,50 @@ class ItemsTableSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('items')->insert(['name' => 'Caf� americano', 'price' => '480.17', 'description' => 'massa tempor convallis nulla neque libero convallis eget eleifend luctus', 'image' => 'nan', 'stock' => '95', 'Item_type_id' => '16', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Capuchino', 'price' => '402.44', 'description' => 'potenti nullam porttitor lacus at turpis donec posuere metus vitae ipsum aliquam non mauris morbi non lectus aliquam sit amet diam', 'image' => 'nan', 'stock' => '3', 'Item_type_id' => '12', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Latte', 'price' => '479.14', 'description' => 'lectus suspendisse potenti in eleifend quam a odio in hac habitasse platea', 'image' => 'nan', 'stock' => '9', 'Item_type_id' => '5', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'T�', 'price' => '460.1', 'description' => 'in hac habitasse platea dictumst morbi vestibulum velit id pretium iaculis diam erat fermentum justo nec condimentum neque sapien placerat ante nulla justo aliquam quis', 'image' => 'nan', 'stock' => '27', 'Item_type_id' => '6', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Galletas', 'price' => '253.47', 'description' => 'elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis', 'image' => 'nan', 'stock' => '101', 'Item_type_id' => '19', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Pasteles', 'price' => '456.62', 'description' => 'nec euismod scelerisque quam turpis adipiscing lorem vitae mattis nibh ligula nec sem duis aliquam convallis', 'image' => 'nan', 'stock' => '49', 'Item_type_id' => '16', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'S�ndwiches', 'price' => '181.12', 'description' => 'maecenas ut massa quis augue luctus tincidunt nulla mollis molestie lorem quisque ut erat curabitur gravida nisi at nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer', 'image' => 'nan', 'stock' => '92', 'Item_type_id' => '30', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Bagels', 'price' => '359.21', 'description' => 'dapibus duis at velit eu est congue elementum in hac habitasse platea dictumst morbi vestibulum velit id pretium iaculis diam', 'image' => 'nan', 'stock' => '118', 'Item_type_id' => '27', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Donas', 'price' => '14.94', 'description' => 'pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi sit amet lobortis sapien sapien non mi integer', 'image' => 'nan', 'stock' => '88', 'Item_type_id' => '15', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Ensaladas', 'price' => '413.1', 'description' => 'habitasse platea dictumst etiam faucibus cursus urna ut tellus nulla ut', 'image' => 'nan', 'stock' => '124', 'Item_type_id' => '25', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Jugos naturales', 'price' => '320.13', 'description' => 'suscipit nulla elit ac nulla sed vel enim sit amet nunc viverra dapibus nulla suscipit', 'image' => 'nan', 'stock' => '44', 'Item_type_id' => '28', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Batidos', 'price' => '4.25', 'description' => 'ut nulla sed accumsan felis ut at dolor quis odio consequat varius integer ac leo pellentesque ultrices mattis odio donec vitae nisi nam ultrices libero non mattis pulvinar nulla', 'image' => 'nan', 'stock' => '111', 'Item_type_id' => '28', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Smoothies', 'price' => '276.58', 'description' => 'turpis elementum ligula vehicula consequat morbi a ipsum integer a nibh in quis justo maecenas rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas', 'image' => 'nan', 'stock' => '144', 'Item_type_id' => '17', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Wraps', 'price' => '473.47', 'description' => 'morbi sem mauris laoreet ut rhoncus aliquet pulvinar sed nisl nunc rhoncus dui vel sem sed sagittis nam congue risus semper porta volutpat quam', 'image' => 'nan', 'stock' => '42', 'Item_type_id' => '30', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Yogur', 'price' => '427.64', 'description' => 'congue etiam justo etiam pretium iaculis justo in hac habitasse platea dictumst etiam faucibus cursus urna ut tellus nulla ut erat id mauris vulputate elementum nullam varius nulla', 'image' => 'nan', 'stock' => '9', 'Item_type_id' => '25', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Frutas', 'price' => '443.55', 'description' => 'eros vestibulum ac est lacinia nisi venenatis tristique fusce congue diam id ornare imperdiet sapien urna pretium nisl ut volutpat', 'image' => 'nan', 'stock' => '6', 'Item_type_id' => '25', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Aguas frescas', 'price' => '33.58', 'description' => 'vel enim sit amet nunc viverra dapibus nulla suscipit ligula in lacus curabitur at ipsum ac tellus semper interdum mauris ullamcorper purus sit amet nulla quisque', 'image' => 'nan', 'stock' => '86', 'Item_type_id' => '10', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Chocolates calientes', 'price' => '47.63', 'description' => 'sit amet diam in magna bibendum imperdiet nullam orci pede venenatis non sodales sed tincidunt eu felis fusce', 'image' => 'nan', 'stock' => '77', 'Item_type_id' => '10', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Tostadas francesas', 'price' => '255.66', 'description' => 'sed ante vivamus tortor duis mattis egestas metus aenean fermentum donec ut mauris eget massa tempor convallis nulla neque libero convallis eget eleifend luctus ultricies eu nibh quisque id', 'image' => 'nan', 'stock' => '49', 'Item_type_id' => '19', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Huevos revueltos', 'price' => '184.35', 'description' => 'odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin', 'image' => 'nan', 'stock' => '89', 'Item_type_id' => '25', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Chilaquiles', 'price' => '269.95', 'description' => 'convallis tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia sapien quis libero nullam sit amet', 'image' => 'nan', 'stock' => '104', 'Item_type_id' => '9', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Hotcakes', 'price' => '78.93', 'description' => 'aliquet at feugiat non pretium quis lectus suspendisse potenti in eleifend quam a odio in hac habitasse platea dictumst maecenas ut massa quis augue luctus', 'image' => 'nan', 'stock' => '24', 'Item_type_id' => '6', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Waffles', 'price' => '334.5', 'description' => 'donec semper sapien a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed accumsan felis ut at dolor quis', 'image' => 'nan', 'stock' => '58', 'Item_type_id' => '11', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Omelettes', 'price' => '96.28', 'description' => 'massa id nisl venenatis lacinia aenean sit amet justo morbi ut odio cras mi pede malesuada in imperdiet et commodo vulputate justo in', 'image' => 'nan', 'stock' => '127', 'Item_type_id' => '8', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Croissants', 'price' => '140.55', 'description' => 'luctus tincidunt nulla mollis molestie lorem quisque ut erat curabitur gravida nisi at nibh in hac habitasse platea dictumst aliquam augue quam', 'image' => 'nan', 'stock' => '75', 'Item_type_id' => '1', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Panini', 'price' => '344.12', 'description' => 'at dolor quis odio consequat varius integer ac leo pellentesque ultrices mattis odio donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper', 'image' => 'nan', 'stock' => '56', 'Item_type_id' => '1', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Pan dulce', 'price' => '86.06', 'description' => 'donec dapibus duis at velit eu est congue elementum in hac habitasse platea dictumst morbi vestibulum velit id pretium iaculis diam erat', 'image' => 'nan', 'stock' => '147', 'Item_type_id' => '2', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Nachos', 'price' => '462.03', 'description' => 'volutpat dui maecenas tristique est et tempus semper est quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante', 'image' => 'nan', 'stock' => '90', 'Item_type_id' => '25', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Papas a la francesa', 'price' => '332.33', 'description' => 'id lobortis convallis tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris', 'image' => 'nan', 'stock' => '103', 'Item_type_id' => '21', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Nuggets de pollo', 'price' => '110.06', 'description' => 'metus vitae ipsum aliquam non mauris morbi non lectus aliquam', 'image' => 'nan', 'stock' => '57', 'Item_type_id' => '26', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Hot dogs', 'price' => '321.01', 'description' => 'elementum ligula vehicula consequat morbi a ipsum integer a nibh in quis justo maecenas rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas', 'image' => 'nan', 'stock' => '15', 'Item_type_id' => '30', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Hamburguesas', 'price' => '410.23', 'description' => 'in porttitor pede justo eu massa donec dapibus duis at velit', 'image' => 'nan', 'stock' => '69', 'Item_type_id' => '12', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Pizza', 'price' => '103.78', 'description' => 'nulla dapibus dolor vel est donec odio justo sollicitudin ut suscipit a feugiat et eros vestibulum ac est lacinia nisi venenatis tristique fusce congue diam id', 'image' => 'nan', 'stock' => '147', 'Item_type_id' => '12', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Pita', 'price' => '312.48', 'description' => 'quam suspendisse potenti nullam porttitor lacus at turpis donec posuere metus vitae ipsum aliquam', 'image' => 'nan', 'stock' => '77', 'Item_type_id' => '27', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Panini', 'price' => '249.77', 'description' => 'posuere nonummy integer non velit donec diam neque vestibulum eget vulputate ut', 'image' => 'nan', 'stock' => '62', 'Item_type_id' => '28', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Fajitas', 'price' => '254.82', 'description' => 'curabitur convallis duis consequat dui nec nisi volutpat eleifend donec ut dolor morbi vel lectus', 'image' => 'nan', 'stock' => '124', 'Item_type_id' => '15', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Burritos', 'price' => '337.78', 'description' => 'erat vestibulum sed magna at nunc commodo placerat praesent blandit nam nulla integer pede justo lacinia eget tincidunt eget tempus vel pede', 'image' => 'nan', 'stock' => '94', 'Item_type_id' => '7', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Tacos', 'price' => '42.2', 'description' => 'adipiscing elit proin risus praesent lectus vestibulum quam sapien varius ut blandit non interdum in ante vestibulum ante ipsum primis', 'image' => 'nan', 'stock' => '111', 'Item_type_id' => '6', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Sopa', 'price' => '493.29', 'description' => 'in sagittis dui vel nisl duis ac nibh fusce lacus purus aliquet at', 'image' => 'nan', 'stock' => '82', 'Item_type_id' => '6', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Ceviche', 'price' => '30.85', 'description' => 'sem mauris laoreet ut rhoncus aliquet pulvinar sed nisl nunc rhoncus dui vel', 'image' => 'nan', 'stock' => '90', 'Item_type_id' => '8', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Enchiladas', 'price' => '399.88', 'description' => 'lacinia aenean sit amet justo morbi ut odio cras mi pede', 'image' => 'nan', 'stock' => '22', 'Item_type_id' => '4', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Pambazos', 'price' => '303.29', 'description' => 'ultrices aliquet maecenas leo odio condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam cras pellentesque volutpat dui maecenas tristique est et tempus semper', 'image' => 'nan', 'stock' => '67', 'Item_type_id' => '29', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Chiles rellenos', 'price' => '288.17', 'description' => 'iaculis justo in hac habitasse platea dictumst etiam faucibus cursus urna ut tellus nulla ut erat id mauris vulputate elementum nullam varius nulla facilisi cras non', 'image' => 'nan', 'stock' => '28', 'Item_type_id' => '2', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Quesadillas', 'price' => '29.47', 'description' => 'pede ullamcorper augue a suscipit nulla elit ac nulla sed vel enim sit amet nunc viverra dapibus nulla suscipit ligula in lacus', 'image' => 'nan', 'stock' => '137', 'Item_type_id' => '4', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Papel bond', 'price' => '427.26', 'description' => 'sit amet eros suspendisse accumsan tortor quis turpis sed ante vivamus tortor duis mattis egestas metus aenean fermentum donec ut mauris', 'image' => 'nan', 'stock' => '25', 'Item_type_id' => '6', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Carpetas', 'price' => '228.48', 'description' => 'molestie hendrerit at vulputate vitae nisl aenean lectus pellentesque eget nunc donec quis orci eget orci vehicula condimentum curabitur in libero ut massa volutpat', 'image' => 'nan', 'stock' => '139', 'Item_type_id' => '27', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Cuadernos', 'price' => '377.55', 'description' => 'curabitur at ipsum ac tellus semper interdum mauris ullamcorper purus sit amet nulla quisque arcu libero rutrum ac lobortis vel', 'image' => 'nan', 'stock' => '56', 'Item_type_id' => '24', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Lapiceros', 'price' => '309.82', 'description' => 'maecenas ut massa quis augue luctus tincidunt nulla mollis molestie lorem quisque ut erat curabitur gravida nisi at nibh in hac habitasse platea dictumst', 'image' => 'nan', 'stock' => '82', 'Item_type_id' => '6', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Bol�grafos', 'price' => '306.62', 'description' => 'rutrum nulla nunc purus phasellus in felis donec semper sapien a', 'image' => 'nan', 'stock' => '43', 'Item_type_id' => '3', 'Business_id' => '1' ]);
-        DB::table('items')->insert(['name' => 'Marcadores', 'price' => '113.86', 'description' => 'vulputate luctus cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus vivamus vestibulum', 'image' => 'nan', 'stock' => '76', 'Item_type_id' => '28', 'Business_id' => '1' ]);
-        
+        $faker = Faker::create();
+
+        // Define the types of items (e.g., pencils, notebooks, etc.)
+        $stationeryItems = ['Pencil', 'Notebook', 'Eraser', 'Pen', 'Ruler', 'Highlighter', 'Stapler', 'Staples', 'Tape', 'Glue', 'Scissors', 'Paper', 'Folder', 'Binder', 'Calculator', 'Backpack', 'Lunchbox', 'Water bottle', 'Crayons', 'Markers', 'Sharpener', 'Paper clips', 'Push pins', 'Index cards', 'Construction paper', 'Poster board', 'Stickers', 'White out', 'Rubber bands', 'Envelopes'];
+        $cafeteriaItem = ['Sandwich', 'Salad', 'Soup', 'Pizza', 'Pasta', 'Burger', 'Fries', 'Chicken nuggets', 'Chicken tenders', 'Chicken wings', 'Hot dog', 'Burrito', 'Taco', 'Chips', 'Fruit', 'Vegetables', 'Yogurt', 'Milk', 'Juice', 'Soda', 'Water', 'Coffee', 'Tea', 'Cookies', 'Brownies', 'Cake', 'Ice cream', 'Candy', 'Chocolate', 'Popcorn'];
+        // Define the number of items to generate
+        $numItemsToGenerate = 35;
+
+        // Loop to generate and insert the random items
+        for ($i = 0; $i < $numItemsToGenerate; $i++) {
+            DB::table('items')->insert([
+                'name' => $faker->randomElement($stationeryItems),
+                'price' => $faker->randomFloat(2, 1, 100),
+                'description' => $faker->sentence(),
+                'stock' => $faker->numberBetween(1, 1000),
+                'Item_type_id' => $faker->numberBetween(2, 16),
+                'Business_id' => 1,
+            ]);
+            DB::table('items')->insert([
+                'name' => $faker->randomElement($cafeteriaItem),
+                'price' => $faker->randomFloat(2, 1, 100),
+                'description' => $faker->sentence(),
+                'stock' => $faker->numberBetween(1, 1000),
+                'Item_type_id' => $faker->numberBetween(2, 31),
+                'Business_id' => $faker->numberBetween(3, 4),
+            ]);
+        }
+
+        // Simple seeder for a printer center
+        DB::table('items')->insert([
+            'name' => 'Black and white print',
+            'price' => 0.10,
+            'description' => 'Print a page',
+            'stock' => 1000,
+            'Item_type_id' => 1,
+            'Business_id' => 2,
+        ]);
+        DB::table('items')->insert([
+            'name' => 'Color print',
+            'price' => 0.50,
+            'description' => 'Print a page',
+            'stock' => 1000,
+            'Item_type_id' => 1,
+            'Business_id' => 2,
+        ]);
     }
 }
