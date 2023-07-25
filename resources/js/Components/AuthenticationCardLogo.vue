@@ -15,11 +15,11 @@ const state = reactive({
 watchEffect(() => {
     state.darkMode = useDark().value;
     if (state.darkMode) {
-        state.color1 = "#6396EA";
-        state.color2 = "#D2E4FD";
-        state.color3 = "#9EB8DD";
-        state.color4 = "#6396EA";
-        state.color5 = "#9EB8DD";
+        state.color1 = "#E9EBF0";
+        state.color2 = "#C3C5C9";
+        state.color3 = "#ABACB0";
+        state.color4 = "#F5F7FC";
+        state.color5 = "#ABACB0";
     } else {
         state.color1 = "#223A59";
         state.color2 = "#9EB8DD";

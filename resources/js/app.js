@@ -9,9 +9,8 @@ import { Tabs, Tab } from "vue3-tabs-component";
 import VueGoodTablePlugin from "vue-good-table-next";
 import "vue-good-table-next/dist/vue-good-table-next.css";
 import { createVuestic } from "vuestic-ui";
-import "vuestic-ui/dist/vuestic-ui.css";
-// import config from "vuestic-ui/src/services/config";
-
+import "vuestic-ui/css";
+import config from "../../vuestic.config";
 const appName =
     window.document.getElementsByTagName("title")[0]?.innerText || "Laravel";
 
@@ -27,9 +26,10 @@ createInertiaApp({
             .use(plugin)
             .use(ZiggyVue, Ziggy)
             .use(VueGoodTablePlugin)
-            .use(createVuestic({}))
+            .use(createVuestic({ config }))
             .component("tabs", Tabs)
             .component("tab", Tab)
+            .mount("#app")
             .mount(el);
     },
     progress: {
