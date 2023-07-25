@@ -1,8 +1,7 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
 import { useDark, useToggle } from "@vueuse/core";
-import { reactive, watchEffect } from "vue";
-import AddButton from "@/Components/AddButton.vue";
+import { reactive, watchEffect, defineProps, ref } from "vue";
 
 // Dark Mode
 const isDark = useDark();
@@ -27,7 +26,8 @@ const props = defineProps({
     },
 });
 
-
+// Counter
+const value = ref(0);
 </script>
 
 <template>
@@ -37,7 +37,30 @@ const props = defineProps({
         </template>
         <div class="py-5">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                // print all items from de props
+                <va-card>
+                    <va-card-content>
+                        <div>
+                            <div>
+                                <p>Salted Pasta with Mushroom Sauce</p>
+                                <p>$2.79</p>
+                                <p>11 Pieces Available</p>
+                            </div>
+                            <div>
+                                <va-counter
+                                    v-model="value"
+                                    manual-input
+                                    min="0"
+                                />
+                            </div>
+                            <div>
+                                <va-button>
+                                    <ion-icon name="cart-outline" />
+                                    Add to Cart</va-button
+                                >
+                            </div>
+                        </div>
+                    </va-card-content>
+                </va-card>
             </div>
         </div>
     </AppLayout>
