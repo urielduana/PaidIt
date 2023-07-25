@@ -24,14 +24,14 @@ class PermissionSeeder extends Seeder
         // Customer Permissions
         Role::create(['name' => 'customer']);
         Permission::create(['name' => 'view_customer']);
-        Permission::create(['name' => 'customer.balance']);
-        Permission::create(['name' => 'customer.balance.index']);
-        Permission::create(['name' => 'customer.balance.create']);
-        Permission::create(['name' => 'customer.balance.store']);
-        Permission::create(['name' => 'customer.balance.show']);
-        Permission::create(['name' => 'customer.balance.edit']);
-        Permission::create(['name' => 'customer.balance.update']);
-        Permission::create(['name' => 'customer.balance.destroy']);
+        //Permission::create(['name' => 'customer.balance']);
+        //Permission::create(['name' => 'customer.balance.index']);
+        //Permission::create(['name' => 'customer.balance.create']);
+        //Permission::create(['name' => 'customer.balance.store']);
+        //Permission::create(['name' => 'customer.balance.show']);
+        //Permission::create(['name' => 'customer.balance.edit']);
+        //Permission::create(['name' => 'customer.balance.update']);
+        //Permission::create(['name' => 'customer.balance.destroy']);
         Permission::create(['name' => 'customer.business']);
         Permission::create(['name' => 'customer.business.index']);
         Permission::create(['name' => 'customer.orders']);
@@ -73,14 +73,14 @@ class PermissionSeeder extends Seeder
         $role = Role::findByName('customer');
         $role->givePermissionTo([
             'view_customer',
-            'customer.balance',
-            'customer.balance.index',
-            'customer.balance.create',
-            'customer.balance.store',
-            'customer.balance.show',
-            'customer.balance.edit',
-            'customer.balance.update',
-            'customer.balance.destroy',
+            //'customer.balance',
+            //'customer.balance.index',
+            //'customer.balance.create',
+            //'customer.balance.store',
+            //'customer.balance.show',
+            //'customer.balance.edit',
+            //'customer.balance.update',
+            //'customer.balance.destroy',
             'customer.business',
             'customer.business.index',
             'customer.orders',
