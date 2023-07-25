@@ -13,15 +13,11 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            //$table->decimal('balance');
             $table->string('guardian_name');
             $table->unsignedBigInteger('guardian_phone');
             $table->timestamps();
             $table->unsignedBigInteger('User_id');
             $table->foreign('User_id')->references('id')->on('users')->onDelete('cascade');
-            //Relacion con la tabla de transacciones
-            $table->unsignedBigInteger('transaction_id')->nullable();
-            $table->foreign('transaction_id')->references('id')->on('customers_transactions');
         });
     }
 
