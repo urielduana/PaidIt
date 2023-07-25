@@ -13,12 +13,11 @@ class CustomersTableSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('customers')->insert(['balance' => '990.52', 'guardian_name' => 'Tybie Calbert', 'guardian_phone' => '3176373761', 'User_id' => '1']);
+        DB::table('customers')->insert(['guardian_name' => 'Tybie Calbert', 'guardian_phone' => '3176373761', 'User_id' => '1']);
         $faker = \Faker\Factory::create();
         $numCustomersToGenerate = 50;
         for ($i = 0; $i < $numCustomersToGenerate; $i++) {
             DB::table('customers')->insert([
-                'balance' => $faker->randomFloat(2, 0, 10000),
                 'guardian_name' => $faker->name,
                 'guardian_phone' => $faker->numerify('##########'),
                 'User_id' => $i + 2,
