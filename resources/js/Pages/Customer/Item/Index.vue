@@ -53,7 +53,10 @@ const value = ref(0);
                                 />
                             </div>
                             <div>
-                                <va-button>Add to Cart</va-button>
+                                <va-button>
+                                    <ion-icon name="cart-outline" />
+                                    Add to Cart</va-button
+                                >
                             </div>
                         </div>
                     </va-card-content>

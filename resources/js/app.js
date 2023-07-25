@@ -29,7 +29,6 @@ createInertiaApp({
             .use(createVuestic({ config }))
             .component("tabs", Tabs)
             .component("tab", Tab)
-            .mount("#app")
             .mount(el);
     },
     progress: {
