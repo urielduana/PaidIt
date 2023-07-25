@@ -18,6 +18,9 @@ return new class extends Migration
             $table->unsignedBigInteger('Customer_id');
             $table->foreign('Customer_id')->references('id')->on('customers')->onDelete('cascade');
             $table->timestamps();
+            //relacionar con la tabla de status
+            $table->unsignedBigInteger('Status_id')->nullable();
+            $table->foreign('Status_id')->references('id')->on('status_order')->onDelete('cascade');
         });
     }
 
