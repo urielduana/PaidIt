@@ -64,6 +64,8 @@ php artisan db:seed --class=ItemsTableSeeder
 php artisan db:seed --class=OrderItemsTableSeeder
 php artisan db:seed --class=CartItemsTableSeeder 
 php artisan db:seed --class=OrderStatus
+php artisan db:seed --class=CustomersTransactionsTableSeeder
+php artisan db:seed --class=BussinessTransactionsTableSeeder
 ```
 
 ## Uso

@@ -14,14 +14,10 @@ return new class extends Migration
         Schema::create('businesses', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            //$table->decimal('balance');
             $table->string('email');
             $table->unsignedBigInteger('phone');
             $table->string('address');
             $table->timestamps();
-            //relacion con la tabla de transacciones
-            $table->unsignedBigInteger('transaction_id')->nullable();
-            $table->foreign('transaction_id')->references('id')->on('businesses_transactions');
         });
     }
 

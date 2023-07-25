@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('businesses_transactions', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->decimal('mount');
+            $table->decimal('mount', 10, 4);
             $table->timestamps();
+            $table->unsignedBigInteger('business_id');
+            $table->foreign('business_id')->references('id')->on('businesses')->onDelete('cascade');
         });
     }
 
