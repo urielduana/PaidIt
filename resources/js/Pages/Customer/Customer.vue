@@ -42,6 +42,8 @@ const maxExpenses = maxIncome;
 // Calculamos los porcentajes normalizados de ingresos y gastos
 const incomePercentage = normalizeValue(totalIncome, 0, maxIncome) * 100;
 const expensePercentage = normalizeValue(totalExpenses, 0, maxExpenses) * 100;
+
+const totalRevenue = totalIncome - totalExpenses;
 </script>
 
 <template>
@@ -80,16 +82,10 @@ const expensePercentage = normalizeValue(totalExpenses, 0, maxExpenses) * 100;
                               Bills: ${{ totalExpenses }}
                         </va-progress-bar>
 
-                        <h5
-                            class="mb-1 text-xl text-center font-extrabold text-gray-900 dark:text-white"
-                        >
-                            <!--{{ user.name }}-->
-                            $1,500.00
-                        </h5>
-                        <span
-                            class="text-sm text-center text-gray-500 dark:text-gray-400"
-                            >Total Revenue</span
-                        >
+                        <h5 class="mb-1 text-xl text-center font-extrabold text-gray-900 dark:text-white">
+        ${{ totalRevenue.toFixed(2) }} <!-- Mostramos el Total Revenue -->
+    </h5>
+    <span class="text-sm text-center text-gray-500 dark:text-gray-400">Total Revenue</span>
                         <div>
                             <h2 class="text-sm text-centerfont-bold">
                                 {{ user.name }}
