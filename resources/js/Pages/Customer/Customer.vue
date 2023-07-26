@@ -14,7 +14,7 @@ const props = defineProps({
 });
 // Datos de ejemplo de transacciones
 const transactions = [
-    { amount: 1, type: "income" },
+    { amount: 100, type: "income" },
     { amount: 9, type: "income" },
     { amount: 8, type: "expense" },
     { amount: 1, type: "expense" },
@@ -44,6 +44,8 @@ const incomePercentage = normalizeValue(totalIncome, 0, maxIncome) * 100;
 const expensePercentage = normalizeValue(totalExpenses, 0, maxExpenses) * 100;
 
 const totalRevenue = totalIncome - totalExpenses;
+const img =
+    "https://img.freepik.com/vector-gratis/fondo-galaxia-realista_52683-12122.jpg?q=10&h=200";
 </script>
 
 <template>
@@ -53,51 +55,76 @@ const totalRevenue = totalIncome - totalExpenses;
         </template>
         <div class="py-12">
             <div class="flex justify-around py-6">
-                <!-- Iniciar Tarjeta Info-Usuario-->
+                <!-- Inicia Tarjeta Info-Usuario-->
                 <div
                     class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-[#1C2532]"
                 >
                     <div class="flex flex-col items-center py-10 px-4">
                         <img
                             class="w-24 h-24 mb-3 rounded-full shadow-lg"
-                            :src="user.profile_photo_path"
+                            :src="img"
                             alt="user image"
                         />
+                        <!-- Inicia total mount -->
+                        <section class="my-3">
+                            <h5
+                                class="mb-1 text-xl text-center font-extrabold text-gray-900 dark:text-white"
+                            >
+                                ${{ totalRevenue.toFixed(2) }}
+                                <!-- Mostramos el Total Revenue -->
+                            </h5>
+                            <span
+                                class="text-sm text-center text-gray-500 dark:text-gray-400"
+                                >Total Revenue</span
+                            >
+                        </section>
 
+                        <!-- Income bar -->
                         <va-progress-bar
                             :model-value="incomePercentage"
-                            size="large"
+                            size="22px"
                             content-inside
-                            color="primary"
+                            color="info"
+                            class="my-3"
                         >
                             Income: ${{ totalIncome }}
                         </va-progress-bar>
-
+                        <!-- Bills bar -->
                         <va-progress-bar
                             :model-value="expensePercentage"
-                            size="large"
+                            size="22px"
                             content-inside
                             color="danger"
+                            class="mb-3"
                         >
-                              Bills: ${{ totalExpenses }}
+                            Bills: ${{ totalExpenses }}
                         </va-progress-bar>
-
-                        <h5 class="mb-1 text-xl text-center font-extrabold text-gray-900 dark:text-white">
-        ${{ totalRevenue.toFixed(2) }} <!-- Mostramos el Total Revenue -->
-    </h5>
-    <span class="text-sm text-center text-gray-500 dark:text-gray-400">Total Revenue</span>
-                        <div>
-                            <h2 class="text-sm text-centerfont-bold">
-                                {{ user.name }}
-                            </h2>
-                            <span class="font-normal">customer</span>
-                        </div>
-                        <div>
-                            <h2>
-                                {{ customer.guardian_name }}
-                            </h2>
-                            <span>Tutor</span>
-                        </div>
+                        <!-- Inicia user-data -->
+                        <section class="text-center grid gap-3 my-2">
+                            <div>
+                                <h2
+                                    class="text-lg font-extrabold text-gray-900 dark:text-white"
+                                >
+                                    {{ user.name }}
+                                </h2>
+                                <span
+                                    class="text-sm text-gray-500 dark:text-gray-400"
+                                    >customer</span
+                                >
+                            </div>
+                            <div>
+                                <h2
+                                    class="text-base font-extrabold text-gray-900 dark:text-white"
+                                >
+                                    {{ customer.guardian_name }}
+                                </h2>
+                                <span
+                                    class="text-sm text-gray-500 dark:text-gray-400"
+                                    >Tutor</span
+                                >
+                            </div>
+                        </section>
+                        <!-- Finaliza user-data -->
                     </div>
                 </div>
                 <!-- Finaliza tarjeta Info-Usuario-->
