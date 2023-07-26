@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Business;
+use App\Models\Employee;
 use App\Models\Item;
 
 class CustomerItemController extends Controller
@@ -14,13 +15,10 @@ class CustomerItemController extends Controller
      */
     public function index()
     {
-        // $items = Item::with('item_Item_Type', 'item_Business')->select()->get();
-        // $items = Item::with(['item_Item_Type:id,name', 'item_Business:id,name'])->select('id', 'name', 'price', 'description', 'stock', 'Business_id', 'Item_type_id')->get();
-
-        $items = Item::all();
+        $business = Business::with(['business_Item:id,name,price,description,stock,Business_id,Item_type_id', 'business_Item.item_Item_Type:id,name'])->select('id', 'name')->get();
 
         return Inertia::render('Customer/Item/Index', [
-            'items' => $items,
+            'business' => $business,
         ]);
     }
 
