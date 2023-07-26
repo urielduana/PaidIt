@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use App\Models\Order;
+use App\Models\OrderItem;
 
 class CustomerOrderController extends Controller
 {
@@ -11,7 +14,31 @@ class CustomerOrderController extends Controller
      */
     public function index()
     {
-        //
+        $authenticated = auth()->user();
+        $customer = $authenticated->user_Customer;
+
+        // Accede a las órdenes relacionadas con el usuario autenticado
+        $orders = Order::where('customer_id', $customer->id)->get();
+        $orderItems = OrderItem::whereIn('order_id', $orders->pluck('id'))->get();
+
+        // Iterar sobre las órdenes y asignar los Order_Item correspondientes
+        foreach ($orders as $order) {
+            $order->orderItems = collect();
+            foreach ($orderItems as $item) {
+                if ($order->id === $item->Order_id  ) {
+
+                    $order->orderItems->push($item);
+                }
+            }
+        }
+        
+        
+        return Inertia::render('Customer/Order/CustomerOrder', [
+            'user' => $customer,
+            'orders' => $orders,
+            'orderItems' => $orderItems,
+        ]
+        );
     }
 
     /**
