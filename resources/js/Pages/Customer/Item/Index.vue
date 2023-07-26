@@ -2,9 +2,45 @@
 import AppLayout from "@/Layouts/AppLayout.vue";
 import { useDark, useToggle } from "@vueuse/core";
 import { reactive, watchEffect, defineProps, ref } from "vue";
-
+import { useGlobalConfig } from "vuestic-ui";
+// Pagination Preset dark and light mode
+const colorPagination = () => {
+    if (isDark.value) {
+        mergeGlobalConfig({
+            components: {
+                presets: {
+                    VaPagination: {
+                        colorPagination: {
+                            color: "paidit-300",
+                            activePageColor: "paidit-600",
+                        },
+                    },
+                },
+            },
+        });
+    } else {
+        mergeGlobalConfig({
+            components: {
+                presets: {
+                    VaPagination: {
+                        colorPagination: {
+                            color: "paidit-400",
+                            activePageColor: "paidit-600",
+                        },
+                    },
+                },
+            },
+        });
+    }
+};
 // Dark Mode
 const isDark = useDark();
+const valuePagination = ref(1);
+const { mergeGlobalConfig } = useGlobalConfig();
+colorPagination();
+watchEffect(() => {
+    colorPagination();
+});
 const state = reactive({
     darkMode: useDark().value,
     tableMode: "",
@@ -40,11 +76,28 @@ const getUniqueItemTypes = (data) => {
             uniqueItemTypes.value.push({
                 text: itemType,
                 value: itemTypeId,
+                id: itemTypeId,
             });
         }
     }
-    console.log(uniqueItemTypes.value.length);
 };
+const options = [
+    {
+        text: "First",
+        value: "1",
+        id: "1",
+    },
+    {
+        text: "Second",
+        value: "2",
+        id: "2",
+    },
+    {
+        text: "Also First but with diffrent text",
+        value: "1",
+        id: "3",
+    },
+];
 
 // Counter
 const valueCounter = ref(0);
@@ -54,10 +107,9 @@ const valueTab = ref(0);
 const keyTabValue = ref(props.business[0].business__item);
 
 // Select
-const valueSelect = ref(null);
 const uniqueItemTypes = ref([]);
 getUniqueItemTypes(keyTabValue.value);
-
+const valueSelect = ref(uniqueItemTypes.value[0]);
 // Search
 const valueSearch = ref("");
 
@@ -75,7 +127,7 @@ const setKeyTabValue = (value) => {
         </template>
         <div class="py-5">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <va-tabs v-model="valueTab" class="max-w-7xl">
+                <va-tabs v-model="valueTab">
                     <template #tabs>
                         <va-tab
                             v-for="tab in business"
@@ -87,9 +139,11 @@ const setKeyTabValue = (value) => {
                     </template>
                     <div class="">
                         <!-- Title and Filter div -->
-                        <div>
+                        <div class="py-6">
                             <!-- Title and Select Option div -->
-                            <div class="">
+                            <div
+                                class="flex flex-col items-start mb-4 md:mb-0 md:flex-row"
+                            >
                                 <!-- Title -->
                                 <div>
                                     <p
@@ -99,30 +153,36 @@ const setKeyTabValue = (value) => {
                                     </p>
                                 </div>
                                 <!-- Select Option -->
-                                <div>
-                                    <p class="mr-3">Filter:</p>
+                                <div
+                                    class="flex items-center ml-4 md:ml-0 md:mt-0 mt-7"
+                                >
+                                    <p class="mr-3 text-right">Filter:</p>
                                     <va-select
                                         v-model="valueSelect"
                                         :options="uniqueItemTypes"
-                                        class=""
-                                        placeholder="Type of Product"
+                                        class="w-auto text-black"
+                                        value="uniqueItemTypes"
+                                        placeholder="Select an option"
                                     />
                                 </div>
                             </div>
-                            <!-- Search div -->
-                            <div>
+                            <!-- Full Search div -->
+                            <div class="mt-6">
                                 <!-- Search -->
                                 <div>
-                                    <p class="">Search:</p>
+                                    <p class="inline-block mr-3">Search:</p>
                                     <va-input
                                         v-model="valueSearch"
-                                        class="mb-6"
-                                        label="Search by Name"
+                                        class="w-25"
                                         placeholder="Search by Name"
                                     />
                                 </div>
                             </div>
+                            <div class="mt-8 mb-10">
+                                <va-divider />
+                            </div>
                         </div>
+
                         <!-- Cards v-for div -->
                         <div class="flex flex-wrap justify-center align-center">
                             <div
@@ -190,9 +250,55 @@ const setKeyTabValue = (value) => {
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Pagination -->
+                        <div class="text-center md:text-end">
+                            <div class="justify-end inline-block">
+                                <va-pagination
+                                    v-model="valuePagination"
+                                    :visible-pages="7"
+                                    :total="100"
+                                    :page-size="10"
+                                    boundary-numbers
+                                    class=""
+                                    preset="colorPagination"
+                                >
+                                    <template
+                                        #prevPageLink="{ onClick, disabled }"
+                                    >
+                                        <va-button
+                                            preset="colorPagination"
+                                            :disabled="disabled"
+                                            aria-label="go prev page"
+                                            @click="onClick"
+                                        >
+                                            Previous
+                                        </va-button>
+                                    </template>
+                                    <template
+                                        #nextPageLink="{ onClick, disabled }"
+                                    >
+                                        <va-button
+                                            preset="colorPagination"
+                                            :disabled="disabled"
+                                            aria-label="go next page"
+                                            @click="onClick"
+                                        >
+                                            Next
+                                        </va-button>
+                                    </template>
+                                </va-pagination>
+                            </div>
+                        </div>
                     </div>
                 </va-tabs>
             </div>
         </div>
     </AppLayout>
 </template>
+
+<style>
+.va-tabs__content {
+    width: 100%;
+}
+</style>
