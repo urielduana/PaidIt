@@ -11,6 +11,9 @@ import "vue-good-table-next/dist/vue-good-table-next.css";
 import { createVuestic } from "vuestic-ui";
 import "vuestic-ui/css";
 import config from "../../vuestic.config";
+// JS
+import VueVisualFilter from "@visual-filter/vue3";
+
 const appName =
     window.document.getElementsByTagName("title")[0]?.innerText || "Laravel";
 
@@ -27,6 +30,7 @@ createInertiaApp({
             .use(ZiggyVue, Ziggy)
             .use(VueGoodTablePlugin)
             .use(createVuestic({ config }))
+            .use(VueVisualFilter)
             .component("tabs", Tabs)
             .component("tab", Tab)
             .mount(el);

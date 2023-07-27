@@ -1,5 +1,6 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
+import ProductCard from "@/Components/ProductCard.vue";
 import { useDark, useToggle } from "@vueuse/core";
 import { reactive, watchEffect, defineProps, ref } from "vue";
 import { useGlobalConfig } from "vuestic-ui";
@@ -184,71 +185,17 @@ const setKeyTabValue = (value) => {
                         </div>
 
                         <!-- Cards v-for div -->
-                        <div class="flex flex-wrap justify-center align-center">
-                            <div
+                        <div class="flex flex-wrap justify-center">
+                            <ProductCard
+                                :id="item.id"
+                                :title="item.name"
+                                :type="item.item__item__type.name"
+                                :price="item.price"
+                                :stock="item.stock"
+                                :description="item.description"
                                 v-for="item in keyTabValue"
                                 :key="item.id"
-                                class="max-w-min bg-white dark:bg-paidit-600 my-8 mx-4 rounded-xl"
-                            >
-                                <div>
-                                    <div
-                                        class="-mt-10 lg:relative flex items-center justify-center mb-7"
-                                    >
-                                        <va-avatar
-                                            src="https://cdn.kiwilimon.com/brightcove/8555/8555.jpg"
-                                            size="10rem"
-                                        />
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="px-5">
-                                        <va-divider class="" />
-                                        <div class="py-2 flex-col space-y-2">
-                                            <p class="text-center font-bold">
-                                                {{ item.name }}
-                                            </p>
-                                            <p
-                                                class="text-center not-italic font-light"
-                                            >
-                                                $ {{ item.price }}
-                                            </p>
-                                            <p
-                                                class="text-center not-italic font-light"
-                                            >
-                                                {{ item.stock }} Pieces
-                                                Available
-                                            </p>
-                                        </div>
-                                        <div
-                                            class="flex items-center justify-center py-4"
-                                        >
-                                            <va-counter
-                                                v-model="valueCounter"
-                                                manual-input
-                                            />
-                                        </div>
-                                        <div
-                                            class="flex items-center justify-center pb-4"
-                                        >
-                                            <va-button
-                                                size="medium"
-                                                color="paidit-300"
-                                            >
-                                                <div
-                                                    class="flex text-paidit-600"
-                                                >
-                                                    <div class="mr-2">
-                                                        <ion-icon
-                                                            name="add-circle-outline"
-                                                        />
-                                                    </div>
-                                                    <div>Add Product</div>
-                                                </div>
-                                            </va-button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            ></ProductCard>
                         </div>
 
                         <!-- Pagination -->
