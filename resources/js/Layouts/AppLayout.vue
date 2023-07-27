@@ -29,7 +29,6 @@ const currentRoute = computed(() => {
 });
 // Order in objects the main objects are name, and they are gonna have the other parameters in object
 let filteredMenuItems = {};
-let navBarColor = "#223A59";
 
 if (currentRoute.value.name === "dashboard") {
     filteredMenuItems = menuItems.Dashboard;
@@ -61,16 +60,12 @@ const logout = () => {
 </script>
 
 <template>
-    <!-- {{ currentRoute.url }}
-    <pre>
-        {{ filteredMenuItems }}
-    </pre> -->
     <div>
         <Head :title="title" />
 
         <Banner />
         <div class="min-h-screen">
-            <nav :style="{ backgroundColor: navBarColor }">
+            <nav class="bg-paidit-600">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
@@ -87,21 +82,21 @@ const logout = () => {
                                 v-for="(menuItem, index) in filteredMenuItems"
                                 :key="index"
                             >
-                                <!-- Si se atreven traten de resolver esto, es para que se marque el link de la página actual, la funcion route().current() es de Inertia -->
                                 <NavLink
                                     :href="menuItem.route"
                                     :active="currentRoute.url == menuItem.route"
                                 >
-                                    <!-- <NavLink :href="menuItem.route"> -->
                                     {{ menuItem.label }}
                                 </NavLink>
                             </div>
                         </div>
 
-                        <div class="hidden sm:flex sm:items-center sm:ml-6">
+                        <div
+                            class="hidden sm:flex sm:items-center sm:ml-6 justify-end"
+                        >
                             <DarkSwitch />
 
-                            <div class="ml-3 relative">
+                            <div class="ml-1">
                                 <!-- Teams Dropdown -->
                                 <Dropdown
                                     v-if="$page.props.jetstream.hasTeamFeatures"
