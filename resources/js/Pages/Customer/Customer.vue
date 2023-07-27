@@ -10,29 +10,36 @@ const props = defineProps({
         type: Object,
         required: true,
     },
+    transactions: {
+        type: Array,
+        required: true,
+    },
 });
-// Datos de ejemplo de transacciones
-const transactions = [
-    { amount: 100, type: "income" },
-    { amount: 9, type: "income" },
-    { amount: 8, type: "expense" },
-    { amount: 1, type: "expense" },
-    // ... más transacciones
-];
 
-// Función para normalizar los valores dentro de un rango específico
+const transactions = props.transactions;
+
+// Función para normalizar los valores
 function normalizeValue(value, min, max) {
     return (value - min) / (max - min);
 }
 
-// Calculamos los totales de ingresos y gastos
-const totalIncome = transactions
-    .filter((transaction) => transaction.type === "income")
-    .reduce((total, transaction) => total + transaction.amount, 0);
-
-const totalExpenses = transactions
-    .filter((transaction) => transaction.type === "expense")
-    .reduce((total, transaction) => total + transaction.amount, 0);
+// Totales de ingresos y gastos
+const totalIncome =
+    transactions &&
+    transactions
+        .filter((transaction) => transaction.name === "income")
+        .reduce(
+            (total, transaction) => total + parseFloat(transaction.mount),
+            0
+        );
+const totalExpenses =
+    transactions &&
+    transactions
+        .filter((transaction) => transaction.name === "expense")
+        .reduce(
+            (total, transaction) => total + parseFloat(transaction.mount),
+            0
+        );
 
 // Encontramos el valor máximo de ingresos y gastos para normalizar los valores
 const maxIncome = Math.max(totalIncome, totalExpenses);
@@ -43,151 +50,9 @@ const incomePercentage = normalizeValue(totalIncome, 0, maxIncome) * 100;
 const expensePercentage = normalizeValue(totalExpenses, 0, maxExpenses) * 100;
 
 const totalRevenue = totalIncome - totalExpenses;
+
 const img =
     "https://img.freepik.com/vector-gratis/fondo-galaxia-realista_52683-12122.jpg?q=10&h=200";
-
-const items = [
-    {
-        id: 1,
-        created_at: "2023-07-26",
-        status: {
-            status: "income",
-        },
-    },
-    {
-        id: 2,
-        created_at: "2023-07-25",
-        status: {
-            status: "expense",
-        },
-    },
-    {
-        id: 3,
-        created_at: "2023-07-24",
-        status: {
-            status: "income",
-        },
-    },
-    {
-        id: 4,
-        created_at: "2023-07-23",
-        status: {
-            status: "expense",
-        },
-    },
-    {
-        id: 5,
-        created_at: "2023-07-22",
-        status: {
-            status: "income",
-        },
-    },
-    {
-        id: 6,
-        created_at: "2023-07-21",
-        status: {
-            status: "expense",
-        },
-    },
-    {
-        id: 7,
-        created_at: "2023-07-20",
-        status: {
-            status: "income",
-        },
-    },
-    {
-        id: 8,
-        created_at: "2023-07-19",
-        status: {
-            status: "expense",
-        },
-    },
-    {
-        id: 9,
-        created_at: "2023-07-18",
-        status: {
-            status: "income",
-        },
-    },
-    {
-        id: 10,
-        created_at: "2023-07-17",
-        status: {
-            status: "expense",
-        },
-    },
-    {
-        id: 11,
-        created_at: "2023-07-16",
-        status: {
-            status: "income",
-        },
-    },
-    {
-        id: 12,
-        created_at: "2023-07-15",
-        status: {
-            status: "expense",
-        },
-    },
-    {
-        id: 13,
-        created_at: "2023-07-14",
-        status: {
-            status: "income",
-        },
-    },
-    {
-        id: 14,
-        created_at: "2023-07-13",
-        status: {
-            status: "expense",
-        },
-    },
-    {
-        id: 15,
-        created_at: "2023-07-12",
-        status: {
-            status: "income",
-        },
-    },
-    {
-        id: 16,
-        created_at: "2023-07-11",
-        status: {
-            status: "expense",
-        },
-    },
-    {
-        id: 17,
-        created_at: "2023-07-10",
-        status: {
-            status: "income",
-        },
-    },
-    {
-        id: 18,
-        created_at: "2023-07-09",
-        status: {
-            status: "expense",
-        },
-    },
-    {
-        id: 19,
-        created_at: "2023-07-08",
-        status: {
-            status: "income",
-        },
-    },
-    {
-        id: 20,
-        created_at: "2023-07-07",
-        status: {
-            status: "expense",
-        },
-    },
-];
 </script>
 
 <template>
@@ -218,7 +83,6 @@ const items = [
                                 >Total Revenue</span
                             >
                         </section>
-
                         <!-- Income bar -->
                         <va-progress-bar
                             :model-value="incomePercentage"
@@ -285,13 +149,14 @@ const items = [
                             >
                                 <tr>
                                     <th class="px-4 py-2">N°</th>
-                                    <th class="px-4 py-2">Tipo</th>
-                                    <th class="px-4 py-2">Fecha</th>
+                                    <th class="px-4 py-2">Mount</th>
+                                    <th class="px-4 py-2">Type</th>
+                                    <th class="px-4 py-2">Date</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr
-                                    v-for="item in items"
+                                    v-for="item in transactions"
                                     :key="item.id"
                                     class="table-row-divider"
                                 >
@@ -299,23 +164,23 @@ const items = [
                                         {{ item.id }}
                                     </td>
                                     <td class="border px-4 py-2">
+                                        ${{ parseFloat(item.mount).toFixed(2) }}
+                                    </td>
+                                    <td class="border px-4 py-2">
                                         <div
                                             :class="{
                                                 'text-green-500':
-                                                    item.status.status ===
-                                                    'income',
+                                                    item.name === 'income',
                                                 'text-red-500':
-                                                    item.status.status ===
-                                                    'expense',
+                                                    item.name === 'expense',
                                             }"
                                             class="py-1 px-2 rounded-md font-semibold"
                                         >
-                                            {{ item.status.status }}
+                                            {{ item.name }}
                                         </div>
                                     </td>
-
                                     <td class="border px-4 py-2">
-                                        {{ item.created_at }}
+                                        {{ item.created_at.substring(0, 10) }}
                                     </td>
                                 </tr>
                             </tbody>
@@ -340,11 +205,10 @@ thead.sticky {
 }
 .table-container::-webkit-scrollbar {
     width: 8px;
-    background-color: none; 
+    background-color: none;
 }
-
 .table-container::-webkit-scrollbar-thumb {
-    background-color: #223a59; 
-    border-radius: 4px; 
+    background-color: #223a59;
+    border-radius: 4px;
 }
 </style>
