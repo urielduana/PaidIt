@@ -1,8 +1,20 @@
 <script setup>
-import { defineProps, ref } from "vue";
+import { defineProps, reactive, ref } from "vue";
 import { useToast } from "vuestic-ui";
+import { useForm } from "@inertiajs/vue3";
+
+// Image
+const image = "https://source.unsplash.com/random?" + props.title;
+
+// Data
+const form = useForm({
+    id: props.id,
+    quantity: 0,
+});
+
 // Toast
 const { init, close, closeAll } = useToast();
+
 // Optional receive data
 const initToast = (data) => {
     init(data);
@@ -39,33 +51,40 @@ const props = defineProps({
     },
 });
 
-// Image
-const image = "https://source.unsplash.com/random?" + props.title;
-
-// Counter
-const valueCounter = ref(0);
-
 // Functions
-const addProduct = () => {
-    const data = {
-        id: props.id,
-        counter: valueCounter.value,
-    };
+const addProduct = async () => {
     const toast = {
         title: "Adding Product...",
-        message: `Adding ${data.counter} ${props.title} to your cart!`,
+        message: `You added ${form.quantity} ${props.title} to your cart!`,
         closeable: true,
         color: "paidit-400",
     };
     initToast(toast);
-    valueCounter.value = 0;
+    await submit();
+    // console.log("Product added!");
+
+    form.quantity = 0;
 };
 
 // Inertia REQUESTS
-const submit = () => {
-    form.post(route("register"), {
-        onFinish: () => form.reset("password", "password_confirmation"),
-    });
+const submit = async () => {
+    try {
+        const response = await form.post("/customer/item");
+        initToast({
+            title: "Product Added!",
+            message: `You added ${form.quantity} ${props.title} to your cart!`,
+            closeable: true,
+            color: "paidit-100",
+        });
+
+    } catch (error) {
+        initToast({
+            title: "We have a problem!",
+            message: `We couldn't add "${props.title} (${form.quantity})" to your cart! Please try again.`,
+            closeable: true,
+            color: "danger",
+        });
+    }
 };
 </script>
 <template>
@@ -108,12 +127,17 @@ const submit = () => {
                     </p>
                 </div>
                 <div class="flex items-center justify-center py-4">
-                    <va-counter v-model="valueCounter" manual-input :min="0" />
+                    <va-counter
+                        v-model="form.quantity"
+                        manual-input
+                        :min="0"
+                        :max="stock"
+                    />
                 </div>
                 <div class="flex items-center justify-center pb-4">
                     <!-- Verify if valueCounter is > than 0 if not disable -->
                     <va-button
-                        :disabled="valueCounter <= 0"
+                        :disabled="form.quantity <= 0"
                         size="medium"
                         color="paidit-300"
                         @click="addProduct()"

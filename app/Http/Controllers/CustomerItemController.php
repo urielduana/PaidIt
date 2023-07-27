@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Business;
-use App\Models\Employee;
-use App\Models\Item;
 use App\Models\Cart;
+use App\Models\Customer;
+use App\Models\CartItem;
+use App\Models\Item;
 
 class CustomerItemController extends Controller
 {
@@ -17,7 +18,6 @@ class CustomerItemController extends Controller
     public function index()
     {
         $business = Business::with(['business_Item:id,name,price,description,stock,Business_id,Item_type_id', 'business_Item.item_Item_Type:id,name'])->select('id', 'name')->get();
-
         return Inertia::render('Customer/Item/Index', [
             'business' => $business,
         ]);
@@ -36,19 +36,42 @@ class CustomerItemController extends Controller
      */
     public function store(Request $request)
     {
+        // Get the item id and quantity
+        $itemId = $request->input('id');
+        $quantity = $request->input('quantity');
+
+        // Get the customer id
+        $authId = auth()->user()->id;
+        $customerId = Customer::where('User_id', $authId)->firstOrFail()->id;
         // Verify if the user has a cart
-        if ($request->session()->has('cart')) {
-            $cart = $request->session()->get('cart');
-            dd($cart);
-            return $cart;
-        } else {
-            // Create a new cart
-            $cart = Cart::create([
-                'Customer_id' => $request->user()->id,
-            ]);
+        try {
+            $cartId = Cart::where('Customer_id', $customerId)->firstOrFail()->id;
+        } catch (\Throwable $th) {
+            dd("No cart found");
+            $cart = new Cart();
+            $cart->Customer_id = $customerId;
             $cart->save();
-            dd($cart);
-            return $cart;
+            $cartId = $cart->id;
+        }
+
+        // Verify if the item is already in the cart
+        try {
+            $cartItem = CartItem::where('Cart_id', $cartId)->where('Item_id', $itemId)->first();
+            if ($cartItem) {
+                $cartItem->quantity += $quantity;
+                $cartItem->save();
+                return redirect()->back()->with('success', 'Item added to cart');
+            } else {
+                $cartItem = new CartItem();
+                $cartItem->Cart_id = $cartId;
+                $cartItem->Item_id = $itemId;
+                $cartItem->quantity = $quantity;
+                $cartItem->save();
+                // Return to the previous page reloading the page
+                return redirect()->back()->with('success', 'New item added to cart');
+            }
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', 'Error while adding item to cart');
         }
     }
 

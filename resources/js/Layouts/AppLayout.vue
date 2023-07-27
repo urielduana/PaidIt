@@ -538,10 +538,7 @@ const logout = () => {
     </div>
 
     <footer>
-        <div
-            :style="{ backgroundColor: navBarColor }"
-            class="text-center p-5 text-gray-100"
-        >
+        <div class="text-center p-5 text-gray-100 bg-paidit-600">
             © 2023 Copyright: PaidIt
         </div>
     </footer>
