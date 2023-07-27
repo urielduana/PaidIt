@@ -27,7 +27,8 @@ const currentRoute = computed(() => {
         url: path,
     };
 });
-let filteredMenuItems = menuItems.Dashboard;
+// Order in objects the main objects are name, and they are gonna have the other parameters in object
+let filteredMenuItems = {};
 let navBarColor = "#223A59";
 
 if (currentRoute.value.name === "dashboard") {
@@ -60,6 +61,10 @@ const logout = () => {
 </script>
 
 <template>
+    <!-- {{ currentRoute.url }}
+    <pre>
+        {{ filteredMenuItems }}
+    </pre> -->
     <div>
         <Head :title="title" />
 
@@ -72,7 +77,7 @@ const logout = () => {
                         <div class="flex">
                             <!-- Logo -->
                             <div class="shrink-0 flex items-center">
-                                <Link :href="filteredMenuItems[0].route">
+                                <Link :href="filteredMenuItems.Main_Menu.route">
                                     <ApplicationMark class="block h-9 w-auto" />
                                 </Link>
                             </div>
@@ -83,8 +88,11 @@ const logout = () => {
                                 :key="index"
                             >
                                 <!-- Si se atreven traten de resolver esto, es para que se marque el link de la página actual, la funcion route().current() es de Inertia -->
-                                <!-- <NavLink :href="menuItem.route" :active="route().current(menuItem.route)"> -->
-                                <NavLink :href="menuItem.route">
+                                <NavLink
+                                    :href="menuItem.route"
+                                    :active="currentRoute.url == menuItem.route"
+                                >
+                                    <!-- <NavLink :href="menuItem.route"> -->
                                     {{ menuItem.label }}
                                 </NavLink>
                             </div>

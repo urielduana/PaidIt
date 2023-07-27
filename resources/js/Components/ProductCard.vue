@@ -61,7 +61,12 @@ const addProduct = () => {
     valueCounter.value = 0;
 };
 
-// Inertia request
+// Inertia REQUESTS
+const submit = () => {
+    form.post(route("register"), {
+        onFinish: () => form.reset("password", "password_confirmation"),
+    });
+};
 </script>
 <template>
     <div class="max-w-min bg-white dark:bg-paidit-600 my-8 mx-4 rounded-xl">

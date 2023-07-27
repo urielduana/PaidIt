@@ -35,24 +35,24 @@ Route::middleware([
         Route::resource('/', CustomerController::class)
             ->names('customer');
         Route::resource('/business', CustomerBusinessController::class)
-            ->names('business');
+            ->names('customer.business');
         Route::resource('/item', CustomerItemController::class)
-            ->names('item');
+            ->names('customer.item');
     });
 
     Route::prefix('employee')->group(function () {
         Route::resource('/', EmployeeController::class)
             ->names('employee');
         Route::resource('/members', EmployeeMemberController::class)
-            ->names('members');
+            ->names('employee.member');
         Route::resource('/items', EmployeeItemController::class)
-            ->names('items');
+            ->names('employee.item');
         Route::resource('/finance', EmployeeFinanceController::class)
-            ->names('finance');
+            ->names('employee.finance');
         Route::resource('/settings', EmployeeSettingsController::class)
-            ->names('settings');
+            ->names('employee.settings');
         Route::resource('/orders', EmployeeOrderController::class)
-            ->names('orders');
+            ->names('employee.order');
     });
 
     Route::prefix('dashboard')->group(function () {
