@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('users')->insert(['name' => 'admin', 'age' => '61', 'phone' => '1153443089', 'email' => 'admin@admin.com', 'password' => Hash::make('password'), 'Gender_id' => '1']);
+        DB::table('users')->insert(['name' => 'admin', 'age' => '61', 'phone' => '1153443089', 'email' => 'admin@admin.com', 'password' => Hash::make('password'), 'Gender_id' => '1', 'profile_photo_path' => 'profile-photos/default.jpg']);
         // Give super admin to the first user
         $user = User::find(1);
         $role = Role::where('name', 'super-admin')->first();
@@ -26,6 +26,7 @@ class UsersTableSeeder extends Seeder
 
         $numUsersToGenerate = 100;
         for ($i = 0; $i < $numUsersToGenerate; $i++) {
+            $photoPath = 'profile-photos/default.jpg'; // Ruta de una imagen de perfil de muestra
             DB::table('users')->insert([
                 'name' => $faker->name,
                 'age' => $faker->numberBetween(18, 80),
@@ -33,6 +34,7 @@ class UsersTableSeeder extends Seeder
                 'email' => $faker->unique()->safeEmail,
                 'password' => bcrypt('password'),
                 'Gender_id' => $faker->numberBetween(1, 5),
+                'profile_photo_path' => $photoPath, // Asignar la ruta de la foto de perfil
             ]);
         }
     }

@@ -69,7 +69,7 @@ const img =
                     <div class="flex flex-col items-center py-10 px-4">
                         <img
                             class="w-24 h-24 mb-3 rounded-full shadow-lg"
-                            :src="img"
+                            :src="user.profile_photo_url"
                             alt="user image"
                         />
                         <section class="my-3">
@@ -135,7 +135,7 @@ const img =
 
                 <!-- Inicia saldo -->
                 <div
-                    class="max-w-3xl bg-white border border-gray-200 rounded-lg shadow dark:bg-[#1C2532] dark:border-gray-700 p-4 grid content-center gap-10"
+                    class="max-w-2xl bg-white border border-gray-200 rounded-lg shadow dark:bg-[#1C2532] dark:border-gray-700 p-4 grid content-center gap-10"
                 >
                     <h6
                         class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white justify-items-center grid"
