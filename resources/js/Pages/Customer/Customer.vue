@@ -89,7 +89,6 @@ const items = [
             status: "expense",
         },
     },
-    // Elementos adicionales
     {
         id: 7,
         created_at: "2023-07-20",
@@ -208,13 +207,11 @@ const items = [
                             :src="img"
                             alt="user image"
                         />
-                        <!-- Inicia total mount -->
                         <section class="my-3">
                             <h5
                                 class="mb-1 text-xl text-center font-extrabold text-gray-900 dark:text-white"
                             >
                                 ${{ totalRevenue.toFixed(2) }}
-                                <!-- Mostramos el Total Revenue -->
                             </h5>
                             <span
                                 class="text-sm text-center text-gray-500 dark:text-gray-400"
@@ -283,12 +280,11 @@ const items = [
                     </h6>
                     <div class="w-full text-center table-container">
                         <table class="table-auto w-full">
-                            <!-- Encabezado de la tabla -->
                             <thead
                                 class="sticky top-0 bg-white dark:bg-[#1C2532]"
                             >
                                 <tr>
-                                    <th class="px-4 py-2">ID</th>
+                                    <th class="px-4 py-2">N°</th>
                                     <th class="px-4 py-2">Tipo</th>
                                     <th class="px-4 py-2">Fecha</th>
                                 </tr>
