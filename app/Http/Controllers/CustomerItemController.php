@@ -7,6 +7,7 @@ use Inertia\Inertia;
 use App\Models\Business;
 use App\Models\Employee;
 use App\Models\Item;
+use App\Models\Cart;
 
 class CustomerItemController extends Controller
 {
@@ -35,7 +36,20 @@ class CustomerItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Verify if the user has a cart
+        if ($request->session()->has('cart')) {
+            $cart = $request->session()->get('cart');
+            dd($cart);
+            return $cart;
+        } else {
+            // Create a new cart
+            $cart = Cart::create([
+                'Customer_id' => $request->user()->id,
+            ]);
+            $cart->save();
+            dd($cart);
+            return $cart;
+        }
     }
 
     /**

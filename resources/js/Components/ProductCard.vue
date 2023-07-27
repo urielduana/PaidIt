@@ -1,6 +1,12 @@
 <script setup>
 import { defineProps, ref } from "vue";
-
+import { useToast } from "vuestic-ui";
+// Toast
+const { init, close, closeAll } = useToast();
+// Optional receive data
+const initToast = (data) => {
+    init(data);
+};
 // Props
 const props = defineProps({
     id: {
@@ -45,9 +51,17 @@ const addProduct = () => {
         id: props.id,
         counter: valueCounter.value,
     };
-    console.log(data);
+    const toast = {
+        title: "Adding Product...",
+        message: `Adding ${data.counter} ${props.title} to your cart!`,
+        closeable: true,
+        color: "paidit-400",
+    };
+    initToast(toast);
     valueCounter.value = 0;
 };
+
+// Inertia request
 </script>
 <template>
     <div class="max-w-min bg-white dark:bg-paidit-600 my-8 mx-4 rounded-xl">
@@ -89,10 +103,12 @@ const addProduct = () => {
                     </p>
                 </div>
                 <div class="flex items-center justify-center py-4">
-                    <va-counter v-model="valueCounter" manual-input />
+                    <va-counter v-model="valueCounter" manual-input :min="0" />
                 </div>
                 <div class="flex items-center justify-center pb-4">
+                    <!-- Verify if valueCounter is > than 0 if not disable -->
                     <va-button
+                        :disabled="valueCounter <= 0"
                         size="medium"
                         color="paidit-300"
                         @click="addProduct()"
@@ -109,3 +125,9 @@ const addProduct = () => {
         </div>
     </div>
 </template>
+
+<style>
+.va-toast {
+    border: 0;
+}
+</style>
