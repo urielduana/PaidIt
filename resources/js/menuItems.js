@@ -12,7 +12,7 @@ const menuItems = {
         },
         Products: {
             label: "Products",
-            route: "/customer/item",
+            route: "/customer/items",
             permissions: ["view_customer", "customer/items"],
         },
         Cart: {
