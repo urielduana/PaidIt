@@ -71,20 +71,23 @@ const totalRevenue = totalIncome - totalExpenses;
                 >
                     <div class="flex flex-col items-center py-10 px-4">
                         <img
-                            class="w-24 h-24 mb-3 rounded-full shadow-lg"
+                            class="w-24 h-24 mb-6 rounded-full shadow-lg"
                             :src="img"
                             alt="user image"
                         />
-                        <section class="my-3">
-                            <h2
-                                class="mb-1 text-xl text-center font-extrabold text-gray-900 dark:text-white"
-                            >
-                                {{ user.name }}
-                            </h2>
-                            <span
-                                class="text-sm text-center text-gray-500 dark:text-gray-400"
-                                >Employee</span
-                            >
+                        <!-- Inicia user-data -->
+                        <section class="text-center grid gap-4">
+                            <div>
+                                <h2
+                                    class="text-xl font-extrabold text-gray-900 dark:text-white"
+                                >
+                                    {{ user.name }}
+                                </h2>
+                                <span
+                                    class="text-sm text-gray-500 dark:text-gray-400"
+                                    >Employee</span
+                                >
+                            </div>
                             <div>
                                 <h2
                                     class="text-lg font-extrabold text-gray-900 dark:text-white"
@@ -97,38 +100,37 @@ const totalRevenue = totalIncome - totalExpenses;
                                 >
                             </div>
                         </section>
-                        <!-- Inicia user-data -->
-                        <section class="text-center my-2">
+                        <section class="text-center my-6 w-52">
                             <div class="flex">
                                 <h2
-                                    class="text-base font-extrabold text-gray-900 dark:text-white"
+                                    class="text-base font-extrabold text-gray-900 dark:text-white flex justify-start"
                                 >
                                     Roles:
                                 </h2>
                                 <span
-                                    class="text-sm text-gray-500 dark:text-gray-400"
+                                    class="text-sm text-gray-500 dark:text-gray-400 flex justify-end"
                                     >{{ roles[0].name }}</span
                                 >
                             </div>
                             <div class="flex">
                                 <h2
-                                    class="text-base font-extrabold text-gray-900 dark:text-white"
+                                    class="text-base font-extrabold text-gray-900 dark:text-white flex justify-start"
                                 >
                                     Phone:
                                 </h2>
                                 <span
-                                    class="text-sm text-gray-500 dark:text-gray-400"
+                                    class="text-sm text-gray-500 dark:text-gray-400 flex justify-end"
                                     >{{ user.phone }}</span
                                 >
                             </div>
                             <div class="flex">
                                 <h2
-                                    class="text-base font-extrabold text-gray-900 dark:text-white"
+                                    class="text-base font-extrabold text-gray-900 dark:text-white flex justify-start"
                                 >
                                     Email:
                                 </h2>
                                 <span
-                                    class="text-sm text-gray-500 dark:text-gray-400"
+                                    class="text-sm text-gray-500 dark:text-gray-400 flex justify-end"
                                     >{{ user.email }}</span
                                 >
                             </div>
@@ -140,10 +142,10 @@ const totalRevenue = totalIncome - totalExpenses;
 
                 <!-- Inicia saldo -->
                 <div
-                    class="max-w-2xl bg-white border border-gray-200 rounded-lg shadow dark:bg-[#1C2532] dark:border-gray-700 p-4 grid content-center gap-4"
+                    class="max-w-2xl bg-white border border-gray-200 rounded-lg shadow dark:bg-[#1C2532] dark:border-gray-700 p-4 grid justify-items-center"
                 >
                     <h6
-                        class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white justify-items-center grid"
+                        class="my-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white justify-items-center grid"
                     >
                         Business
                     </h6>
@@ -163,53 +165,57 @@ const totalRevenue = totalIncome - totalExpenses;
                     >
                         Bills: ${{ totalExpenses }}
                     </va-progress-bar>
-                    <h2>TOTAL: ${{ totalRevenue }}</h2>
-                    <div class="w-full text-center table-container">
+                    <h2
+                        class="text-lg font-extrabold text-gray-900 dark:text-white flex gap-4"
+                    >
+                        Total: <span> ${{ totalRevenue }}</span>
+                    </h2>
+                    <section class="w-80 text-center table-container grid">
                         <div class="flex">
                             <h2
-                                class="text-base font-extrabold text-gray-900 dark:text-white"
+                                class="text-base font-extrabold text-gray-900 dark:text-white justify-start flex"
                             >
                                 Name:
                             </h2>
                             <span
-                                class="text-sm text-gray-500 dark:text-gray-400"
+                                class="text-sm text-gray-500 dark:text-gray-400 justify-end flex"
                                 >{{ business.name }}</span
                             >
                         </div>
                         <div class="flex">
                             <h2
-                                class="text-base font-extrabold text-gray-900 dark:text-white"
+                                class="text-base font-extrabold text-gray-900 dark:text-white justify-start flex"
                             >
                                 Email:
                             </h2>
                             <span
-                                class="text-sm text-gray-500 dark:text-gray-400"
+                                class="text-sm text-gray-500 dark:text-gray-400 justify-end flex"
                                 >{{ business.email }}</span
                             >
                         </div>
                         <div class="flex">
                             <h2
-                                class="text-base font-extrabold text-gray-900 dark:text-white"
+                                class="text-base font-extrabold text-gray-900 dark:text-white justify-start flex"
                             >
                                 Phone:
                             </h2>
                             <span
-                                class="text-sm text-gray-500 dark:text-gray-400"
+                                class="text-sm text-gray-500 dark:text-gray-400 justify-end flex"
                                 >{{ business.phone }}</span
                             >
                         </div>
                         <div class="flex">
                             <h2
-                                class="text-base font-extrabold text-gray-900 dark:text-white"
+                                class="text-base font-extrabold text-gray-900 dark:text-white justify-start flex"
                             >
                                 Address:
                             </h2>
                             <span
-                                class="text-sm text-gray-500 dark:text-gray-400"
+                                class="text-sm text-gray-500 dark:text-gray-400 justify-end flex"
                                 >{{ business.address }}</span
                             >
                         </div>
-                    </div>
+                    </section>
                 </div>
                 <!-- Finaliza saldo -->
             </div>
