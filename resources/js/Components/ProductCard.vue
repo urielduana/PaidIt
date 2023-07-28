@@ -76,7 +76,6 @@ const submit = async () => {
             closeable: true,
             color: "paidit-100",
         });
-
     } catch (error) {
         initToast({
             title: "We have a problem!",
@@ -88,7 +87,7 @@ const submit = async () => {
 };
 </script>
 <template>
-    <div class="max-w-min bg-white dark:bg-paidit-600 my-8 mx-4 rounded-xl">
+    <div class="w-52 bg-white dark:bg-paidit-600 my-8 mx-4 rounded-xl">
         <div>
             <div
                 class="-mt-10 lg:relative flex items-center justify-center mb-7"
@@ -116,13 +115,19 @@ const submit = async () => {
                             class="mr-2"
                         />
                     </div>
-                    <p class="text-center font-light text-stone-200 text-base">
+                    <p
+                        class="text-center font-light dark:text-stone-200 text-stone-600 text-base"
+                    >
                         $ {{ price }}
                     </p>
-                    <p class="text-center font-light text-stone-200 text-base">
+                    <p
+                        class="text-center font-light dark:text-stone-200 text-stone-600 text-base"
+                    >
                         {{ stock }} Pieces Available
                     </p>
-                    <p class="text-center font-light text-stone-400 text-xs">
+                    <p
+                        class="text-center font-light dark:text-stone-400 text-stone-800 text-xs"
+                    >
                         {{ description }}
                     </p>
                 </div>
@@ -142,10 +147,8 @@ const submit = async () => {
                         color="paidit-300"
                         @click="addProduct()"
                     >
-                        <div class="flex text-paidit-600">
-                            <div class="mr-2">
-                                <ion-icon name="add-circle-outline" />
-                            </div>
+                        <div class="flex align-center text-paidit-600">
+                            <ion-icon class="mr-2" name="add-circle-outline" />
                             <div>Add Product</div>
                         </div>
                     </va-button>

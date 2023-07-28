@@ -2,6 +2,7 @@
 import { defineProps, reactive, ref } from "vue";
 import { useToast } from "vuestic-ui";
 import { useForm } from "@inertiajs/vue3";
+// Import image from public/img
 
 // Image
 const image = "https://source.unsplash.com/random?" + props.title;
@@ -87,7 +88,7 @@ const submit = async () => {
 };
 </script>
 <template>
-    <div class="max-w-min bg-white dark:bg-paidit-600 my-8 mx-4 rounded-xl">
+    <div class="bg-white dark:bg-paidit-600 my-8 mx-4 rounded-xl w-52">
         <div>
             <div
                 class="-mt-10 lg:relative flex items-center justify-center mb-7"
@@ -115,36 +116,32 @@ const submit = async () => {
                             class="mr-2"
                         />
                     </div>
-                    <p class="text-center font-light text-stone-200 text-base">
+                    <p
+                        class="text-center font-light dark:text-stone-200 text-stone-600 text-base"
+                    >
                         $ {{ price }}
                     </p>
-                    <p class="text-center font-light text-stone-200 text-base">
+                    <p
+                        class="text-center font-light dark:text-stone-200 text-stone-600 text-base"
+                    >
                         {{ stock }} Pieces Available
                     </p>
-                    <p class="text-center font-light text-stone-400 text-xs">
+                    <p
+                        class="text-center font-light dark:text-stone-400 text-stone-800 text-xs"
+                    >
                         {{ description }}
                     </p>
                 </div>
-                <div class="flex items-center justify-center py-4">
-                    <va-counter
-                        v-model="form.quantity"
-                        manual-input
-                        :min="0"
-                        :max="stock"
-                    />
-                </div>
+
                 <div class="flex items-center justify-center pb-4">
                     <!-- Verify if valueCounter is > than 0 if not disable -->
                     <va-button
-                        :disabled="form.quantity <= 0"
                         size="medium"
-                        color="warning"
+                        color="yellow-500"
                         @click="addProduct()"
                     >
-                        <div class="flex text-paidit-600">
-                            <div class="mr-2">
-                                <ion-icon name="add-circle-outline" />
-                            </div>
+                        <div class="flex align-center justify-center">
+                            <ion-icon class="mr-2" name="add-circle-outline" />
                             <div>Add Product</div>
                         </div>
                     </va-button>

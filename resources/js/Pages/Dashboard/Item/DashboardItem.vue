@@ -123,15 +123,6 @@ const setKeyTabValue = (value) => {
 </script>
 
 <template>
-    <div class="flex flex-wrap">
-        <div class="flex-auto text-center">asdfasdfasdfasdfasdfasdf</div>
-        <div class="flex-auto text-center">asdfasdfasdfasdfasdfasdf</div>
-        <div class="flex-auto text-center">asdfasdfasdfasdfasdfasdf</div>
-        <div class="flex-auto text-center">asdfasdfasdfasdfasdfasdf</div>
-        <div class="flex-auto text-center">zsdadsad</div>
-        <div class="flex-auto text-center">z</div>
-    </div>
-
     <AppLayout title="Customer">
         <template #header>
             <h2>Products Management</h2>
@@ -196,7 +187,9 @@ const setKeyTabValue = (value) => {
                         </div>
 
                         <!-- Cards v-for div -->
-                        <div class="flex flex-wrap justify-center">
+                        <div
+                            class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4 lg:gap-6 p-5"
+                        >
                             <AddProductCard />
                             <ProductCardEdit
                                 :id="item.id"
