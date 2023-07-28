@@ -18,7 +18,44 @@ const props = defineProps({
         type: Object,
         required: true,
     },
+    transactions: {
+        type: Object,
+        required: true,
+    },
 });
+const transactions = props.transactions;
+
+// Función para normalizar los valores
+function normalizeValue(value, min, max) {
+    return (value - min) / (max - min);
+}
+
+// Totales de ingresos y gastos
+const totalIncome =
+    transactions &&
+    transactions
+        .filter((transaction) => transaction.name === "income")
+        .reduce(
+            (total, transaction) => total + parseFloat(transaction.mount),
+            0
+        );
+const totalExpenses =
+    transactions &&
+    transactions
+        .filter((transaction) => transaction.name === "expense")
+        .reduce(
+            (total, transaction) => total + parseFloat(transaction.mount),
+            0
+        );
+
+//Valor máximo de ingresos y gastos para normalizar los valores
+const maxIncome = Math.max(totalIncome, totalExpenses);
+const maxExpenses = maxIncome;
+
+//calculamos los porcentajes normalizados de ingresos y gastos
+const incomePercentage = normalizeValue(totalIncome, 0, maxIncome) * 100;
+const expensePercentage = normalizeValue(totalExpenses, 0, maxExpenses) * 100;
+const totalRevenue = totalIncome - totalExpenses;
 </script>
 
 <template>
@@ -103,13 +140,30 @@ const props = defineProps({
 
                 <!-- Inicia saldo -->
                 <div
-                    class="max-w-2xl bg-white border border-gray-200 rounded-lg shadow dark:bg-[#1C2532] dark:border-gray-700 p-4 grid content-center gap-10"
+                    class="max-w-2xl bg-white border border-gray-200 rounded-lg shadow dark:bg-[#1C2532] dark:border-gray-700 p-4 grid content-center gap-4"
                 >
                     <h6
                         class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white justify-items-center grid"
                     >
                         Business
                     </h6>
+                    <va-progress-bar
+                        :model-value="incomePercentage"
+                        size="22px"
+                        content-inside
+                        color="info"
+                    >
+                        Income: ${{ totalIncome }}
+                    </va-progress-bar>
+                    <va-progress-bar
+                        :model-value="expensePercentage"
+                        size="22px"
+                        content-inside
+                        color="danger"
+                    >
+                        Bills: ${{ totalExpenses }}
+                    </va-progress-bar>
+                    <h2>TOTAL: ${{ totalRevenue }}</h2>
                     <div class="w-full text-center table-container">
                         <div class="flex">
                             <h2

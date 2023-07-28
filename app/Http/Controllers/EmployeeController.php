@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Models\BusinessesTransaction;
 
 class EmployeeController extends Controller
 {
@@ -15,18 +16,16 @@ class EmployeeController extends Controller
         $authenticated = auth()->user();
         $employee = $authenticated->user_Employee;
         $business = $employee->employee_Business;
-
         $getRoles = $authenticated->roles;
-
-        $getPermisos = $authenticated->permissions;
+        $transactions = BusinessesTransaction::where('business_id', $business->id)->get();
         
         return Inertia::render('Employee/Employee', [
             'user' => $authenticated,
             'employee' => $employee,
             'business' => $business,
-            'roles' => $getRoles
+            'roles' => $getRoles,
+            'transactions' => $transactions,
         ]);
-        // return Inertia::render('Employee/Employee');
     }
 
     /**
