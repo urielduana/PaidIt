@@ -1,7 +1,6 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
-import Welcome from "@/Components/Welcome.vue";
-
+const img = "https://source.unsplash.com/random?";
 const props = defineProps({
     user: {
         type: Object,
@@ -16,11 +15,7 @@ const props = defineProps({
         required: true,
     },
     roles: {
-        type: Array,
-        required: true,
-    },
-    permissions: {
-        type: Array,
+        type: Object,
         required: true,
     },
 });
@@ -29,57 +24,140 @@ const props = defineProps({
 <template>
     <AppLayout title="Employee">
         <template #header>
-            <h2>Employee</h2>
+            <h2 class="font-semibold text-xl leading-tight">Employee</h2>
         </template>
         <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="overflow-hidden shadow-xl sm:rounded-lg flex justify-center">
-                    <!-- Iniciar Tarjeta Info-Usuario-->
-                    <div
-                        class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
-                    >
-                        <div class="flex flex-col items-center py-10 px-4">
-                            <img
-                                class="w-24 h-24 mb-3 rounded-full shadow-lg"
-                                :src="user.profile_photo_path"
-                                alt="user image"
-                            />
-                            <h5
-                                class="mb-1 text-xl text-center font-medium text-gray-900 dark:text-white"
+            <div class="flex justify-around py-6">
+                <!-- Inicia Tarjeta Info-Employee-->
+                <div
+                    class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-[#1C2532]"
+                >
+                    <div class="flex flex-col items-center py-10 px-4">
+                        <img
+                            class="w-24 h-24 mb-3 rounded-full shadow-lg"
+                            :src="img"
+                            alt="user image"
+                        />
+                        <section class="my-3">
+                            <h2
+                                class="mb-1 text-xl text-center font-extrabold text-gray-900 dark:text-white"
                             >
                                 {{ user.name }}
-                            </h5>
+                            </h2>
                             <span
                                 class="text-sm text-center text-gray-500 dark:text-gray-400"
-                                >Empleado</span
+                                >Employee</span
                             >
+                            <div>
+                                <h2
+                                    class="text-lg font-extrabold text-gray-900 dark:text-white"
+                                >
+                                    ${{ user.user__employee.salary }}
+                                </h2>
+                                <span
+                                    class="text-sm text-gray-500 dark:text-gray-400"
+                                    >Salary</span
+                                >
+                            </div>
+                        </section>
+                        <!-- Inicia user-data -->
+                        <section class="text-center my-2">
+                            <div class="flex">
+                                <h2
+                                    class="text-base font-extrabold text-gray-900 dark:text-white"
+                                >
+                                    Roles:
+                                </h2>
+                                <span
+                                    class="text-sm text-gray-500 dark:text-gray-400"
+                                    >{{ roles[0].name }}</span
+                                >
+                            </div>
+                            <div class="flex">
+                                <h2
+                                    class="text-base font-extrabold text-gray-900 dark:text-white"
+                                >
+                                    Phone:
+                                </h2>
+                                <span
+                                    class="text-sm text-gray-500 dark:text-gray-400"
+                                    >{{ user.phone }}</span
+                                >
+                            </div>
+                            <div class="flex">
+                                <h2
+                                    class="text-base font-extrabold text-gray-900 dark:text-white"
+                                >
+                                    Email:
+                                </h2>
+                                <span
+                                    class="text-sm text-gray-500 dark:text-gray-400"
+                                    >{{ user.email }}</span
+                                >
+                            </div>
+                        </section>
+                        <!-- Finaliza user-data -->
+                    </div>
+                </div>
+                <!-- Finaliza tarjeta Info-Usuario-->
 
+                <!-- Inicia saldo -->
+                <div
+                    class="max-w-2xl bg-white border border-gray-200 rounded-lg shadow dark:bg-[#1C2532] dark:border-gray-700 p-4 grid content-center gap-10"
+                >
+                    <h6
+                        class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white justify-items-center grid"
+                    >
+                        Business
+                    </h6>
+                    <div class="w-full text-center table-container">
+                        <div class="flex">
+                            <h2
+                                class="text-base font-extrabold text-gray-900 dark:text-white"
+                            >
+                                Name:
+                            </h2>
                             <span
-                                class="text-sm text-center my-4 text-gray-500 dark:text-gray-400"
-                                ><span class="font-bold text-white"
-                                    >Negocio:</span
-                                >
-                                {{ business.name }}
-                            </span>
-
+                                class="text-sm text-gray-500 dark:text-gray-400"
+                                >{{ business.name }}</span
+                            >
+                        </div>
+                        <div class="flex">
+                            <h2
+                                class="text-base font-extrabold text-gray-900 dark:text-white"
+                            >
+                                Email:
+                            </h2>
                             <span
-                                class="text-sm text-center mb-2 text-gray-500 dark:text-gray-400"
-                                ><span class="font-bold text-white"
-                                    >Roles:</span
-                                >
-                                {{ roles.name }}
-                            </span>
+                                class="text-sm text-gray-500 dark:text-gray-400"
+                                >{{ business.email }}</span
+                            >
+                        </div>
+                        <div class="flex">
+                            <h2
+                                class="text-base font-extrabold text-gray-900 dark:text-white"
+                            >
+                                Phone:
+                            </h2>
                             <span
-                                class="text-sm text-center mb-2 text-gray-500 dark:text-gray-400"
-                                ><span class="font-bold text-white"
-                                    >Permisos:</span
-                                >
-                                {{ permissions.name }}
-                            </span>
+                                class="text-sm text-gray-500 dark:text-gray-400"
+                                >{{ business.phone }}</span
+                            >
+                        </div>
+                        <div class="flex">
+                            <h2
+                                class="text-base font-extrabold text-gray-900 dark:text-white"
+                            >
+                                Address:
+                            </h2>
+                            <span
+                                class="text-sm text-gray-500 dark:text-gray-400"
+                                >{{ business.address }}</span
+                            >
                         </div>
                     </div>
-                    <!-- Finaliza tarjeta Info-Usuario-->
                 </div>
+                <!-- Finaliza saldo -->
             </div>
         </div>
     </AppLayout>

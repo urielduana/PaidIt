@@ -24,8 +24,7 @@ class EmployeeController extends Controller
             'user' => $authenticated,
             'employee' => $employee,
             'business' => $business,
-            'roles' => $getRoles,
-            'permissions' => $getPermisos
+            'roles' => $getRoles
         ]);
         // return Inertia::render('Employee/Employee');
     }
