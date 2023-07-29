@@ -14,14 +14,17 @@ class BusinessesTransactionTableSeeder extends Seeder
     public function run(): void
     {
         $faker = \Faker\Factory::create();
-        DB::table('businesses_transactions')->insert(['name' => $faker->sentence(5), 'mount' => '586', 'business_id' => '1']);
+        DB::table('businesses_transactions')->insert(['name' => $faker->sentence(5), 'mount' => '586', 'business_id' => '1', 'created_at' => $faker->dateTimeBetween('-1 years', 'now'), 'updated_at' => $faker->dateTimeBetween('-1 years', 'now'),]);
         $numItems = 125;
         for ($i = 0; $i < $numItems; $i++) {
+            $name = $faker->randomElement(['income', 'expense']);
             DB::table('businesses_transactions')->insert([
-                'name' => $faker->sentence(5),
+                'name' => $name,
                 'mount' => $faker->numberBetween(1, 1000),
                 'business_id' => $faker->numberBetween(1, 4),
+                'created_at' => $faker->dateTimeBetween('-2 years', 'now'),
+                'updated_at' => $faker->dateTimeBetween('-2 years', 'now'),
             ]);
-        }        
+        }
     }
 }

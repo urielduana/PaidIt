@@ -51,8 +51,9 @@ const expensePercentage = normalizeValue(totalExpenses, 0, maxExpenses) * 100;
 
 const totalRevenue = totalIncome - totalExpenses;
 
-const img =
-    "https://img.freepik.com/vector-gratis/fondo-galaxia-realista_52683-12122.jpg?q=10&h=200";
+//const img = "https://img.freepik.com/vector-gratis/fondo-galaxia-realista_52683-12122.jpg?q=10&h=200"; -> imagen local storage
+//const img ="https://robohash.org/api"; -> api de imagenes de robots
+const img = "https://source.unsplash.com/random?";
 </script>
 
 <template>
@@ -69,7 +70,7 @@ const img =
                     <div class="flex flex-col items-center py-10 px-4">
                         <img
                             class="w-24 h-24 mb-3 rounded-full shadow-lg"
-                            :src="user.profile_photo_url"
+                            :src="img"
                             alt="user image"
                         />
                         <section class="my-3">
