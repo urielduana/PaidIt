@@ -25,20 +25,16 @@ class CustomerOrderController extends Controller
         foreach ($orders as $order) {
             $order->orderItems = collect();
             foreach ($orderItems as $item) {
-                if ($order->id === $item->Order_id  ) {
-
+                if ($order->id === $item->Order_id) {
                     $order->orderItems->push($item);
                 }
             }
-        }
-        
-        
+        };
+
         return Inertia::render('Customer/Order/CustomerOrder', [
             'user' => $customer,
             'orders' => $orders,
-            'orderItems' => $orderItems,
-        ]
-        );
+        ]);
     }
 
     /**
@@ -46,7 +42,8 @@ class CustomerOrderController extends Controller
      */
     public function create()
     {
-        //
+        // Aquí simplemente devolvemos la vista del formulario para crear una nueva orden
+        return Inertia::render('Customer/Order/CreateOrder');
     }
 
     /**
@@ -54,7 +51,25 @@ class CustomerOrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validar los datos recibidos del formulario para crear una nueva orden
+        $request->validate([
+            'total' => 'required|numeric',
+            'status' => 'required|string',
+            // Otras validaciones que puedan ser necesarias para los campos de la orden
+        ]);
+
+        // Crear una nueva instancia del modelo Order y llenarla con los datos del formulario
+        $order = new Order([
+            'total' => $request->input('total'),
+            'status' => $request->input('status'),
+            'customer_id' => auth()->user()->user_Customer->id,
+        ]);
+
+        // Guardar el nuevo registro en la base de datos
+        $order->save();
+
+        // Redirigir a la lista de órdenes del cliente o mostrar un mensaje de éxito
+        return redirect()->route('customer.orders.index')->with('success', 'La orden ha sido creada exitosamente.');
     }
 
     /**
@@ -62,7 +77,15 @@ class CustomerOrderController extends Controller
      */
     public function show(string $id)
     {
-        //
+        // Obtener la orden específica y sus OrderItems relacionados
+        $order = Order::findOrFail($id);
+        $orderItems = OrderItem::where('order_id', $id)->get();
+
+        // Devolver la vista que muestra los detalles de la orden y sus items
+        return Inertia::render('Customer/Order/OrderDetails', [
+            'order' => $order,
+            'orderItems' => $orderItems,
+        ]);
     }
 
     /**
@@ -70,7 +93,13 @@ class CustomerOrderController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // Obtener la orden específica para editar
+        $order = Order::findOrFail($id);
+
+        // Devolver la vista del formulario de edición con los datos de la orden
+        return Inertia::render('Customer/Order/EditOrder', [
+            'order' => $order,
+        ]);
     }
 
     /**
@@ -78,7 +107,26 @@ class CustomerOrderController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Validar los datos recibidos del formulario para actualizar la orden
+        $request->validate([
+            'total' => 'required|numeric',
+            'status' => 'required|string',
+            // Otras validaciones que puedan ser necesarias para los campos de la orden
+        ]);
+
+        // Buscar la orden a actualizar por su ID
+        $order = Order::findOrFail($id);
+
+        // Actualizar los datos de la orden con los datos del formulario
+        $order->total = $request->input('total');
+        $order->status = $request->input('status');
+        // Puedes actualizar otros campos de la orden aquí si los tienes en el formulario
+
+        // Guardar los cambios en la base de datos
+        $order->save();
+
+        // Redirigir a la lista de órdenes del cliente o mostrar un mensaje de éxito
+        return redirect()->route('customer.orders.index')->with('success', 'La orden ha sido actualizada exitosamente.');
     }
 
     /**
@@ -86,6 +134,13 @@ class CustomerOrderController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // Buscar la orden a eliminar por su ID
+        $order = Order::findOrFail($id);
+
+        // Eliminar la orden de la base de datos
+        $order->delete();
+
+        // Redirigir a la lista de órdenes del cliente o mostrar un mensaje de éxito
+        return redirect()->route('customer.orders.index')->with('success', 'La orden ha sido eliminada exitosamente.');
     }
 }

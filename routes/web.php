@@ -7,6 +7,7 @@ use App\Http\Controllers\CustomerBusinessController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CustomerItemController;
 use App\Http\Controllers\CustomerOrderController;
+use App\Http\Controllers\CustomerCartController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EmployeeItemController;
@@ -41,6 +42,12 @@ Route::middleware([
             ->names('items');
         Route::resource('/orders', CustomerOrderController::class)
             ->names('orders');
+        Route::resource('/carts', CustomerCartController::class)
+            ->names('carts');
+
+        // Nuevas rutas para agregar elementos al carrito y completar la compra
+        Route::post('/add-to-cart', [CustomerCartController::class, 'addToCart'])->name('customer.addToCart');
+        Route::post('/complete-purchase', [CustomerCartController::class, 'completePurchase'])->name('customer.completePurchase');
     });
 
     Route::prefix('employee')->group(function () {
