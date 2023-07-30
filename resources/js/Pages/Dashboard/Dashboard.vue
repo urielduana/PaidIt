@@ -82,7 +82,8 @@ function getBusinessName(businessId) {
         <div class="py-12">
             <div class="flex justify-around py-6">
                 <!-- Inicia Info-Usuario -->
-                <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-[#1C2532] flex items-center">
+                <div
+                    class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-[#1C2532] flex items-center">
                     <div class="flex flex-col items-center py-10 px-4">
                         <img class="w-24 h-24 mb-3 rounded-full shadow-lg" :src="img" alt="user image" />
                         <section class="text-center grid gap-4">
@@ -124,14 +125,13 @@ function getBusinessName(businessId) {
                     <div class="main-class my-4">
 
                         <div v-for="businessItem in transactionsByBusiness" :key="businessItem.id">
-                            <section class="w-[600px] text-center table-container grid">
+                            <section class="w-[600px] table-container grid">
                                 <div class="flex">
-                                    <h2 class="text-base font-extrabold text-gray-900 dark:text-white justify-start flex">
-                                        Nombre:
+                                    <h2 class="text-base font-extrabold text-gray-900 dark:text-white">
+                                        Nombre: <span class="text-sm text-gray-500 dark:text-gray-400">
+                                            {{ getBusinessName(businessItem.id) }}
+                                        </span>
                                     </h2>
-                                    <span class="text-sm text-gray-500 dark:text-gray-400 justify-end flex">
-                                        {{ getBusinessName(businessItem.id) }}
-                                    </span>
                                 </div>
                             </section>
                             <div
@@ -141,16 +141,16 @@ function getBusinessName(businessId) {
                                     {{ businessItem.name }}
                                 </h6>
                                 <va-progress-bar :model-value="businessItem.incomePercentage" size="22px" content-inside
-                                    color="info">
+                                    color="info" class="my-4">
                                     Income: ${{ businessItem.totalIncome }}
                                 </va-progress-bar>
                                 <va-progress-bar :model-value="businessItem.expensePercentage" size="22px" content-inside
                                     color="danger">
                                     Bills: ${{ businessItem.totalExpenses }}
                                 </va-progress-bar>
-                                <h2 class="text-lg font-extrabold text-gray-900 dark:text-white flex gap-4">
+                                <h2 class="text-lg font-extrabold text-gray-900 dark:text-white flex my-4 gap-2">
                                     Total:
-                                    <span> ${{ businessItem.totalRevenue }}</span>
+                                    <span class="text-lg text-gray-500 dark:text-gray-400"> ${{ businessItem.totalRevenue }}</span>
                                 </h2>
 
                             </div>
