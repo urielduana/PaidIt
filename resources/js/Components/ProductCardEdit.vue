@@ -2,6 +2,7 @@
 import { defineProps, reactive, ref } from "vue";
 import { useToast } from "vuestic-ui";
 import { useForm } from "@inertiajs/vue3";
+// Import image from public/img
 
 // Image
 const image = "https://source.unsplash.com/random?" + props.title;
@@ -87,7 +88,7 @@ const submit = async () => {
 };
 </script>
 <template>
-    <div class="w-52 bg-white dark:bg-paidit-600 my-8 mx-4 rounded-xl">
+    <div class="bg-white dark:bg-paidit-600 my-8 mx-4 rounded-xl w-52">
         <div>
             <div
                 class="-mt-10 lg:relative flex items-center justify-center mb-7"
@@ -101,7 +102,7 @@ const submit = async () => {
                 />
             </div>
         </div>
-        <div>
+        <div class="">
             <div class="px-5">
                 <va-divider class="" />
                 <div class="py-2 flex-col space-y-2">
@@ -131,23 +132,15 @@ const submit = async () => {
                         {{ description }}
                     </p>
                 </div>
-                <div class="flex items-center justify-center py-4">
-                    <va-counter
-                        v-model="form.quantity"
-                        manual-input
-                        :min="0"
-                        :max="stock"
-                    />
-                </div>
+
                 <div class="flex items-center justify-center pb-4">
                     <!-- Verify if valueCounter is > than 0 if not disable -->
                     <va-button
-                        :disabled="form.quantity <= 0"
                         size="medium"
-                        color="paidit-300"
+                        color="yellow-500"
                         @click="addProduct()"
                     >
-                        <div class="flex align-center text-paidit-600">
+                        <div class="flex align-center justify-center">
                             <ion-icon class="mr-2" name="add-circle-outline" />
                             <div>Add Product</div>
                         </div>
