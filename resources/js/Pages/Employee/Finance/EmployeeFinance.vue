@@ -36,6 +36,7 @@
         }
 
     });
+
     const logo = "https://es.seaicons.com/wp-content/uploads/2015/11/Business-Shop-icon.png";
 </script>
 
@@ -51,7 +52,7 @@
                         class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
 
                         <div class="flex flex-col items-center py-10 px-4">
-                            <img class="w-24 h-24 mb-3 rounded-full shadow-lg" alt="user image" :src="logo" />
+                            <img class="w-24 h-24 mb-6 rounded-full shadow-lg" :src="img" alt="user image" />
                             <h5 class="mb-1 text-xl text-center font-medium text-gray-900">
                                 <div class="text-gray-800 dark:text-white">{{ business . name }} </div>
                             </h5>
@@ -64,19 +65,20 @@
 
                             <span class="text-sm text-center my-2 text-gray-500 dark:text-gray-400"><span
                                     class="font-bold">Total de salario:</span>
-                                <div class="text-gray-800 dark:text-white">{{ salario }} </div>
+                                <div class="text-gray-800 dark:text-white">$ {{ salario . toFixed(2) }} </div>
                             </span>
                             <span class="text-sm text-center my-2 text-gray-500 dark:text-gray-400"><span
                                     class="font-bold">Ingresos:</span>
-                                <div class="text-gray-800 dark:text-white">{{ income }} </div>
+                                <div class="text-gray-800 dark:text-white">$ {{ income . toFixed(2) }} </div>
                             </span>
                             <span class="text-sm text-center my-2 text-gray-500 dark:text-gray-400"><span
                                     class="font-bold">Gastos:</span>
-                                <div class="text-gray-800 dark:text-white">{{ expenses }} </div>
+                                <div class="text-gray-800 dark:text-white">$ {{ expenses . toFixed(2) }} </div>
                             </span>
                             <span class="text-sm text-center my-2 text-gray-500 dark:text-gray-400"><span
                                     class="font-bold">Ganancias:</span>
-                                <div class="text-gray-800 dark:text-white">{{ ganancias }} </div>
+
+                                <div class="text-gray-800 dark:text-white">$ {{ ganancias . toFixed(2) }} </div>
                             </span>
                         </div>
                     </div>
