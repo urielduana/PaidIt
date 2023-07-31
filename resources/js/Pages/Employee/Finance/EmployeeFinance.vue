@@ -37,8 +37,8 @@
 
     });
 
-    const logo = "https://es.seaicons.com/wp-content/uploads/2015/11/Business-Shop-icon.png";
-</script>
+    const img = "https://source.unsplash.com/random?";
+    </script>
 
 <template>
     <AppLayout title="Finance">
