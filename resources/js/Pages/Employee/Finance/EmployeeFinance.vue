@@ -56,27 +56,27 @@
                             <h5 class="mb-1 text-xl text-center font-medium text-gray-900">
                                 <div class="text-gray-800 dark:text-white">{{ business . name }} </div>
                             </h5>
-                            <span class="text-sm text-center text-gray-500 dark:text-gray-400">Empresa</span>
+                            <span class="text-sm text-center text-gray-500 dark:text-gray-400">Business</span>
 
                             <span class="text-sm text-center my-4 text-gray-500 dark:text-gray-400"><span
-                                    class="font-bold">Número de empleados:</span>
+                                    class="font-bold">Employees:</span>
                                 <div class="text-gray-800 dark:text-white">{{ count }} </div>
                             </span>
 
                             <span class="text-sm text-center my-2 text-gray-500 dark:text-gray-400"><span
-                                    class="font-bold">Total de salario:</span>
+                                    class="font-bold">Payroll Payments:</span>
                                 <div class="text-gray-800 dark:text-white">$ {{ salario . toFixed(2) }} </div>
                             </span>
                             <span class="text-sm text-center my-2 text-gray-500 dark:text-gray-400"><span
-                                    class="font-bold">Ingresos:</span>
+                                    class="font-bold">Income:</span>
                                 <div class="text-gray-800 dark:text-white">$ {{ income . toFixed(2) }} </div>
                             </span>
                             <span class="text-sm text-center my-2 text-gray-500 dark:text-gray-400"><span
-                                    class="font-bold">Gastos:</span>
+                                    class="font-bold">Expenses:</span>
                                 <div class="text-gray-800 dark:text-white">$ {{ expenses . toFixed(2) }} </div>
                             </span>
                             <span class="text-sm text-center my-2 text-gray-500 dark:text-gray-400"><span
-                                    class="font-bold">Ganancias:</span>
+                                    class="font-bold">Total Earnings:</span>
 
                                 <div class="text-gray-800 dark:text-white">$ {{ ganancias . toFixed(2) }} </div>
                             </span>
