@@ -122,7 +122,7 @@ function getBusinessName(businessId) {
                         Business
                     </h6>
                     <!-- bucle cada negocio -->
-                    <div class="main-class my-4">
+                    <div class="main-class my-4 p-4">
 
                         <div v-for="businessItem in transactionsByBusiness" :key="businessItem.id">
                             <section class="w-[600px] table-container grid">
