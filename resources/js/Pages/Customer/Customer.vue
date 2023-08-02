@@ -62,7 +62,7 @@ const img = "https://source.unsplash.com/random?";
             <h2 class="font-semibold text-xl leading-tight">Customer</h2>
         </template>
         <div class="py-12">
-            <div class="flex justify-around py-6">
+            <div class="py-6 xl:flex sm:grid grid p-4 gap-4  justify-center">
                 <!-- Inicia Tarjeta Info-Usuario-->
                 <div
                     class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-[#1C2532]"
@@ -136,7 +136,7 @@ const img = "https://source.unsplash.com/random?";
 
                 <!-- Inicia saldo -->
                 <div
-                    class="max-w-2xl bg-white border border-gray-200 rounded-lg shadow dark:bg-[#1C2532] dark:border-gray-700 p-4 grid content-center gap-10"
+                    class="bg-white w-[850px] border border-gray-200 rounded-lg shadow dark:bg-[#1C2532] dark:border-gray-700 p-4 grid content-center gap-10"
                 >
                     <h6
                         class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white justify-items-center grid"
