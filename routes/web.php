@@ -44,10 +44,6 @@ Route::middleware([
             ->names('orders');
         Route::resource('/carts', CustomerCartController::class)
             ->names('carts');
-
-        // Nuevas rutas para agregar elementos al carrito y completar la compra
-        Route::post('/add-to-cart', [CustomerCartController::class, 'addToCart'])->name('customer.addToCart');
-        Route::post('/complete-purchase', [CustomerCartController::class, 'completePurchase'])->name('customer.completePurchase');
     });
 
     Route::prefix('employee')->group(function () {
