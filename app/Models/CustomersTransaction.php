@@ -14,4 +14,8 @@ class CustomersTransaction extends Model
         'mount',
         'customer_id',
     ];
+    public function customersTransaction_Customer()
+    {
+        return $this->belongsTo(Customer::class, 'customer_id');
+    }
 }
