@@ -13,14 +13,10 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('status')->default('pending');
             $table->string('description')->nullable();
             $table->unsignedBigInteger('Customer_id');
             $table->foreign('Customer_id')->references('id')->on('customers')->onDelete('cascade');
             $table->timestamps();
-            //relacionar con la tabla de status
-            $table->unsignedBigInteger('Status_id');
-            $table->foreign('Status_id')->references('id')->on('status_order')->onDelete('cascade');
         });
     }
 
