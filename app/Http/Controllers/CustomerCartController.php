@@ -22,6 +22,9 @@ class CustomerCartController extends Controller
         $customer = $authenticated->user_Customer;
         $cart = $customer->customer_Cart;
         $cartItems = $cart ? $cart->cart_CartItem : [];
+        foreach ($cartItems as $key => $cartItem) {
+            $items[$key]=$cartItem->cartItem_Item;
+        }
         $order= $customer->customer_Order;
         $orderItems= $order ? $order[0]->order_Order_Item : [];
         return Inertia::render('Customer/Cart/CustomerCart',[
@@ -29,6 +32,7 @@ class CustomerCartController extends Controller
             'cart' => $cart,
             'cartItems'=>$cartItems,
             'orderItems'=>$orderItems,
+            'items'=>$items,
         ]);
     }
     /**
