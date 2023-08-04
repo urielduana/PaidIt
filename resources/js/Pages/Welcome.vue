@@ -58,8 +58,6 @@ defineProps({
                     />
                 </svg>
             </div>
-
-
             <div
                 class="flex justify-center mt-16 px-6 sm:items-center sm:justify-between"
             >

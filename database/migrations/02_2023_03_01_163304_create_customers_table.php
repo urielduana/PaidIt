@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->decimal('balance');
             $table->string('guardian_name');
             $table->unsignedBigInteger('guardian_phone');
             $table->timestamps();

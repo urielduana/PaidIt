@@ -5,10 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cart extends Model
+class CustomersTransaction extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'Customer_id',
+        'name',
+        'mount',
+        'customer_id',
     ];
 }

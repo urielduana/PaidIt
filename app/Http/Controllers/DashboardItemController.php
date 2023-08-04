@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use App\Models\Business;
 
 class DashboardItemController extends Controller
 {
@@ -11,7 +13,10 @@ class DashboardItemController extends Controller
      */
     public function index()
     {
-        //
+        $business = Business::with(['business_Item:id,name,price,description,stock,Business_id,Item_type_id', 'business_Item.item_Item_Type:id,name'])->select('id', 'name')->get();
+        return Inertia::render('Dashboard/Item/DashboardItem', [
+            'business' => $business,
+        ]);
     }
 
     /**

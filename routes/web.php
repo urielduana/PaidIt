@@ -7,6 +7,7 @@ use App\Http\Controllers\CustomerBusinessController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CustomerItemController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DashboardItemController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EmployeeItemController;
 use App\Http\Controllers\EmployeeMemberController;
@@ -35,28 +36,30 @@ Route::middleware([
         Route::resource('/', CustomerController::class)
             ->names('customer');
         Route::resource('/business', CustomerBusinessController::class)
-            ->names('business');
-        Route::resource('/item', CustomerItemController::class)
-            ->names('item');
+            ->names('customer.business');
+        Route::resource('/items', CustomerItemController::class)
+            ->names('customer.items');
     });
 
     Route::prefix('employee')->group(function () {
         Route::resource('/', EmployeeController::class)
             ->names('employee');
         Route::resource('/members', EmployeeMemberController::class)
-            ->names('members');
+            ->names('employee.member');
         Route::resource('/items', EmployeeItemController::class)
-            ->names('items');
+            ->names('employee.items');
         Route::resource('/finance', EmployeeFinanceController::class)
-            ->names('finance');
+            ->names('employee.finance');
         Route::resource('/settings', EmployeeSettingsController::class)
-            ->names('settings');
+            ->names('employee.settings');
         Route::resource('/orders', EmployeeOrderController::class)
-            ->names('orders');
+            ->names('employee.order');
     });
 
     Route::prefix('dashboard')->group(function () {
         Route::resource('/', DashboardController::class)
             ->names('dashboard');
+        Route::resource('/items', DashboardItemController::class)
+            ->names('dashboard.items');
     });
 });

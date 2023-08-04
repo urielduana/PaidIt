@@ -1,13 +1,47 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
+import ProductCard from "@/Components/ProductCard.vue";
 import { useDark, useToggle } from "@vueuse/core";
-import { reactive, watchEffect } from "vue";
-import { groupBy } from "lodash";
-import { onMounted } from "vue";
-import AddButton from "@/Components/AddButton.vue";
-
+import { reactive, watchEffect, defineProps, ref } from "vue";
+import { useGlobalConfig } from "vuestic-ui";
+// Pagination Preset dark and light mode
+const colorPagination = () => {
+    if (isDark.value) {
+        mergeGlobalConfig({
+            components: {
+                presets: {
+                    VaPagination: {
+                        colorPagination: {
+                            color: "paidit-300",
+                            activePageColor: "paidit-600",
+                        },
+                    },
+                },
+            },
+        });
+    } else {
+        mergeGlobalConfig({
+            components: {
+                presets: {
+                    VaPagination: {
+                        colorPagination: {
+                            color: "paidit-400",
+                            activePageColor: "paidit-600",
+                        },
+                    },
+                },
+            },
+        });
+    }
+};
 // Dark Mode
 const isDark = useDark();
+const valuePagination = ref(1);
+const { mergeGlobalConfig } = useGlobalConfig();
+colorPagination();
+watchEffect(() => {
+    colorPagination();
+});
 const state = reactive({
     darkMode: useDark().value,
     tableMode: "",
@@ -23,75 +57,67 @@ watchEffect(() => {
 
 // Props
 const props = defineProps({
-    items: {
+    business: {
         type: Object,
         required: true,
     },
 });
 
-// Table
-const columns = [
-    // {
-    //     label: "",
-    //     field: "image",
-    //     width: "10%",
-    // },
+// Get unique Item Type
+const getUniqueItemTypes = (data) => {
+    uniqueItemTypes.value = [];
+    for (const item of data) {
+        const itemTypeId = item.item__item__type.id;
+        const itemType = item.item__item__type.name;
+        if (
+            !uniqueItemTypes.value.some(
+                (uniqueItemType) => uniqueItemType.text === itemType
+            )
+        ) {
+            uniqueItemTypes.value.push({
+                text: itemType,
+                value: itemTypeId,
+                id: itemTypeId,
+            });
+        }
+    }
+};
+const options = [
     {
-        label: "Product",
-        field: "name",
+        text: "First",
+        value: "1",
+        id: "1",
     },
     {
-        label: "Category",
-        field: "category",
+        text: "Second",
+        value: "2",
+        id: "2",
     },
     {
-        label: "Stock",
-        field: "stock",
-        type: "number",
-    },
-    {
-        label: "Price",
-        field: "price",
-        type: "number",
-    },
-    {
-        label: "Action",
-        field: "action",
-    },
-    {
-        label: "Description",
-        field: "description",
-        hidden: true,
+        text: "Also First but with diffrent text",
+        value: "1",
+        id: "3",
     },
 ];
-const rows = Object.values(
-    groupBy(props.items, (item) => item.item__business.name)
-).map((group) => ({
-    mode: "span",
-    label: group[0].item__business.name,
-    children: group.map((item) => ({
-        id: item.id,
-        // image: item.image,
-        name: item.name,
-        description: item.description,
-        price: item.price,
-        stock: item.stock,
-        category: item.item__item__type.name,
-    })),
-}));
-const paginationOptions = {
-    enabled: false,
-    perPage: 20,
-    perPageDropdownEnabled: true,
-};
-const searchOptions = {
-    enabled: true,
-    skipDiacritics: true,
-    placeholder: "Search...",
-};
-const groupOptions = {
-    enabled: true,
-    collapsable: true,
+
+// Counter
+const valueCounter = ref(0);
+
+// Tabs
+const valueTab = ref(0);
+const keyTabValue = ref(props.business[0].business__item);
+
+// Select
+const uniqueItemTypes = ref([]);
+getUniqueItemTypes(keyTabValue.value);
+const valueSelect = ref(uniqueItemTypes.value[0]);
+// Search
+const valueSearch = ref("");
+
+// Set KeyTabValue as the object clicked on the tab
+const setKeyTabValue = (value) => {
+    keyTabValue.value = value.business__item;
+    getUniqueItemTypes(keyTabValue.value);
 };
 </script>
 
@@ -102,83 +128,124 @@ const groupOptions = {
         </template>
         <div class="py-5">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div
-                    class="overflow-hidden shadow-xl sm:rounded-lg dark:text-gray-800"
-                >
-                    <vue-good-table
-                        ref="myCustomTable"
-                        :columns="columns"
-                        :rows="rows"
-                        max-height="500px"
-                        max-width="100%"
-                        :fixed-header="true"
-                        :theme="state.tableMode"
-                        :pagination-options="paginationOptions"
-                        :search-options="searchOptions"
-                        :group-options="groupOptions"
-                        :enable-row-expand="true"
-                    >
-                        <template #emptystate> Nothing to see here! </template>
-                        <template #table-actions>
-                            <div>
-                                <button
-                                    @click="$refs.myCustomTable.expandAll()"
-                                    class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-                                >
-                                    Expand All
-                                </button>
-                                <button
-                                    @click="$refs.myCustomTable.collapseAll()"
-                                    class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-                                >
-                                    Collapse All
-                                </button>
-                            </div>
-                        </template>
-                        <template #table-row="props">
-                            <!-- <span
-                                v-if="props.column.field == 'image'"
-                                class="flex justify-center"
+                <va-tabs v-model="valueTab">
+                    <template #tabs>
+                        <va-tab
+                            v-for="tab in business"
+                            :key="tab.id"
+                            @click="setKeyTabValue(tab)"
+                        >
+                            {{ tab.name }}
+                        </va-tab>
+                    </template>
+                    <div class="">
+                        <!-- Title and Filter div -->
+                        <div class="py-6">
+                            <!-- Title and Select Option div -->
+                            <div
+                                class="flex flex-col items-start mb-4 md:mb-0 md:flex-row"
                             >
-                                <img :src="props.row.image" class="h-10 w-10" />
-                            </span> -->
-                            <span v-if="props.column.field == 'price'">
-                                <span>${{ props.row.price }}</span>
-                            </span>
-
-                            <span v-if="props.column.field == 'action'">
-                                <AddButton></AddButton>
-                            </span>
-                        </template>
-                        <template #table-header-row="props">
-                            <span class="my-fancy-class">
-                                {{ props.row.label }}
-                            </span>
-                        </template>
-                        <template #row-details="props">
-                            <div class="flex flex-col">
-                                <div class="flex flex-row">
-                                    <div class="flex flex-col">
-                                        <span class="font-bold"
-                                            >Description:</span
-                                        >
-                                        <span>{{ props.row.description }}</span>
-                                    </div>
+                                <!-- Title -->
+                                <div>
+                                    <p
+                                        class="font-semibold text-3xl leading-tight"
+                                    >
+                                        Choose your Products
+                                    </p>
+                                </div>
+                                <!-- Select Option -->
+                                <div
+                                    class="flex items-center ml-4 md:ml-0 md:mt-0 mt-7"
+                                >
+                                    <p class="mr-3 text-right">Filter:</p>
+                                    <va-select
+                                        v-model="valueSelect"
+                                        :options="uniqueItemTypes"
+                                        class="w-auto text-black"
+                                        value="uniqueItemTypes"
+                                        placeholder="Select an option"
+                                    />
                                 </div>
                             </div>
-                        </template>
-                    </vue-good-table>
-                </div>
+                            <!-- Full Search div -->
+                            <div class="mt-6">
+                                <!-- Search -->
+                                <div>
+                                    <p class="inline-block mr-3">Search:</p>
+                                    <va-input
+                                        v-model="valueSearch"
+                                        class="w-25"
+                                        placeholder="Search by Name"
+                                    />
+                                </div>
+                            </div>
+                            <div class="mt-8 mb-10">
+                                <va-divider />
+                            </div>
+                        </div>
+
+                        <!-- Cards v-for div -->
+                        <div class="flex flex-wrap justify-center">
+                            <ProductCard
+                                :id="item.id"
+                                :title="item.name"
+                                :type="item.item__item__type.name"
+                                :price="item.price"
+                                :stock="item.stock"
+                                :description="item.description"
+                                v-for="item in keyTabValue"
+                                :key="item.id"
+                            ></ProductCard>
+                        </div>
+
+                        <!-- Pagination -->
+                        <div class="text-center md:text-end">
+                            <div class="justify-end inline-block">
+                                <va-pagination
+                                    v-model="valuePagination"
+                                    :visible-pages="7"
+                                    :total="100"
+                                    :page-size="10"
+                                    boundary-numbers
+                                    class=""
+                                    preset="colorPagination"
+                                >
+                                    <template
+                                        #prevPageLink="{ onClick, disabled }"
+                                    >
+                                        <va-button
+                                            preset="colorPagination"
+                                            :disabled="disabled"
+                                            aria-label="go prev page"
+                                            @click="onClick"
+                                        >
+                                            Previous
+                                        </va-button>
+                                    </template>
+                                    <template
+                                        #nextPageLink="{ onClick, disabled }"
+                                    >
+                                        <va-button
+                                            preset="colorPagination"
+                                            :disabled="disabled"
+                                            aria-label="go next page"
+                                            @click="onClick"
+                                        >
+                                            Next
+                                        </va-button>
+                                    </template>
+                                </va-pagination>
+                            </div>
+                        </div>
+                    </div>
+                </va-tabs>
             </div>
         </div>
     </AppLayout>
 </template>
 
-<script>
-export default {
-    mounted() {
-        this.$refs.myCustomTable.expandAll();
-    },
-    // ...
-};
-</script>
+<style>
+.va-tabs__content {
+    width: 100%;
+}
+</style>

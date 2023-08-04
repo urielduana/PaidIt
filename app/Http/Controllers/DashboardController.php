@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
+use App\Models\Business;
+use App\Models\Employee;
+use App\Models\BusinessesTransaction;
 
 
 class DashboardController extends Controller
@@ -14,19 +17,17 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        if ($user->can('view_dashboard')) {
-            return Inertia::render('Dashboard/Dashboard');
-        } else if ($user->can('view_employee')) {
-            return redirect()->route('employee');
-        } else if ($user->can('view_customer')) {
-            return redirect()->route('customer');
-        } else {
-            // Si el usuario no tiene ningún rol asignado, lo redirigimos a la vista de dashboard por defecto
-            return Inertia::render('Dashboard/Dashboard', [
-                // 'view_role' => session('view_role'),
-            ]);
-        }
+        $authenticated = auth()->user();
+        //conseguir todos los negocios de la base de datos
+        $business = Business::all();
+        $employees = Employee::all();
+        $transactions = BusinessesTransaction::all();
+        return Inertia::render('Dashboard/Dashboard', [
+            'user' => $authenticated,
+            'business' => $business,
+            'employees' => $employees,
+            'transactions' => $transactions
+        ]);
     }
 
     /**
