@@ -1,43 +1,25 @@
 <script setup>
-
-defineProps({
-    imagenURL: String,
-    texto: String   
-});
+/*Por si se ocupa*/
 </script>
 
 
 <template>
+
+
+
     <div class="error_403">
-      <img src="public/img/accesodenegado.png" alt="" />
-      <div class="texto">
-        Error!
-        Parece que no tienes acceso
-        a esta pagina.
-        <p>{{ texto }}</p>
+
+      <div class="flex justify-center mt-16 px-6 sm items-center sm:justify-between">
+        <img src="/img/acceso-denegado.png" alt="Imagen" class=" mr-4">
+          <div class="">
+            <p class="text-xl font-mono">Error!</p>
+            <p class="text-xl font-mono">Parece que no tienes acceso</p>
+            <p class="text-xl font-mono">a esta pagina.</p>
+            </div>
       </div>
+      
     </div>
+
   </template>
   
-  
-  <style>
-  .error_404 {
-    display: flex;
-    align-items: center;
-  }
-  
-  .texto {
-    /* Estilos para el contenedor del texto */
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: right;
-    color: blueviolet;
-  }
-  
-  /* Estilos adicionales para la imagen (opcional) */
-  img {
-    max-width: 100%;
-  }
-  </style>
   

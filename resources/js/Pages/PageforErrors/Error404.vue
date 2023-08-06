@@ -1,44 +1,25 @@
 <script setup>
-
-defineProps({
-    imagenURL: String,
-    texto: String   
-});
+/*Por si se ocupa*/
 </script>
 
 
 <template>
+
+
+
     <div class="error_404">
-      <img src="/public/img/error404.png" alt="" />
-      <div class="texto">
-        Parece que no pudimos encontrar 
-        lo que estabas buscando.
-        Sera mejor que visites otra
-        de nuestras paginas.
-        <p>{{ texto }}</p>
+
+      <div class="flex justify-center mt-16 px-6 sm items-center sm:justify-between">
+        <img src="/img/error-404.png" alt="Imagen" class=" mr-4">
+          <div class="">
+          <p class="text-xl font-mono">Parece que no pudimos encontrar</p>
+          <p class="text-xl font-mono">lo que estamas buscando.</p>
+          <p class="text-xl font-mono">Sera mejor que visites otra</p>
+          <p class="text-xl font-mono">de nuestras paginas</p>
+          </div>
       </div>
+      
     </div>
+
   </template>
-  
-  
-  <style>
-  .error_404 {
-    display: flex;
-    align-items: center;
-  }
-  
-  .texto {
-    /* Estilos para el contenedor del texto */
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: right;
-    color: blueviolet;
-  }
-  
-  /* Estilos adicionales para la imagen (opcional) */
-  img {
-    max-width: 100%;
-  }
-  </style>
   

@@ -46,17 +46,10 @@ defineProps({
 
         <div class="container">
             
-                <div class="flex justify-left" style="font-size: 24px;">
-                 ¿Qué es PaidIt?
-                </div>
-                <br>
-                <div class="flex justify-left">
-                Aplicación web que te permite llevar un control de tus gastos e ingresos
-                <br>
-                de los jovenes en cuanto a sus actividades diarias dentro de instituciones educativas.
-                </div>
-
             
+            
+            
+                
             <div
                 class="flex justify-center mt-16 px-6 sm:items-center sm:justify-between"
             >
