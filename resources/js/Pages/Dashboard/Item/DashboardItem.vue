@@ -56,6 +56,8 @@ watchEffect(() => {
     }
 });
 
+const prueba = false;
+
 // Props
 const props = defineProps({
     business: {

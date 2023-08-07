@@ -7,12 +7,6 @@ import { useForm } from "@inertiajs/vue3";
 // Image
 const image = "https://source.unsplash.com/random?" + props.title;
 
-// Data
-const form = useForm({
-    id: props.id,
-    quantity: 0,
-});
-
 // Toast
 const { init, close, closeAll } = useToast();
 
@@ -53,38 +47,8 @@ const props = defineProps({
 });
 
 // Functions
-const addProduct = async () => {
-    const toast = {
-        title: "Adding Product...",
-        message: `You added ${form.quantity} ${props.title} to your cart!`,
-        closeable: true,
-        color: "paidit-400",
-    };
-    initToast(toast);
-    await submit();
-    // console.log("Product added!");
-
-    form.quantity = 0;
-};
-
-// Inertia REQUESTS
-const submit = async () => {
-    try {
-        const response = await form.post("/customer/item");
-        initToast({
-            title: "Product Added!",
-            message: `You added ${form.quantity} ${props.title} to your cart!`,
-            closeable: true,
-            color: "paidit-100",
-        });
-    } catch (error) {
-        initToast({
-            title: "We have a problem!",
-            message: `We couldn't add "${props.title} (${form.quantity})" to your cart! Please try again.`,
-            closeable: true,
-            color: "danger",
-        });
-    }
+const editProductModal = () => {
+    console.log("Edit Product");
 };
 </script>
 <template>
@@ -138,11 +102,13 @@ const submit = async () => {
                     <va-button
                         size="medium"
                         color="yellow-500"
-                        @click="addProduct()"
+                        @click="editProductModal()"
                     >
-                        <div class="flex align-center justify-center">
-                            <ion-icon class="mr-2" name="add-circle-outline" />
-                            <div>Add Product</div>
+                        <div
+                            class="flex align-center justify-center text-white"
+                        >
+                            <ion-icon class="mr-2" name="create" />
+                            <div>Edit Product</div>
                         </div>
                     </va-button>
                 </div>

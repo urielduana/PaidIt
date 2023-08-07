@@ -69,7 +69,7 @@ const addProduct = async () => {
 // Inertia REQUESTS
 const submit = async () => {
     try {
-        const response = await form.post("/customer/item");
+        const response = await form.post("/customer/items");
         initToast({
             title: "Product Added!",
             message: `You added ${form.quantity} ${props.title} to your cart!`,

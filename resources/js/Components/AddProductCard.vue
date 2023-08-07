@@ -1,12 +1,21 @@
 <script setup>
 import { defineProps, reactive, ref } from "vue";
-// Modal
+import AddProductModal from "@/Components/AddProductModal.vue";
+
+// Ref
 const showModal = ref(false);
+
+const addProductModal = () => {
+    console.log("Add Product");
+    showModal.value = true;
+    return AddProductModal;
+};
 </script>
 <template>
     <div
         @click="showModal = true"
         class="cursor-default flex align-center justify-center text-center hover:opacity-80 dark:active:opacity-100 active:bg-yellow-600 bg-yellow-500 dark:bg-paidit-600 my-8 mx-4 rounded-xl w-52 border-2 border-stone-300 dark:border-yellow-500 border-dashed dark:text-yellow-500"
+        @click="addProductModal()"
     >
         <div>
             <ion-icon name="add-outline" size="large"></ion-icon>
