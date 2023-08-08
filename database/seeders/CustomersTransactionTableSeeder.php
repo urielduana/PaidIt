@@ -14,14 +14,24 @@ class CustomersTransactionTableSeeder extends Seeder
     public function run(): void
     {
         $faker = \Faker\Factory::create();
-        DB::table('customers_transactions')->insert(['name' => $faker->sentence(5), 'mount' => '586', 'customer_id' => '1']);
+        DB::table('customers_transactions')->insert([
+            'name' => 'income',
+            'mount' => '586',
+            'customer_id' => '1',
+            'created_at' => $faker->dateTimeBetween('-1 years', 'now'),
+            'updated_at' => $faker->dateTimeBetween('-1 years', 'now'),
+        ]);
         $numItems = 125;
         for ($i = 0; $i < $numItems; $i++) {
+            $name = $faker->randomElement(['income', 'expense']);
             DB::table('customers_transactions')->insert([
-                'name' => $faker->sentence(5),
+                'name' => $name,
                 'mount' => $faker->numberBetween(1, 1000),
                 'customer_id' => $faker->numberBetween(1, 4),
+                'created_at' => $faker->dateTimeBetween('-1 years', 'now'),
+                'updated_at' => $faker->dateTimeBetween('-1 years', 'now'),
             ]);
         }
     }
 }
+

@@ -1,6 +1,5 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
-import DialogModal from "@/Components/DialogModal.vue";
 
 const props = defineProps({
     user: {
@@ -11,161 +10,206 @@ const props = defineProps({
         type: Object,
         required: true,
     },
+    transactions: {
+        type: Array,
+        required: true,
+    },
 });
+
+const transactions = props.transactions;
+
+// Función para normalizar los valores
+function normalizeValue(value, min, max) {
+    return (value - min) / (max - min);
+}
+
+// Totales de ingresos y gastos
+const totalIncome =
+    transactions &&
+    transactions
+        .filter((transaction) => transaction.name === "income")
+        .reduce(
+            (total, transaction) => total + parseFloat(transaction.mount),
+            0
+        );
+const totalExpenses =
+    transactions &&
+    transactions
+        .filter((transaction) => transaction.name === "expense")
+        .reduce(
+            (total, transaction) => total + parseFloat(transaction.mount),
+            0
+        );
+
+// Encontramos el valor máximo de ingresos y gastos para normalizar los valores
+const maxIncome = Math.max(totalIncome, totalExpenses);
+const maxExpenses = maxIncome;
+
+// Calculamos los porcentajes normalizados de ingresos y gastos
+const incomePercentage = normalizeValue(totalIncome, 0, maxIncome) * 100;
+const expensePercentage = normalizeValue(totalExpenses, 0, maxExpenses) * 100;
+
+const totalRevenue = totalIncome - totalExpenses;
+
+//const img = "https://img.freepik.com/vector-gratis/fondo-galaxia-realista_52683-12122.jpg?q=10&h=200"; -> imagen local storage
+//const img ="https://robohash.org/api"; -> api de imagenes de robots
+const img = "https://source.unsplash.com/random?";
 </script>
 
 <template>
     <AppLayout title="Customer">
         <template #header>
-            <h2 class="font-semibold text-xlleading-tight text-xl">Customer</h2>
+            <h2 class="font-semibold text-xl leading-tight">Customer</h2>
         </template>
         <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="flex justify-center m-12">
-                    <!-- Iniciar Tarjeta Info-Usuario-->
-                    <div
-                        class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
-                    >
-                        <div class="flex flex-col items-center py-10 px-4">
-                            <img
-                                class="w-24 h-24 mb-3 rounded-full shadow-lg"
-                                :src="user.profile_photo_path"
-                                alt="user image"
-                            />
+            <div class="flex justify-around py-6">
+                <!-- Inicia Tarjeta Info-Usuario-->
+                <div
+                    class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-[#1C2532]"
+                >
+                    <div class="flex flex-col items-center py-10 px-4">
+                        <img
+                            class="w-24 h-24 mb-3 rounded-full shadow-lg"
+                            :src="img"
+                            alt="user image"
+                        />
+                        <section class="my-3">
                             <h5
-                                class="mb-1 text-xl text-center font-medium text-gray-900 dark:text-white"
+                                class="mb-1 text-xl text-center font-extrabold text-gray-900 dark:text-white"
                             >
-                                {{ user.name }}
+                                ${{ totalRevenue.toFixed(2) }}
                             </h5>
                             <span
                                 class="text-sm text-center text-gray-500 dark:text-gray-400"
-                                >Cliente</span
+                                >Total Revenue</span
                             >
-
-                            <h2
-                                class="text-sm text-center my-4 font-bold flex gap-2"
-                            >
-                                Titular:
-                                <h2 class="font-normal">
+                        </section>
+                        <!-- Income bar -->
+                        <va-progress-bar
+                            :model-value="incomePercentage"
+                            size="22px"
+                            content-inside
+                            color="info"
+                            class="my-3"
+                        >
+                            Income: ${{ totalIncome }}
+                        </va-progress-bar>
+                        <!-- Bills bar -->
+                        <va-progress-bar
+                            :model-value="expensePercentage"
+                            size="22px"
+                            content-inside
+                            color="danger"
+                            class="mb-3"
+                        >
+                            Bills: ${{ totalExpenses }}
+                        </va-progress-bar>
+                        <!-- Inicia user-data -->
+                        <section class="text-center grid gap-3 my-2">
+                            <div>
+                                <h2
+                                    class="text-lg font-extrabold text-gray-900 dark:text-white"
+                                >
+                                    {{ user.name }}
+                                </h2>
+                                <span
+                                    class="text-sm text-gray-500 dark:text-gray-400"
+                                    >customer</span
+                                >
+                            </div>
+                            <div>
+                                <h2
+                                    class="text-base font-extrabold text-gray-900 dark:text-white"
+                                >
                                     {{ customer.guardian_name }}
                                 </h2>
-                            </h2>
-                        </div>
-                    </div>
-                    <!-- Finaliza tarjeta Info-Usuario-->
-
-                    <!-- Inicia saldo -->
-                    <div
-                        class="flex items-center w-96 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
-                    >
-                        <div class="w-full text-center">
-                            <h6
-                                class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-                            >
-                                Cuenta
-                            </h6>
-                            <p
-                                class="font-normal my-4 text-gray-700 dark:text-gray-400"
-                            >
-                                Saldo disponible:
-                            </p>
-                            <h2 class="my-4 text-center font-bold">
-                                $ {{ customer.balance }}
-                            </h2>
-                            <div class="flex justify-center">
-                                <button
-                                    @click="showModal = true"
-                                    type="button"
-                                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                                <span
+                                    class="text-sm text-gray-500 dark:text-gray-400"
+                                    >Tutor</span
                                 >
-                                    Depositar
-                                </button>
-                                <DialogModal
-                                    :show="showModal"
-                                    @close="showModal = false"
-                                    :max-width="modalMaxWidth"
-                                    :closeable="modalCloseable"
-                                >
-                                    <template #title> Depositar </template>
-                                    <template #content>
-                                        <div>
-                                            <label
-                                                for="cantidad"
-                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                                                >Cantidad</label
-                                            >
-                                            <input
-                                                type="number"
-                                                name="cantidad"
-                                                id="cantidad"
-                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                                placeholder="00.00"
-                                                required
-                                                v-model="formData.cantidad"
-                                            />
-                                        </div>
-                                    </template>
-                                    <template #footer>
-                                        <button
-                                            @click="submitForm()"
-                                            type="submit"
-                                            class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                        >
-                                            Enviar
-                                        </button>
-                                    </template>
-                                </DialogModal>
                             </div>
-                        </div>
+                        </section>
+                        <!-- Finaliza user-data -->
                     </div>
-                    <!-- Finaliza saldo -->
                 </div>
+                <!-- Finaliza tarjeta Info-Usuario-->
+
+                <!-- Inicia saldo -->
+                <div
+                    class="max-w-2xl bg-white border border-gray-200 rounded-lg shadow dark:bg-[#1C2532] dark:border-gray-700 p-4 grid content-center gap-10"
+                >
+                    <h6
+                        class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white justify-items-center grid"
+                    >
+                        Activity
+                    </h6>
+                    <div class="w-full text-center table-container">
+                        <table class="table-auto w-full">
+                            <thead
+                                class="sticky top-0 bg-white dark:bg-[#1C2532]"
+                            >
+                                <tr>
+                                    <th class="px-4 py-2">N°</th>
+                                    <th class="px-4 py-2">Mount</th>
+                                    <th class="px-4 py-2">Type</th>
+                                    <th class="px-4 py-2">Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr
+                                    v-for="item in transactions"
+                                    :key="item.id"
+                                    class="table-row-divider"
+                                >
+                                    <td class="border px-4 py-2">
+                                        {{ item.id }}
+                                    </td>
+                                    <td class="border px-4 py-2">
+                                        ${{ parseFloat(item.mount).toFixed(2) }}
+                                    </td>
+                                    <td class="border px-4 py-2">
+                                        <div
+                                            :class="{
+                                                'text-green-500':
+                                                    item.name === 'income',
+                                                'text-red-500':
+                                                    item.name === 'expense',
+                                            }"
+                                            class="py-1 px-2 rounded-md font-semibold"
+                                        >
+                                            {{ item.name }}
+                                        </div>
+                                    </td>
+                                    <td class="border px-4 py-2">
+                                        {{ item.created_at.substring(0, 10) }}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- Finaliza saldo -->
             </div>
         </div>
     </AppLayout>
 </template>
 
-<script>
-import Modal from "../../Components/Modal.vue";
-
-export default {
-    components: {
-        Modal,
-        DialogModal,
-    },
-
-    data() {
-        return {
-            showModal: false,
-            modalMaxWidth: "2xl",
-            modalCloseable: true,
-            formData: {
-                cantidad: null,
-            },
-        };
-    },
-
-    methods: {
-        submitForm() {
-            // Envía los datos al backend utilizando Inertia
-            this.$inertia
-                .post("/customer", this.formData)
-                .then(() => {
-                    // Actualiza los datos en el frontend
-                    this.formData.cantidad = null;
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
-        },
-    },
-};
-</script>
-
 <style>
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+.table-container {
+    max-height: 250px;
+    overflow-y: auto;
+}
+thead.sticky {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+.table-container::-webkit-scrollbar {
+    width: 8px;
+    background-color: none;
+}
+.table-container::-webkit-scrollbar-thumb {
+    background-color: #223a59;
+    border-radius: 4px;
 }
 </style>
