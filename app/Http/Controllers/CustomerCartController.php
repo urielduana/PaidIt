@@ -138,10 +138,12 @@ class CustomerCartController extends Controller
         $authenticated = auth()->user();
         $customer = $authenticated->user_Customer;
         $cart = $customer->customer_Cart;
-        $cartItems = $cart ? $cart->cart_CartItem : [];
-        dd($cartItems);
+        // Encuentra el cartItem por su ID
+        $cartItem = $cart->cart_CartItem()->find($id);
+        $cartItem->delete();
 
-        
+        return Inertia::location(url()->previous());
+        //falta implementar la eliminacion del item, checar porque no se tienen permisos
     }
     public function createCustomerTransactions($order){
         $orderItems= $order->order_Order_Item;

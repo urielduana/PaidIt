@@ -38,7 +38,7 @@ const updateItemQuantity = (id, quantity) => {
 // Función para eliminar un ítem del carrito
 const deleteCartItem = async (id) => {
     // Realiza alguna acción al eliminar un ítem (en este caso, muestra un mensaje en la consola)
-    console.log("Item deleted", id);
+    router.delete(`carts/${id}`);
 };
 
 // Función para redondear y ajustar un valor
