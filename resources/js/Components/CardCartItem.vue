@@ -1,14 +1,16 @@
 <script setup>
-import SectionBorder from "./SectionBorder.vue";
 import { useDark, useToggle } from "@vueuse/core";
-import { reactive, watchEffect, defineProps, ref } from "vue";
+import { reactive, watchEffect, defineProps, ref, computed } from "vue";
+import DangerButton from "./DangerButton.vue";
 
-// Dark Mode
+// Estado reactiva para el modo oscuro
 const isDark = useDark();
 const state = reactive({
     darkMode: useDark().value,
     tableMode: "",
 });
+
+// Observa el cambio en el modo oscuro y ajusta el estado
 watchEffect(() => {
     state.darkMode = useDark().value;
     if (state.darkMode) {
@@ -17,9 +19,11 @@ watchEffect(() => {
         state.tableMode = "polar-bear";
     }
 });
-defineProps({
+
+// Definición de props del componente
+const props = defineProps({
     title: {
-        default: "Titulo de ejemplo, no haz enviado un titulo",
+        default: "Sample Title: No title provided",
         type: String,
         required: true,
     },
@@ -29,58 +33,111 @@ defineProps({
         required: false,
     },
     business: {
-        default: "Business:Business 1",
+        default: "Business: Business 1",
         type: String,
         required: false,
     },
     quantity: {
-        type: String,
+        type: Number,
         required: false,
     },
     price: {
         type: String,
         required: false,
     },
+    update: {
+        default: () => console.log("You're missing a function"),
+        type: Function,
+        required: true,
+    },
+    delete: {
+        default: () => console.log("You're missing a function"),
+        type: Function,
+        required: true,
+    },
 });
+
+// Referencia reactiva para la cantidad de ítems
+const quantityItem = ref(props.quantity);
+
+// Maneja el evento de cambio de cantidad
+const handleQuantityInput = (event) => {
+    const newQuantity = parseInt(event.target.value);
+    if (!isNaN(newQuantity)) {
+        quantityItem.value = Math.max(newQuantity, 1);
+        props.update(quantityItem.value);
+    }
+};
+
+// Calcula el precio total basado en la cantidad de ítems y el precio por ítem
+const quantityPrice = computed(() => quantityItem.value * props.price);
 </script>
+
 <template>
-    <div class="m-4 relative max-w-xl bg-red-600">
+    <div class="m-4 relative max-w-xl">
         <!-- Div que contiene la imagen del item -->
-        <div class="absolute w-1/5 top-1/4 bottom-1/4 ml-5">
+        <div class="absolute grid grid-cols-8">
             <img
-                class="rounded-xl object-cover w-20 h-full md:w-32 lg:w-40 xl:w-48"
-                src="https://flowbite.com/docs/images/blog/image-1.jpg"
-                alt=""
+                class="col-start-2 ml-3 mt-8 rounded-xl object-cover"
+                :src="image"
+                alt="image"
             />
         </div>
         <!-- Div que contiene la información extra del item -->
-        <div
-            class="p-3 md:p-4 ml-10 md:ml-28 rounded-l-3xl rounded-r-lg bg-white border border-gray-200 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 flex items-center"
-        >
-            <!-- Puedes utilizar clases de Tailwind CSS para establecer los estilos del borde y otros elementos -->
-            <SectionBorder :padding="py - 2" />
+
+        <div class="grid grid-cols-8">
+            <div class="col-span-1"></div>
             <div
-                class="overflow-hidden flex flex-col flex-grow mb-10 ml-4 font-normal font-paidit-500"
+                class="col-start-3 col-end-9 grid grid-cols-12 rounded-l-3xl rounded-r-lg border border-gray-200 hover:bg-gray-100 bg-gray-300 dark:bg-paidit-900"
             >
-                <p class="text-gray-600">{{ business }}</p>
-                <p class="text-gray-700 dark:text-gray-50">{{ title }}</p>
-                <p class="text-gray-600">{{ price }}</p>
+                <!-- Puedes utilizar clases de Tailwind CSS para establecer los estilos del borde y otros elementos -->
+                <div
+                    class="col-span-5 grid grid-cols-8 ml-2 font-normal font-paidit-500"
+                >
+                    <div class="col-start-2 col-end-9 mt-3">
+                        <p class="text-gray-500">Business: {{ business }}</p>
+                        <p
+                            class="text-gray-700 row-start-3 dark:text-gray-50 mb-2"
+                        >
+                            {{ title }}
+                        </p>
+                        <p class="text-gray-500 row-start-4">${{ price }}</p>
+                    </div>
+                </div>
+                <div
+                    class="col-span-5 grid grid-cols-12 justify-items-center items-center font-normal text-gray-700 dark:text-gray-400"
+                >
+                    <input
+                        v-model="quantityItem"
+                        @input="handleQuantityInput"
+                        class="col-span-3 w-full px-1 py-2 border-transparent rounded-lg focus:outline-none focus:ring focus:border-blue-300 text-center dark:bg-paidit-1000"
+                        maxlength="2"
+                        type="number"
+                    />
+
+                    <!-- Flecha indicando la operación -->
+                    <div class="col-span-3 mx-1 text-gray-500 text-2xl">
+                        &#8594;
+                    </div>
+                    <input
+                        v-model="quantityPrice"
+                        class="col-span-5 w-full px-1 py-2 border-transparent rounded-lg focus:outline-none focus:ring focus:border-blue-300 text-center dark:bg-paidit-1000"
+                        :disabled="true"
+                        type="number"
+                    />
+                </div>
+                <div
+                    class="col-span-2 flex font-normal text-gray-700 dark:text-gray-400"
+                >
+                    <DangerButton
+                        :onclick="delete"
+                        class="bg-red-500 w-10 h-28 rounded-lg"
+                    >
+                        clear</DangerButton
+                    >
+                </div>
+                <!-- Aquí puedes agregar más contenido de la información extra si es necesario -->
             </div>
-            <div
-                class="flex flex-col flex-grow ml-4 sm:ml-6 md:ml-8 lg:ml-10 xl:ml-12 mb-3 font-normal text-gray-700 dark:text-gray-400"
-            >
-                <p class="mb-2">Párr 1</p>
-                <p class="mb-2">Párrafo 2</p>
-                <p>Párrafo 3</p>
-            </div>
-            <div
-                class="flex flex-col flex-grow ml-4 sm:ml-6 md:ml-8 lg:ml-10 xl:ml-12 mb-3 font-normal text-gray-700 dark:text-gray-400"
-            >
-                <p class="mb-2">Párrafo 1</p>
-                <p class="mb-2">Párrafo 2</p>
-                <p>Párrafo 3</p>
-            </div>
-            <!-- Aquí puedes agregar más contenido de la información extra si es necesario -->
         </div>
     </div>
 </template>
