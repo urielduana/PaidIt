@@ -24,6 +24,9 @@ class CustomerCartController extends Controller
         $cartItems = $cart ? $cart->cart_CartItem : [];
         foreach ($cartItems as $key => $cartItem) {
             $items[$key]=$cartItem->cartItem_Item;
+            $business[$key]=$items[$key]->item_Business;
+            $cartItem->item=$items[$key];
+            $cartItem->business=$business[$key];
         }
         $order= $customer->customer_Order;
         $orderItems= $order ? $order[0]->order_Order_Item : [];
@@ -32,7 +35,6 @@ class CustomerCartController extends Controller
             'cart' => $cart,
             'cartItems'=>$cartItems,
             'orderItems'=>$orderItems,
-            'items'=>$items,
         ]);
     }
     /**
@@ -54,7 +56,7 @@ class CustomerCartController extends Controller
         $cartItems= $cart ->cart_CartItem;
         if (!($cart)) {
             // Si no hay un carrito activo, redireccionar con un mensaje de error
-            return Inertia::location(url())->with('error', 'No se encontró ningún carrito activo.');
+            return Inertia::location(url());
         }else{
 
         // Crear una nueva orden y establecer el estado como "completado"
@@ -74,15 +76,18 @@ class CustomerCartController extends Controller
         $this->createCustomerTransactions($order);
         $this->createBusinessesTransactions($order);
         // Eliminar el carrito ahora que la compra se ha completado
-        $cart->delete();
+        //habilitar cuando ya se concrete el proyecto
+        // $cart->delete();
     
         // Redireccionar a la página de órdenes del cliente con un mensaje de éxito
-        return Inertia::location(url()->previous());
+        return Inertia::location(url("/customer/orders"));
         
         }
 
     }
-
+    public function updateQuantity($cartItemId)
+    {   
+    }
     /**
      * Display the specified resource.
      */
@@ -104,13 +109,38 @@ class CustomerCartController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $authenticated = auth()->user();
+        $customer = $authenticated->user_Customer;
+        $cart = $customer->customer_Cart;
+        
+        // Obtén la nueva cantidad desde la solicitud
+        $newQuantity = $request->input('quantity', 1);
+    
+        // Encuentra el cartItem por su ID
+        $cartItem = $cart->cart_CartItem()->find($id);
+    
+        if ($cartItem) {
+            // Asegura que la nueva cantidad no sea menor que 1
+            $cartItem->quantity = max($newQuantity, 1);
+            $cartItem->save();
+        }
+    
+        // Utiliza Inertia::location para redirigir a la página anterior
+        return Inertia::location(url()->previous());
     }
-
+    
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {   
+
+        $authenticated = auth()->user();
+        $customer = $authenticated->user_Customer;
+        $cart = $customer->customer_Cart;
+        $cartItems = $cart ? $cart->cart_CartItem : [];
+        dd($cartItems);
+
         
     }
     public function createCustomerTransactions($order){
