@@ -1,6 +1,8 @@
 <script setup>
 import { Head, Link } from "@inertiajs/vue3";
 import DarkSwitch from "@/Components/DarkSwitch.vue";
+import AuthenticationCardLogo from "@/Components/AuthenticationCardLogo.vue";
+
 
 defineProps({
     canLogin: Boolean,
@@ -53,83 +55,59 @@ defineProps({
             <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-white-900">Somos Paid-It!
             <br class="hidden lg:inline-block">La mejor plataforma de pagos
             </h1>
-            <p class="mb-8 leading-relaxed">Nuestro enfoque se dirige hacia las isntituciones educativas privadas de Mexico, con un enfoque incial en el nivel preparatoria.
+            <p class="mb-8 leading-relaxed">Nuestro enfoque se dirige hacia las instituciones educativas privadas de Mexico, con un enfoque incial en el nivel preparatoria.
             Estamos comprometidos en brindar soluciones tecnológicas que permitan a estas isntituciones mejorar su administración interna, mantenerse competitivos frente a
             a otras instituciones y proporcionar una experiencia mas fluida y conveniente para sus estudiantes y personal.
             </p>
             </div>
-        <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-        <img class="object-cover object-center rounded" alt="hero" src="https://dummyimage.com/720x600/edf2f7/a5afbd">
+        <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 items-center">
+        <AuthenticationCardLogo />
         </div>
         </div>
         </section>
         
-        <section class="text-gray-700 body-font border-t border-gray-200">
+        <section class="text-black-700 body-font border-t border-black-200">
         <div class="container px-5 py-24 mx-auto">
         <div class="flex flex-col text-center w-full mb-20">
         <h1 class="sm:text-3xl text-2xl font-medium title-font text-indigo-900">Sobre nosotros...</h1>
         </div>
         <div class="flex flex-wrap -m-4">
         <div class="p-4 md:w-1/3">
-          <div class="flex rounded-lg h-full bg-gray-100 p-8 flex-col">
+          <div class="flex rounded-lg h-full bg-black-100 p-8 flex-col">
             <div class="flex items-center mb-3">
               <div class="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-indigo-500 text-white flex-shrink-0">
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                <path d="M4 19.5A2.5 2.5 0 006.5 22H18a2 2 0 002-2V4a2 2 0 00-2-2H6.5A2.5 2.5 0 004 4.5v15z"></path>
+                <path d="M20 6H4l3-4h10l3 4z"></path>
                 </svg>
               </div>
-              <h2 class="text-gray-900 text-lg title-font font-medium">Shooting Stars</h2>
+              <h2 class="text-black-900 text-lg title-font font-medium">Misión</h2>
             </div>
             <div class="flex-grow">
-              <p class="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
-              <a class="mt-3 text-indigo-500 inline-flex items-center">Learn More
-                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                  <path d="M5 12h14M12 5l7 7-7 7"></path>
-                </svg>
-              </a>
+              <p class="leading-relaxed text-base">Transformar la experiencia de administración financiera en instituciones educativas privadas al proporcionar 
+                soluciones tecnológicas innovadoras que impulsen la eficiencia administrativa, mejoren la calidad de vida de los estudiantes 
+                y promuevan la agilidad de los negocios dentro de la institución. 
+            </p>
             </div>
             </div>
             </div>
             <div class="p-4 md:w-1/3">
-          <div class="flex rounded-lg h-full bg-gray-100 p-8 flex-col">
+          <div class="flex rounded-lg h-full bg-black-100 p-8 flex-col">
             <div class="flex items-center mb-3">
               <div class="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-indigo-500 text-white flex-shrink-0">
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                  <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
-                  <circle cx="12" cy="7" r="4"></circle>
+                <path d="M4 19.5A2.5 2.5 0 006.5 22H18a2 2 0 002-2V4a2 2 0 00-2-2H6.5A2.5 2.5 0 004 4.5v15z"></path>
+                <path d="M20 6H4l3-4h10l3 4z"></path>
                 </svg>
               </div>
-              <h2 class="text-gray-900 text-lg title-font font-medium">The Catalyzer</h2>
+              <h2 class="text-black-900 text-lg title-font font-medium">Visión</h2>
             </div>
             <div class="flex-grow">
-              <p class="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
-              <a class="mt-3 text-indigo-500 inline-flex items-center">Learn More
-                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                  <path d="M5 12h14M12 5l7 7-7 7"></path>
-                </svg>
-              </a>
-            </div>
-            </div>
-            </div>
-            <div class="p-4 md:w-1/3">
-          <div class="flex rounded-lg h-full bg-gray-100 p-8 flex-col">
-            <div class="flex items-center mb-3">
-              <div class="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-indigo-500 text-white flex-shrink-0">
-                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                  <circle cx="6" cy="6" r="3"></circle>
-                  <circle cx="6" cy="18" r="3"></circle>
-                  <path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"></path>
-                </svg>
-              </div>
-              <h2 class="text-gray-900 text-lg title-font font-medium">Neptune</h2>
-            </div>
-            <div class="flex-grow">
-              <p class="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
-              <a class="mt-3 text-indigo-500 inline-flex items-center">Learn More
-                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                  <path d="M5 12h14M12 5l7 7-7 7"></path>
-                </svg>
-              </a>
+              <p class="leading-relaxed text-base">Ser líderes en la transformación digital del sector educativo, siendo reconocidos como la plataforma 
+                tecnológica preferida por instituciones educativas privadas. Aspiramos a establecer un estándar de excelencia en la gestión financiera 
+                y la experiencia del usuario, impactando positivamente en la eficiencia operativa, la satisfacción de los estudiantes y la agilidad de los negocios 
+                dentro de las instituciones. 
+              </p>
             </div>
             </div>
             </div>
@@ -137,18 +115,281 @@ defineProps({
             </div>
         </section>
 
-
-
-
-            <div
-                class="ml-4 text-center text-sm text-gray-500 dark:text-gray-400 sm:justify-between sm:ml-0"
-            >
-                PaidIt v1.0.0
+  <section class="text-black-700 body-font border-t border-black-200">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-col text-center w-full mb-20">
+        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-indigo-900">Nuestro Equipo</h1>
+        <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Integrantes y sus roles en el proyecto</p>
+      </div>
+      <div class="flex flex-wrap -m-2">
+        <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+          <div class="h-full flex items-center border-black-200 border p-4 rounded-lg">
+            <div class="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-indigo-500 text-white flex-shrink-0">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                  <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+            <div class="flex-grow">
+              <h2 class="text-black-900 title-font font-medium">Pedro Copado</h2>
+              <p class="text-gray-500">Ingeniero de Software</p>
             </div>
-        
-        
+          </div>
+        </div>
+        <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+          <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+            <div class="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-indigo-500 text-white flex-shrink-0">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                  <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+            <div class="flex-grow">
+              <h2 class="text-black-900 title-font font-medium">Carolina Cortés</h2>
+              <p class="text-gray-500">Desarrollador Frontend</p>
+            </div>
+          </div>
+        </div>
+        <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+          <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+            <div class="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-indigo-500 text-white flex-shrink-0">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                  <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+            <div class="flex-grow">
+              <h2 class="text-black-900 title-font font-medium">Uriel Duana</h2>
+              <p class="text-gray-500">Project Manager</p>
+            </div>
+          </div>
+        </div>
+        <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+          <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+            <div class="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-indigo-500 text-white flex-shrink-0">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                  <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+            <div class="flex-grow">
+              <h2 class="text-black-900 title-font font-medium">Ulises Florean</h2>
+              <p class="text-gray-500">Ingeniero DevOps</p>
+            </div>
+          </div>
+        </div>
+        <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+          <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+            <div class="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-indigo-500 text-white flex-shrink-0">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                  <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+            <div class="flex-grow">
+              <h2 class="text-black-900 title-font font-medium">Ana Hernández</h2>
+              <p class="text-gray-500">Analista de Datos</p>
+            </div>
+          </div>
+        </div>
+        <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+          <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+            <div class="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-indigo-500 text-white flex-shrink-0">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                  <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+            <div class="flex-grow">
+              <h2 class="text-black-900 title-font font-medium">Gustavo Montoya</h2>
+              <p class="text-gray-500">Desarrollador Backend</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="text-black-700 body-font overflow-hidden border-t border-black-200">
+    <div class="container px-5 py-24 mx-auto flex flex-wrap">
+      <div class="lg:w-1/4 mt-48 hidden lg:block">
+        <div class="mt-px border-t border-gray-300 border-b border-l rounded-tl-lg rounded-bl-lg overflow-hidden">
+          <p class="bg-black-100 text-black-900 h-12 text-center px-4 flex items-center justify-start -mt-px"></p>
+          <p class="text-black-900 h-12 text-center px-4 flex items-center justify-start">Gestion de Saldo</p>
+          <p class="bg-black-100 text-black-900 h-12 text-center px-4 flex items-center justify-start">Perfil de Negocio</p>
+          <p class="text-black-900 h-12 text-center px-4 flex items-center justify-start">Pedidos Personalizados</p>
+          <p class="bg-black-100 text-black-900 h-12 text-center px-4 flex items-center justify-start">Notificaciones y Alertas</p>
+          <p class="text-black-900 h-12 text-center px-4 flex items-center justify-start">Soporte</p>
+          <p class="bg-black-100 text-black-900 h-12 text-center px-4 flex items-center justify-start">Acceso a nuevas características</p>
+        </div>
+      </div>
+
+      <div class="flex lg:w-3/4 w-full flex-wrap lg:border border-black-300 rounded-lg">
+        <div class="lg:w-1/3 lg:mt-px w-full mb-10 lg:mb-0 border-2 border-black-300 lg:border-none rounded-lg lg:rounded-none">
+          <div class="px-2 text-center h-48 flex flex-col items-center justify-center">
+            <h3 class="tracking-widest">Inicial</h3>
+            <h2 class="text-5xl text-black-900 font-medium leading-none mb-4 mt-2">Gratis</h2>
+            <span class="text-sm text-indigo-600">Por 3 meses</span>
+          </div>
+          <p class="bg-black-100 text-black-600 h-12 text-center px-2 flex items-center -mt-px justify-center border-t border-gray-300">Funciones limitadas</p>
+          <p class="text-black-600 text-center h-12 flex items-center justify-center">
+            <span class="w-5 h-5 inline-flex items-center justify-center bg-indigo-500 text-white rounded-full flex-shrink-0">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="w-3 h-3" viewBox="0 0 24 24">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+            </span>
+          </p>
+          <p class="bg-black-100 text-black-600 text-center h-12 flex items-center justify-center">
+            <span class="w-5 h-5 inline-flex items-center justify-center bg-indigo-500 text-white rounded-full flex-shrink-0">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="w-3 h-3" viewBox="0 0 24 24">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+            </span>
+          </p>
+          <p class="bg-black-100 text-black-600 text-center h-12 flex items-center justify-center">
+            <span class="w-5 h-5 inline-flex items-center justify-center bg-indigo-500 text-white rounded-full flex-shrink-0">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="w-3 h-3" viewBox="0 0 24 24">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+            </span>
+          </p>
+          <p class="text-black-600 text-center h-12 flex items-center justify-center">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" class="w-5 h-5 text-gray-500" viewBox="0 0 24 24">
+              <path d="M18 6L6 18M6 6l12 12"></path>
+            </svg>
+          </p>
+          <p class="bg-black-100 text-black-600 text-center h-12 flex items-center justify-center">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" class="w-5 h-5 text-gray-500" viewBox="0 0 24 24">
+              <path d="M18 6L6 18M6 6l12 12"></path>
+            </svg>
+          </p>
+          <p class="text-black-600 text-center h-12 flex items-center justify-center">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" class="w-5 h-5 text-gray-500" viewBox="0 0 24 24">
+              <path d="M18 6L6 18M6 6l12 12"></path>
+            </svg>
+          </p>
+  
+          <div class="border-t border-black-300 p-6 text-center rounded-bl-lg">
+            <button class="flex items-center mt-auto text-white bg-indigo-500 border-0 py-2 px-4 w-full focus:outline-none hover:bg-indigo-600 rounded">Comienza ahora!
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-auto" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </button>
+            <p class="text-xs text-gray-500 mt-3">Comienza tu prueba ya!</p>
+          </div>
+        </div>
+        <div class="lg:w-1/3 lg:-mt-px w-full mb-10 lg:mb-0 border-2 rounded-lg border-indigo-500 relative">
+          <span class="bg-indigo-500 text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl">POPULAR</span>
+          <div class="px-2 text-center h-48 flex flex-col items-center justify-center">
+            <h3 class="tracking-widest">PRO</h3>
+            <h2 class="text-5xl text-black-900 font-medium flex items-center justify-center leading-none mb-4 mt-2">$380
+              <span class="text-black-600 text-base ml-1">/mensual</span>
+            </h2>
+            <span class="text-sm text-indigo-600">$2600 por año</span>
+          </div>
+          <p class="bg-black-100 text-black-600 h-12 text-center px-2 flex items-center -mt-px justify-center border-t border-gray-300">Funcionalidad Completa</p>
+          <p class="text-black-600 text-center h-12 flex items-center justify-center">
+            <span class="w-5 h-5 inline-flex items-center justify-center bg-indigo-500 text-white rounded-full flex-shrink-0">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="w-3 h-3" viewBox="0 0 24 24">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+            </span>
+          </p>
+          <p class="bg-black-100 text-black-600 text-center h-12 flex items-center justify-center">
+            <span class="w-5 h-5 inline-flex items-center justify-center bg-indigo-500 text-white rounded-full flex-shrink-0">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="w-3 h-3" viewBox="0 0 24 24">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+            </span>
+          </p>
+          <p class="bg-black-100 text-black-600 text-center h-12 flex items-center justify-center">
+            <span class="w-5 h-5 inline-flex items-center justify-center bg-indigo-500 text-white rounded-full flex-shrink-0">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="w-3 h-3" viewBox="0 0 24 24">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+            </span>
+          </p>
+          <p class="bg-black-100 text-black-600 text-center h-12 flex items-center justify-center">
+            <span class="w-5 h-5 inline-flex items-center justify-center bg-indigo-500 text-white rounded-full flex-shrink-0">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="w-3 h-3" viewBox="0 0 24 24">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+            </span>
+          </p>
+          <p class="bg-black-100 text-black-600 text-center h-12 flex items-center justify-center">
+            <span class="w-5 h-5 inline-flex items-center justify-center bg-indigo-500 text-white rounded-full flex-shrink-0">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="w-3 h-3" viewBox="0 0 24 24">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+            </span>
+          </p>
+          <p class="bg-black-100 text-black-600 text-center h-12 flex items-center justify-center">
+            <span class="w-5 h-5 inline-flex items-center justify-center bg-indigo-500 text-white rounded-full flex-shrink-0">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="w-3 h-3" viewBox="0 0 24 24">
+                <path d="M20 6L9 17l-5-5"></path>
+              </svg>
+            </span>
+          </p>
+          
+          <div class="p-6 text-center border-t border-black-300">
+            <button class="flex items-center mt-auto text-white bg-indigo-500 border-0 py-2 px-4 w-full focus:outline-none hover:bg-indigo-600 rounded">Button
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-auto" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </button>
+            <p class="text-xs text-gray-500 mt-3">Oh si, la mejor opción!</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  
         </div>
     </div>
+
+    <footer class="text-gray-700 body-font">
+    <div class="border-t border-gray-200">
+      <div class="container px-5 py-8 flex flex-wrap mx-auto items-center">
+        <span class="inline-flex lg:ml-auto lg:mt-0 mt-6 w-full justify-center md:justify-start md:w-auto">
+          <a class="text-gray-500">
+            <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+            </svg>
+          </a>
+          <a class="ml-3 text-gray-500">
+            <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+              <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+            </svg>
+          </a>
+          <a class="ml-3 text-gray-500">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+            </svg>
+          </a>
+          <a class="ml-3 text-gray-500">
+            <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+              <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+              <circle cx="4" cy="4" r="2" stroke="none"></circle>
+            </svg>
+          </a>
+        </span>
+      </div>
+    </div>
+    <div class="bg-white-200">
+      <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
+        <p class="text-gray-500 text-sm text-center sm:text-left">© PaidIt v1.0.0 —</p>
+      </div>
+    </div>
+  </footer>
+  <a href="https://github.com/urielduana/PaidIt" class="rounded-full w-12 h-12 bg-gray-100 fixed bottom-0 right-0 flex items-center justify-center text-gray-800 mr-8 mb-8 shadow-sm border-gray-300 border" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+    </svg></a>
+
 </template>
 
 <style>
