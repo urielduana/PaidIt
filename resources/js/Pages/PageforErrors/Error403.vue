@@ -14,7 +14,7 @@
           <div class="">
             <p class="text-xl font-mono">Error!</p>
             <p class="text-xl font-mono">Parece que no tienes acceso</p>
-            <p class="text-xl font-mono">a esta pagina.</p>
+            <p class="text-xl font-mono">a esta página.</p>
             </div>
       </div>
       
