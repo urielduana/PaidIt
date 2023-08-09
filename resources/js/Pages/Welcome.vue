@@ -216,7 +216,7 @@ defineProps({
       <div class="lg:w-1/4 mt-48 hidden lg:block">
         <div class="mt-px border-t border-gray-300 border-b border-l rounded-tl-lg rounded-bl-lg overflow-hidden">
           <p class="bg-black-100 text-black-900 h-12 text-center px-4 flex items-center justify-start -mt-px"></p>
-          <p class="text-black-900 h-12 text-center px-4 flex items-center justify-start">Gestion de Saldo</p>
+          <p class="text-black-900 h-12 text-center px-4 flex items-center justify-start">Gestión de Saldo</p>
           <p class="bg-black-100 text-black-900 h-12 text-center px-4 flex items-center justify-start">Perfil de Negocio</p>
           <p class="text-black-900 h-12 text-center px-4 flex items-center justify-start">Pedidos Personalizados</p>
           <p class="bg-black-100 text-black-900 h-12 text-center px-4 flex items-center justify-start">Notificaciones y Alertas</p>
@@ -333,7 +333,7 @@ defineProps({
           </p>
           
           <div class="p-6 text-center border-t border-black-300">
-            <button class="flex items-center mt-auto text-white bg-indigo-500 border-0 py-2 px-4 w-full focus:outline-none hover:bg-indigo-600 rounded">Button
+            <button class="flex items-center mt-auto text-white bg-indigo-500 border-0 py-2 px-4 w-full focus:outline-none hover:bg-indigo-600 rounded">Comienza ahora!
               <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-auto" viewBox="0 0 24 24">
                 <path d="M5 12h14M12 5l7 7-7 7"></path>
               </svg>
