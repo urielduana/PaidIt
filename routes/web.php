@@ -38,7 +38,7 @@ Route::middleware([
         Route::resource('/', CustomerController::class)
             ->names('customer');
         Route::resource('/business', CustomerBusinessController::class)
-        ->names('customer.business');
+            ->names('customer.business');
         Route::resource('/items', CustomerItemController::class)
             ->names('customer.items');
         Route::resource('/orders', CustomerOrderController::class)
