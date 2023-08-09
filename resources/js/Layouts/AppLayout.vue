@@ -27,8 +27,8 @@ const currentRoute = computed(() => {
         url: path,
     };
 });
-let filteredMenuItems = menuItems.Dashboard;
-let navBarColor = "#223A59";
+// Order in objects the main objects are name, and they are gonna have the other parameters in object
+let filteredMenuItems = {};
 
 if (currentRoute.value.name === "dashboard") {
     filteredMenuItems = menuItems.Dashboard;
@@ -65,14 +65,14 @@ const logout = () => {
 
         <Banner />
         <div class="min-h-screen">
-            <nav :style="{ backgroundColor: navBarColor }">
+            <nav class="bg-paidit-600">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
                         <div class="flex">
                             <!-- Logo -->
                             <div class="shrink-0 flex items-center">
-                                <Link :href="filteredMenuItems[0].route">
+                                <Link :href="filteredMenuItems.Main_Menu.route">
                                     <ApplicationMark class="block h-9 w-auto" />
                                 </Link>
                             </div>
@@ -82,18 +82,21 @@ const logout = () => {
                                 v-for="(menuItem, index) in filteredMenuItems"
                                 :key="index"
                             >
-                                <!-- Si se atreven traten de resolver esto, es para que se marque el link de la página actual, la funcion route().current() es de Inertia -->
-                                <!-- <NavLink :href="menuItem.route" :active="route().current(menuItem.route)"> -->
-                                <NavLink :href="menuItem.route">
+                                <NavLink
+                                    :href="menuItem.route"
+                                    :active="currentRoute.url == menuItem.route"
+                                >
                                     {{ menuItem.label }}
                                 </NavLink>
                             </div>
                         </div>
 
-                        <div class="hidden sm:flex sm:items-center sm:ml-6">
+                        <div
+                            class="hidden sm:flex sm:items-center sm:ml-6 justify-end"
+                        >
                             <DarkSwitch />
 
-                            <div class="ml-3 relative">
+                            <div class="ml-1">
                                 <!-- Teams Dropdown -->
                                 <Dropdown
                                     v-if="$page.props.jetstream.hasTeamFeatures"
@@ -535,10 +538,7 @@ const logout = () => {
     </div>
 
     <footer>
-        <div
-            :style="{ backgroundColor: navBarColor }"
-            class="text-center p-5 text-gray-100"
-        >
+        <div class="text-center p-5 text-gray-100 bg-paidit-600">
             © 2023 Copyright: PaidIt
         </div>
     </footer>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Customer;
+use App\Models\CustomersTransaction;
 
 
 
@@ -18,9 +19,11 @@ class CustomerController extends Controller
     {
         $authenticated = auth()->user();
         $customer = $authenticated->user_Customer;
+        $transactions = CustomersTransaction::where('customer_id', $customer->id)->get();
         return Inertia::render('Customer/Customer', [
             'user' => $authenticated,
             'customer' => $customer,
+            'transactions' => $transactions,
         ]);
     }
 
