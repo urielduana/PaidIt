@@ -52,12 +52,12 @@ defineProps({
         <section class="text-white-700 body-font">
         <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
             <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-            <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-white-900">Somos Paid-It!
-            <br class="hidden lg:inline-block">La mejor plataforma de pagos
+            <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-white-900">We are Paid-It!
+            <br class="hidden lg:inline-block">The best payment platform
             </h1>
-            <p class="mb-8 leading-relaxed">Nuestro enfoque se dirige hacia las instituciones educativas privadas de Mexico, con un enfoque incial en el nivel preparatoria.
-            Estamos comprometidos en brindar soluciones tecnológicas que permitan a estas isntituciones mejorar su administración interna, mantenerse competitivos frente a
-            a otras instituciones y proporcionar una experiencia mas fluida y conveniente para sus estudiantes y personal.
+            <p class="mb-8 leading-relaxed">Our focus is directed towards private educational institutions in Mexico, with an initial focus on the high school level.
+              We are committed to providing technology solutions that enable these institutions to improve their internal administration, remain competitive with 
+              other institutions and provide a more seamless and convenient experience for their students and staff.
             </p>
             </div>
         <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 items-center">
@@ -69,7 +69,7 @@ defineProps({
         <section class="text-black-700 body-font border-t border-black-200">
         <div class="container px-5 py-24 mx-auto">
         <div class="flex flex-col text-center w-full mb-20">
-        <h1 class="sm:text-3xl text-2xl font-medium title-font text-indigo-900">Sobre nosotros...</h1>
+        <h1 class="sm:text-3xl text-2xl font-medium title-font text-indigo-900">About Us...</h1>
         </div>
         <div class="flex flex-wrap -m-4">
         <div class="p-4 md:w-1/3">
@@ -81,12 +81,13 @@ defineProps({
                 <path d="M20 6H4l3-4h10l3 4z"></path>
                 </svg>
               </div>
-              <h2 class="text-black-900 text-lg title-font font-medium">Misión</h2>
+              <h2 class="text-black-900 text-lg title-font font-medium">Mission</h2>
             </div>
             <div class="flex-grow">
-              <p class="leading-relaxed text-base">Transformar la experiencia de administración financiera en instituciones educativas privadas al proporcionar 
-                soluciones tecnológicas innovadoras que impulsen la eficiencia administrativa, mejoren la calidad de vida de los estudiantes 
-                y promuevan la agilidad de los negocios dentro de la institución. 
+              <p class="leading-relaxed text-base">Transforming the financial management experience in private educational institutions by providing innovative 
+              technology solutions that drive administrative efficiency, improve the quality of life of students, and improve the quality of life of students. 
+              innovative technology solutions that drive administrative efficiency, improve student quality of life, and promote business agility within the institution. 
+              and promote business agility within the institution.
             </p>
             </div>
             </div>
@@ -100,13 +101,13 @@ defineProps({
                 <path d="M20 6H4l3-4h10l3 4z"></path>
                 </svg>
               </div>
-              <h2 class="text-black-900 text-lg title-font font-medium">Visión</h2>
+              <h2 class="text-black-900 text-lg title-font font-medium">Vision</h2>
             </div>
             <div class="flex-grow">
-              <p class="leading-relaxed text-base">Ser líderes en la transformación digital del sector educativo, siendo reconocidos como la plataforma 
-                tecnológica preferida por instituciones educativas privadas. Aspiramos a establecer un estándar de excelencia en la gestión financiera 
-                y la experiencia del usuario, impactando positivamente en la eficiencia operativa, la satisfacción de los estudiantes y la agilidad de los negocios 
-                dentro de las instituciones. 
+              <p class="leading-relaxed text-base">To be leaders in the digital transformation of the education sector, being recognized as the preferred technology platform for private 
+                platform of choice for private educational institutions. We aspire to establish a standard of excellence in financial management and user experience, positively impacting 
+                and user experience, positively impacting operational efficiency, student satisfaction and business agility within institutions. 
+                within the institutions.
               </p>
             </div>
             </div>
@@ -118,8 +119,8 @@ defineProps({
   <section class="text-black-700 body-font border-t border-black-200">
     <div class="container px-5 py-24 mx-auto">
       <div class="flex flex-col text-center w-full mb-20">
-        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-indigo-900">Nuestro Equipo</h1>
-        <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Integrantes y sus roles en el proyecto</p>
+        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-indigo-900">Our team</h1>
+        <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Members and their roles in the project</p>
       </div>
       <div class="flex flex-wrap -m-2">
         <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
@@ -132,7 +133,7 @@ defineProps({
               </div>
             <div class="flex-grow">
               <h2 class="text-black-900 title-font font-medium">Pedro Copado</h2>
-              <p class="text-gray-500">Ingeniero de Software</p>
+              <p class="text-gray-500">Software Engineer</p>
             </div>
           </div>
         </div>
@@ -146,7 +147,7 @@ defineProps({
               </div>
             <div class="flex-grow">
               <h2 class="text-black-900 title-font font-medium">Carolina Cortés</h2>
-              <p class="text-gray-500">Desarrollador Frontend</p>
+              <p class="text-gray-500">Frontend Developer</p>
             </div>
           </div>
         </div>
@@ -174,7 +175,7 @@ defineProps({
               </div>
             <div class="flex-grow">
               <h2 class="text-black-900 title-font font-medium">Ulises Florean</h2>
-              <p class="text-gray-500">Ingeniero DevOps</p>
+              <p class="text-gray-500">DevOps Engineer</p>
             </div>
           </div>
         </div>
@@ -188,7 +189,7 @@ defineProps({
               </div>
             <div class="flex-grow">
               <h2 class="text-black-900 title-font font-medium">Ana Hernández</h2>
-              <p class="text-gray-500">Analista de Datos</p>
+              <p class="text-gray-500">Data Analyst</p>
             </div>
           </div>
         </div>
@@ -202,7 +203,7 @@ defineProps({
               </div>
             <div class="flex-grow">
               <h2 class="text-black-900 title-font font-medium">Gustavo Montoya</h2>
-              <p class="text-gray-500">Desarrollador Backend</p>
+              <p class="text-gray-500">Backend Developer</p>
             </div>
           </div>
         </div>
@@ -216,23 +217,23 @@ defineProps({
       <div class="lg:w-1/4 mt-48 hidden lg:block">
         <div class="mt-px border-t border-gray-300 border-b border-l rounded-tl-lg rounded-bl-lg overflow-hidden">
           <p class="bg-black-100 text-black-900 h-12 text-center px-4 flex items-center justify-start -mt-px"></p>
-          <p class="text-black-900 h-12 text-center px-4 flex items-center justify-start">Gestión de Saldo</p>
-          <p class="bg-black-100 text-black-900 h-12 text-center px-4 flex items-center justify-start">Perfil de Negocio</p>
-          <p class="text-black-900 h-12 text-center px-4 flex items-center justify-start">Pedidos Personalizados</p>
-          <p class="bg-black-100 text-black-900 h-12 text-center px-4 flex items-center justify-start">Notificaciones y Alertas</p>
-          <p class="text-black-900 h-12 text-center px-4 flex items-center justify-start">Soporte</p>
-          <p class="bg-black-100 text-black-900 h-12 text-center px-4 flex items-center justify-start">Acceso a nuevas características</p>
+          <p class="text-black-900 h-12 text-center px-4 flex items-center justify-start">Balance Management</p>
+          <p class="bg-black-100 text-black-900 h-12 text-center px-4 flex items-center justify-start">Business Profile</p>
+          <p class="text-black-900 h-12 text-center px-4 flex items-center justify-start">Custom Orders</p>
+          <p class="bg-black-100 text-black-900 h-12 text-center px-4 flex items-center justify-start">Notifications and Alerts</p>
+          <p class="text-black-900 h-12 text-center px-4 flex items-center justify-start">Support</p>
+          <p class="bg-black-100 text-black-900 h-12 text-center px-4 flex items-center justify-start">Access to new features</p>
         </div>
       </div>
 
       <div class="flex lg:w-3/4 w-full flex-wrap lg:border border-black-300 rounded-lg">
         <div class="lg:w-1/3 lg:mt-px w-full mb-10 lg:mb-0 border-2 border-black-300 lg:border-none rounded-lg lg:rounded-none">
           <div class="px-2 text-center h-48 flex flex-col items-center justify-center">
-            <h3 class="tracking-widest">Inicial</h3>
-            <h2 class="text-5xl text-black-900 font-medium leading-none mb-4 mt-2">Gratis</h2>
-            <span class="text-sm text-indigo-600">Por 3 meses</span>
+            <h3 class="tracking-widest">Initial</h3>
+            <h2 class="text-5xl text-black-900 font-medium leading-none mb-4 mt-2">Free</h2>
+            <span class="text-sm text-indigo-600">For 3 months</span>
           </div>
-          <p class="bg-black-100 text-black-600 h-12 text-center px-2 flex items-center -mt-px justify-center border-t border-gray-300">Funciones limitadas</p>
+          <p class="bg-black-100 text-black-600 h-12 text-center px-2 flex items-center -mt-px justify-center border-t border-gray-300">Limited functions</p>
           <p class="text-black-600 text-center h-12 flex items-center justify-center">
             <span class="w-5 h-5 inline-flex items-center justify-center bg-indigo-500 text-white rounded-full flex-shrink-0">
               <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="w-3 h-3" viewBox="0 0 24 24">
@@ -271,12 +272,12 @@ defineProps({
           </p>
   
           <div class="border-t border-black-300 p-6 text-center rounded-bl-lg">
-            <button class="flex items-center mt-auto text-white bg-indigo-500 border-0 py-2 px-4 w-full focus:outline-none hover:bg-indigo-600 rounded">Comienza ahora!
+            <button class="flex items-center mt-auto text-white bg-indigo-500 border-0 py-2 px-4 w-full focus:outline-none hover:bg-indigo-600 rounded">Start now!
               <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-auto" viewBox="0 0 24 24">
                 <path d="M5 12h14M12 5l7 7-7 7"></path>
               </svg>
             </button>
-            <p class="text-xs text-gray-500 mt-3">Comienza tu prueba ya!</p>
+            <p class="text-xs text-gray-500 mt-3">Start your test now!</p>
           </div>
         </div>
         <div class="lg:w-1/3 lg:-mt-px w-full mb-10 lg:mb-0 border-2 rounded-lg border-indigo-500 relative">
@@ -284,11 +285,11 @@ defineProps({
           <div class="px-2 text-center h-48 flex flex-col items-center justify-center">
             <h3 class="tracking-widest">PRO</h3>
             <h2 class="text-5xl text-black-900 font-medium flex items-center justify-center leading-none mb-4 mt-2">$380
-              <span class="text-black-600 text-base ml-1">/mensual</span>
+              <span class="text-black-600 text-base ml-1">/monthly</span>
             </h2>
-            <span class="text-sm text-indigo-600">$2600 por año</span>
+            <span class="text-sm text-indigo-600">$2600 each year</span>
           </div>
-          <p class="bg-black-100 text-black-600 h-12 text-center px-2 flex items-center -mt-px justify-center border-t border-gray-300">Funcionalidad Completa</p>
+          <p class="bg-black-100 text-black-600 h-12 text-center px-2 flex items-center -mt-px justify-center border-t border-gray-300">Complete functionality</p>
           <p class="text-black-600 text-center h-12 flex items-center justify-center">
             <span class="w-5 h-5 inline-flex items-center justify-center bg-indigo-500 text-white rounded-full flex-shrink-0">
               <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="w-3 h-3" viewBox="0 0 24 24">
@@ -333,12 +334,12 @@ defineProps({
           </p>
           
           <div class="p-6 text-center border-t border-black-300">
-            <button class="flex items-center mt-auto text-white bg-indigo-500 border-0 py-2 px-4 w-full focus:outline-none hover:bg-indigo-600 rounded">Comienza ahora!
+            <button class="flex items-center mt-auto text-white bg-indigo-500 border-0 py-2 px-4 w-full focus:outline-none hover:bg-indigo-600 rounded">Start today!
               <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-auto" viewBox="0 0 24 24">
                 <path d="M5 12h14M12 5l7 7-7 7"></path>
               </svg>
             </button>
-            <p class="text-xs text-gray-500 mt-3">Oh si, la mejor opción!</p>
+            <p class="text-xs text-gray-500 mt-3">The best option!</p>
           </div>
         </div>
 
