@@ -287,7 +287,7 @@ defineProps({
             <h2 class="text-5xl text-black-900 font-medium flex items-center justify-center leading-none mb-4 mt-2">$380
               <span class="text-black-600 text-base ml-1">/monthly</span>
             </h2>
-            <span class="text-sm text-indigo-600">$2600 every year</span>
+            <span class="text-sm text-indigo-600">$2600 each year</span>
           </div>
           <p class="bg-black-100 text-black-600 h-12 text-center px-2 flex items-center -mt-px justify-center border-t border-gray-300">Complete functionality</p>
           <p class="text-black-600 text-center h-12 flex items-center justify-center">
