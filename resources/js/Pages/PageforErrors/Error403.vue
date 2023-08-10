@@ -13,8 +13,8 @@
         <img src="/img/acceso-denegado.png" alt="Imagen" class=" mr-4">
           <div class="">
             <p class="text-xl font-mono">Error!</p>
-            <p class="text-xl font-mono">Parece que no tienes acceso</p>
-            <p class="text-xl font-mono">a esta página.</p>
+            <p class="text-xl font-mono">It seems that you do not have access</p>
+            <p class="text-xl font-mono">to this page</p>
             </div>
       </div>
       
