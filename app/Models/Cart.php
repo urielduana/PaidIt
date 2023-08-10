@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -11,4 +10,14 @@ class Cart extends Model
     protected $fillable = [
         'Customer_id',
     ];
+
+    public function cart_Customer()
+    {
+        return $this->belongsTo(Customer::class, 'Customer_id');
+    }
+
+    public function cart_CartItem()
+    {
+        return $this->hasMany(CartItem::class, 'Cart_id');
+    }
 }
