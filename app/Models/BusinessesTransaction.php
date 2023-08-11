@@ -14,4 +14,13 @@ class BusinessesTransaction extends Model
         'mount',
         'business_id',
     ];
+    public function businessesTransaction_Business()
+    {
+        return $this->belongsTo(Business::class, 'business_id');
+    }
+
+
+
+
+
 }

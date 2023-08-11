@@ -13,14 +13,13 @@ class OrdersTableSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('orders')->insert(['description' => 'Suspendisse accumsan tortor quis turpis.', 'Customer_id' => '1', 'Status_id' => '1']);
+        DB::table('orders')->insert(['description' => 'Suspendisse accumsan tortor quis turpis.', 'Customer_id' => '1']);
         $faker = \Faker\Factory::create();
         $numCustomersToGenerate = 50;
         for ($i = 0; $i < $numCustomersToGenerate; $i++) {
             DB::table('orders')->insert([
                 'description' => $faker->sentence(6, true),
                 'Customer_id' => $i + 2,
-                'Status_id' => $faker->numberBetween(1, 4),
             ]);
         }
     }

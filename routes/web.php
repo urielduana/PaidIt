@@ -6,6 +6,8 @@ use Inertia\Inertia;
 use App\Http\Controllers\CustomerBusinessController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CustomerItemController;
+use App\Http\Controllers\CustomerOrderController;
+use App\Http\Controllers\CustomerCartController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardItemController;
 use App\Http\Controllers\EmployeeController;
@@ -39,6 +41,10 @@ Route::middleware([
             ->names('customer.business');
         Route::resource('/items', CustomerItemController::class)
             ->names('customer.items');
+        Route::resource('/orders', CustomerOrderController::class)
+            ->names('orders');
+        Route::resource('/carts', CustomerCartController::class)
+            ->names('carts');
     });
 
     Route::prefix('employee')->group(function () {
