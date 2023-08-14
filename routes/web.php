@@ -54,7 +54,7 @@ Route::middleware([
             ->names('employee.settings');
         Route::resource('/orders', EmployeeOrderController::class)
             ->names('employee.order');
-        Route::get('/orders/member/{id}', [EmployeeOrderController::class, 'showMemberOrders']);
+        Route::get('/orders/member/{nfc}', [EmployeeOrderController::class, 'showMemberOrders']);
     });
 
     Route::prefix('dashboard')->group(function () {

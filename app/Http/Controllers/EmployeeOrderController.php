@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Item;
@@ -97,18 +98,15 @@ class EmployeeOrderController extends Controller
 
     // New controller to display all the orders os a specific member
 
-    public function showMemberOrders(string $id)
+    public function showMemberOrders(string $nfc)
     {
-        $orders = Order::where('Customer_id', $id)->get();
-        $items = Item::all();
-        $order_items = OrderItem::all();
-        $users = User::all();
-
+        $nfc_auth = urldecode($nfc);
+        $customer = Customer::where('nfc_auth', $nfc_auth)->with([
+            'customer_User', // Datos del usuario
+            'customer_Order.order_Order_Item.orderItem_Item', // Datos de la orden, ítems de la orden y datos de los ítems
+        ])->first();
         return Inertia::render('Employee/Order/MemberOrders', [
-            'orders' => $orders,
-            'items' => $items,
-            'order_items' => $order_items,
-            'users' => $users,
+            'customer' => $customer,
         ]);
     }
 }
