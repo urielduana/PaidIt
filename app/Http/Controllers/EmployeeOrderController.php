@@ -38,7 +38,7 @@ class EmployeeOrderController extends Controller
 
         $auth_users = User::whereIn('id', $auth_customer_ids)->get()->unique('id');
 
-        
+
         return Inertia::render('Employee/Order/Index', [
             'items' => $auth_items,
             'order_items' => $auth_order_items,
@@ -93,5 +93,22 @@ class EmployeeOrderController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    // New controller to display all the orders os a specific member
+
+    public function showMemberOrders(string $id)
+    {
+        $orders = Order::where('Customer_id', $id)->get();
+        $items = Item::all();
+        $order_items = OrderItem::all();
+        $users = User::all();
+
+        return Inertia::render('Employee/Order/MemberOrders', [
+            'orders' => $orders,
+            'items' => $items,
+            'order_items' => $order_items,
+            'users' => $users,
+        ]);
     }
 }

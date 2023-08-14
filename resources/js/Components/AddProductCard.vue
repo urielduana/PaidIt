@@ -13,7 +13,6 @@ const addProductModal = () => {
 </script>
 <template>
     <div
-        @click="showModal = true"
         class="cursor-default flex align-center justify-center text-center hover:opacity-80 dark:active:opacity-100 active:bg-yellow-600 bg-yellow-500 dark:bg-paidit-600 my-8 mx-4 rounded-xl w-52 border-2 border-stone-300 dark:border-yellow-500 border-dashed dark:text-yellow-500"
         @click="addProductModal()"
     >
