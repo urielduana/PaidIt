@@ -16,6 +16,7 @@ use App\Http\Controllers\EmployeeMemberController;
 use App\Http\Controllers\EmployeeFinanceController;
 use App\Http\Controllers\EmployeeSettingsController;
 use App\Http\Controllers\EmployeeOrderController;
+use App\Http\Controllers\DashboardBusinessController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -67,5 +68,9 @@ Route::middleware([
             ->names('dashboard');
         Route::resource('/items', DashboardItemController::class)
             ->names('dashboard.items');
+        Route::resource('/businesses', DashboardBusinessController::class)
+            ->names('dashboard.businesses');
+        Route::resource('/customers', DashboardCustomerController::class)
+            ->names('dashboard.customers');
     });
 });
