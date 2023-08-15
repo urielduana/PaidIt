@@ -14,6 +14,7 @@ class OrderItemsTableSeeder extends Seeder
     public function run(): void
     {
         DB::table('order_items')->insert(['quantity' => '1', 'Order_id' => '1', 'Item_id' => '1','Status_id' => '1']);
+
         $faker = \Faker\Factory::create();
         $numItems = 125;
         for ($i = 0; $i < $numItems; $i++) {

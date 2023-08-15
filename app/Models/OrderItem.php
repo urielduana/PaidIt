@@ -16,7 +16,7 @@ class OrderItem extends Model
     ];
     function orderItem_Item()
     {
-        return $this->belongsTo(Item::class, 'Item_id');
+        return $this->hasOne(Item::class, 'id', 'Item_id');
     }
     function orderItem_Order()
     {

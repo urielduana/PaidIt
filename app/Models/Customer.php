@@ -15,6 +15,9 @@ class Customer extends Model
         'guardian_phone',
         'User_id',
     ];
+    protected $hidden = [
+        'nfc_auth',
+    ];
 
     public function customer_User()
     {
@@ -24,8 +27,12 @@ class Customer extends Model
     {
         return $this->hasOne(Cart::class, 'Customer_id');
     }
+
     public function customer_Order()
     {
         return $this->hasMany(Order::class, 'Customer_id');
     }
+
+
 }
+

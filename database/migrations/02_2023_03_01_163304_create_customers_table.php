@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('guardian_name');
             $table->unsignedBigInteger('guardian_phone');
+            $table->string('nfc_auth', 16)->unique();
             $table->timestamps();
             $table->unsignedBigInteger('User_id');
             $table->foreign('User_id')->references('id')->on('users')->onDelete('cascade');

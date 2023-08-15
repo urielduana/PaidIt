@@ -1,6 +1,10 @@
 <script setup>
 import { useDark, useToggle } from "@vueuse/core";
 import { reactive, watchEffect } from "vue";
+import { useColors } from "vuestic-ui";
+import { computed } from "vue";
+
+const { applyPreset, currentPresetName, colors } = useColors();
 const isDark = useDark();
 
 const toggleDark = useToggle(isDark);
@@ -10,8 +14,24 @@ const state = reactive({
 watchEffect(() => {
     state.darkMode = useDark().value;
 });
+const switchValue = computed({
+    get() {
+        return currentPresetName.value;
+    },
+    set(value) {
+        applyPreset(value);
+    },
+});
 </script>
 <template>
+    <!-- {{ state.darkMode }}
+    <VaSwitch
+        v-model="switchValue"
+        true-value="dark"
+        false-value="light"
+        size="small"
+    /> -->
+
     <button
         @click="toggleDark()"
         id="theme-toggle"

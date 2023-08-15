@@ -185,7 +185,9 @@ const setKeyTabValue = (value) => {
                         </div>
 
                         <!-- Cards v-for div -->
-                        <div class="flex flex-wrap justify-center">
+                        <div
+                            class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4 lg:gap-6 p-5"
+                        >
                             <ProductCard
                                 :id="item.id"
                                 :title="item.name"
