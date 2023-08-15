@@ -6,6 +6,8 @@ use Inertia\Inertia;
 use App\Http\Controllers\CustomerBusinessController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CustomerItemController;
+use App\Http\Controllers\CustomerOrderController;
+use App\Http\Controllers\CustomerCartController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardItemController;
 use App\Http\Controllers\EmployeeController;
@@ -14,6 +16,7 @@ use App\Http\Controllers\EmployeeMemberController;
 use App\Http\Controllers\EmployeeFinanceController;
 use App\Http\Controllers\EmployeeSettingsController;
 use App\Http\Controllers\EmployeeOrderController;
+use App\Http\Controllers\DashboardBusinessController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -39,6 +42,10 @@ Route::middleware([
             ->names('customer.business');
         Route::resource('/items', CustomerItemController::class)
             ->names('customer.items');
+        Route::resource('/orders', CustomerOrderController::class)
+            ->names('orders');
+        Route::resource('/carts', CustomerCartController::class)
+            ->names('carts');
     });
 
     Route::prefix('employee')->group(function () {
@@ -62,5 +69,9 @@ Route::middleware([
             ->names('dashboard');
         Route::resource('/items', DashboardItemController::class)
             ->names('dashboard.items');
+        Route::resource('/businesses', DashboardBusinessController::class)
+            ->names('dashboard.businesses');
+        Route::resource('/customers', DashboardCustomerController::class)
+            ->names('dashboard.customers');
     });
 });

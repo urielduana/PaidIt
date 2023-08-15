@@ -19,6 +19,9 @@ return new class extends Migration
             $table->foreign('Order_id')->references('id')->on('orders')->onDelete('cascade');
             $table->unsignedBigInteger('Item_id');
             $table->foreign('Item_id')->references('id')->on('items')->onDelete('cascade');
+            //relacionar con la tabla de status
+            $table->unsignedBigInteger('Status_id');
+            $table->foreign('Status_id')->references('id')->on('status_order')->onDelete('cascade');
         });
     }
 
