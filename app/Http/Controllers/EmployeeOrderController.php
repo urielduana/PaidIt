@@ -105,8 +105,12 @@ class EmployeeOrderController extends Controller
             'customer_User', // Datos del usuario
             'customer_Order.order_Order_Item.orderItem_Item', // Datos de la orden, ítems de la orden y datos de los ítems
         ])->first();
-        return Inertia::render('Employee/Order/MemberOrders', [
-            'customer' => $customer,
-        ]);
+        if ($customer) {
+            return Inertia::render('Employee/Order/MemberOrders', [
+                'customer' => $customer,
+            ]);
+        } else {
+            abort(404);
+        }
     }
 }

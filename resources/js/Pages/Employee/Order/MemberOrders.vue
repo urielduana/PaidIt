@@ -26,7 +26,7 @@ const calculateTotal = (quantity, price) => {
 </script>
 
 <template>
-    <AppLayout title="API Tokens">
+    <AppLayout :title="`Orders from ${customer.customer__user.name}`">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Orders from :
